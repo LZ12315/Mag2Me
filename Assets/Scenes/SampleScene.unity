@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endurance: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,6 +710,8 @@ MonoBehaviour:
   snapPower: 1
   snapAngle: 60
   snapDistance: 8
+  magnetHoldRadius: 4
+  ObjectinPlace: []
   farDistanceCoef: 0.75
   midDistanceCoef: 0.6
   closeDistanceCoef: 0.4
@@ -716,8 +719,6 @@ MonoBehaviour:
   minAcceleration: 2
   midAcceleration: 128
   maxAcceleration: 320
-  ObjectBeingAttracted: []
-  ObjectinPlace: []
 --- !u!114 &689312950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,6 +887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endurance: 0
 --- !u!1 &1131794646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endurance: 0
 --- !u!1 &1510298827
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,6 +1454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endurance: 0
 --- !u!1 &2004865837
 GameObject:
   m_ObjectHideFlags: 0

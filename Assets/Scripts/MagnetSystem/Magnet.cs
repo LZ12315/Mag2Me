@@ -10,6 +10,7 @@ public class Magnet : MonoBehaviour, IMagnetRelated
     private Rigidbody2D rigidBody;
     private PolygonCollider2D polygonCollider;
     private SnaperAnimation snapAnimation;
+    private Equip equip;
 
     [Header("磁体设置")]
     [SerializeField] private float magPower = 0; // 磁力强度 默认为0
@@ -17,13 +18,13 @@ public class Magnet : MonoBehaviour, IMagnetRelated
     [SerializeField] private float velocityClamp = 30f; // 速度上限（防失速）
 
     SnapSource snapSource;
-    bool snapping = false;
     Sequence sequence = null;
 
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         polygonCollider = GetComponent<PolygonCollider2D>();
+        equip = GetComponentInChildren<Equip>();
         snapAnimation = GetComponentInChildren<SnaperAnimation>();
         radius = CalculateRadius();
 
@@ -34,7 +35,7 @@ public class Magnet : MonoBehaviour, IMagnetRelated
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider?.GetComponent<Magnet>() != null && snapSource!= null)
-            snapSource.OnChildCollisionEnter2D(collision, rigidBody);
+            snapSource.OnCollisionEnter2D(collision);
     }
 
      public void BeingAttract(SnapSource snapSource)
@@ -65,6 +66,7 @@ public class Magnet : MonoBehaviour, IMagnetRelated
         rigidBody.velocity = Vector2.zero;
         rigidBody.angularVelocity = 0;
 
+        if(snapAnimation)
         snapAnimation.PlayMagneticDeform(snapSource.transform.position - transform.position);
     }
 

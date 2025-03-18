@@ -18,6 +18,7 @@ public class SnapSource : MonoBehaviour, IMagnetRelated
     [SerializeField] private float snapPower = 1f; //物体磁力强度
     [SerializeField] private float snapAngle = 60f; //磁力效用角度
     [SerializeField] public float snapDistance = 2f; //磁力效用距离
+    [SerializeField] public float magnetHoldRadius = 2f; //最大持有距离
     [SerializeField] List<Magnet> ObjectinPlace = new List<Magnet>();
 
     [Header("磁力梯度")]
@@ -85,22 +86,19 @@ public class SnapSource : MonoBehaviour, IMagnetRelated
         }
     }
 
-    void SnapFinalize(HingeJoint2D joint, Rigidbody2D targetBody)
+    void SnapMagnet(Magnet magnet)
     {
-        Magnet magnet = targetBody?.GetComponent<Magnet>();
         if(magnet == null) return;
+        if (Vector2.Distance(transform.position, magnet.transform.position) > magnetHoldRadius) return;
 
         if (!ObjectinPlace.Contains(magnet))
             ObjectinPlace.Add(magnet);
 
         //等待重构 不应该放在这个类
         if (equipHolder != null)
-            equipHolder.EquipArmed(targetBody.transform);
+            equipHolder.EquipArmed(magnet.transform);
 
         magnet.SnapFinalize(this);
-        Destroy(joint);
-        snapAnimation.PlayMagneticDeform(targetBody.transform.position - transform.position);
-        DeSpeed();
     }
 
     public void ReleaseMagnet(Magnet magnet)
@@ -111,60 +109,28 @@ public class SnapSource : MonoBehaviour, IMagnetRelated
 
     #region 物体连接
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         Magnet magnet = collision.collider?.GetComponent<Magnet>();
         if(magnet == null || collision.collider.gameObject.layer != 6) return;
 
         if (!ObjectinPlace.Contains(magnet))
-        {
-            CreatePhysicalJoint(collision.collider.GetComponent<Rigidbody2D>(), rigidBody);
-        }
+            StartCoroutine(SnapStart(collision.collider.GetComponent<Rigidbody2D>()));
     }
 
-    public void OnChildCollisionEnter2D(Collision2D collision, Rigidbody2D child)
+    IEnumerator SnapStart(Rigidbody2D targetBody)
     {
-        Magnet magnet = collision.collider?.GetComponent<Magnet>();
-        if (magnet == null || collision.collider.gameObject.layer != 6) return;
-
-        if (!ObjectinPlace.Contains(magnet))
-        {
-            CreatePhysicalJoint(collision.collider.GetComponent<Rigidbody2D>(), child);
-        }
+        yield return new WaitForSeconds(0.1f);
+        SnapFinalize(targetBody);
     }
 
-    void CreatePhysicalJoint(Rigidbody2D targetBody, Rigidbody2D jointBody)
+    void SnapFinalize(Rigidbody2D targetBody)
     {
-        HingeJoint2D joint = gameObject.AddComponent<HingeJoint2D>();
+        Magnet magnet = targetBody?.GetComponent<Magnet>();
+        SnapMagnet(magnet);
 
-        // Joint参数设置
-        joint.connectedBody = targetBody;
-        joint.autoConfigureConnectedAnchor = false;
-        joint.breakForce = Mathf.Infinity;
-        joint.enableCollision = true;
-
-        StartCoroutine(PreciseAnchorPositioning(joint, targetBody, jointBody));
-    }
-
-    IEnumerator PreciseAnchorPositioning(HingeJoint2D joint, Rigidbody2D targetBody, Rigidbody2D jointBody)
-    {
-        ContactFilter2D filter = new ContactFilter2D();
-        filter.layerMask = 6;
-        ContactPoint2D[] contacts = new ContactPoint2D[2];
-        jointBody.GetComponent<Collider2D>().GetContacts(filter, contacts);
-
-        if (contacts.Length > 0)
-        {
-            Vector2 anchorPoint = contacts[0].point;
-            if (anchorPoint == Vector2.zero)
-                anchorPoint = transform.position;
-
-            joint.anchor = jointBody.transform.InverseTransformPoint(anchorPoint);
-            joint.connectedAnchor = joint.connectedBody.transform.InverseTransformPoint(anchorPoint);
-        }
-
-        yield return new WaitForSeconds(0.5f);
-        SnapFinalize(joint, targetBody);
+        snapAnimation.PlayMagneticDeform(targetBody.transform.position - transform.position);
+        DeSpeed();
     }
 
     void DeSpeed()
