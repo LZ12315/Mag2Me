@@ -75,7 +75,7 @@ public class Magnet : MonoBehaviour
         snapSource.ReleaseMagnet(this);
         snapSource = null;
         rigidBody.transform.SetParent(null);
-        gameObject.layer = 7;
+        gameObject.layer = 0;
         rigidBody.isKinematic = false;
         polygonCollider.isTrigger = true;
     }
@@ -148,7 +148,7 @@ public class Magnet : MonoBehaviour
 
     #region ÆäËû 
 
-
+    public SnapSource MagnetParent => snapSource;
 
     #endregion
 

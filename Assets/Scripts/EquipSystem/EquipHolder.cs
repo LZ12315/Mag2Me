@@ -26,6 +26,11 @@ public class EquipHolder : MonoBehaviour
         newEquip.EquipArmed(this);
     }
 
+    public void GetDamage(Equip equip, int damage)
+    {
+        Debug.Log("EquipHolder : " + damage);
+    }
+
     public void Shoot(Vector2 shootDir)
     {
         if (equipments.Count == 0) return;

@@ -98,6 +98,7 @@ public class SnapSource : MonoBehaviour
     {
         Magnet magnet = collision.collider?.GetComponent<Magnet>();
         if(magnet == null || collision.collider.gameObject.layer != 6) return;
+        if (magnet.MagnetParent != null || collision.collider.gameObject.layer != 6) return;
 
         if (!ObjectinPlace.Contains(magnet))
             StartCoroutine(SnapStart(collision.collider.GetComponent<Rigidbody2D>()));
