@@ -3,16 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-[RequireComponent(typeof(PolygonCollider2D))]
-public class SnapSource : MonoBehaviour, IMagnetRelated
+[RequireComponent(typeof(Collider2D))]
+public class SnapSource : MonoBehaviour
 {
-    private Rigidbody2D rigidBody;
-    private PolygonCollider2D polygonCollider;
-    private PlayerController playerController;
-    private SnaperAnimation snapAnimation;
-    private EquipHolder equipHolder;
+    [SerializeField] private EquipHolder equipHolder;
 
     [Header("吸附设置")]
     [SerializeField] private float snapPower = 1f; //物体磁力强度
@@ -43,19 +38,9 @@ public class SnapSource : MonoBehaviour, IMagnetRelated
 
     private void Start()
     {
-        polygonCollider = GetComponent<PolygonCollider2D>();
-        rigidBody = GetComponent<Rigidbody2D>();
-        playerController = GetComponent<PlayerController>();
         equipHolder = this?.GetComponent<EquipHolder>();
-        snapAnimation = GetComponentInChildren<SnaperAnimation>();
 
         Physics2D.defaultContactOffset = 0.01f;
-    }
-
-    private void Update()
-    {
-        lookDir = playerController.LookDir;
-        snap = playerController.SnapTrigger;
     }
 
     private void FixedUpdate()
@@ -121,22 +106,7 @@ public class SnapSource : MonoBehaviour, IMagnetRelated
     IEnumerator SnapStart(Rigidbody2D targetBody)
     {
         yield return new WaitForSeconds(0.1f);
-        SnapFinalize(targetBody);
-    }
-
-    void SnapFinalize(Rigidbody2D targetBody)
-    {
-        Magnet magnet = targetBody?.GetComponent<Magnet>();
-        SnapMagnet(magnet);
-
-        snapAnimation.PlayMagneticDeform(targetBody.transform.position - transform.position);
-        DeSpeed();
-    }
-
-    void DeSpeed()
-    {
-        Vector2 latelyVeloviry = rigidBody.velocity;
-        rigidBody.velocity = latelyVeloviry * 0.1f;
+        SnapMagnet(targetBody?.GetComponent<Magnet>());
     }
 
     #endregion
@@ -145,7 +115,12 @@ public class SnapSource : MonoBehaviour, IMagnetRelated
 
     public float MagPower => snapPower;
 
-    float IMagnetRelated.MagPower { get => snapPower; }
+    public int NumInPlace => ObjectinPlace.Count;
+
+    public Vector2 SnapDir {  get => lookDir;  set => lookDir = value; }
+
+    public bool isSnap { get => snap; set => snap = value; }
+
 
     private void OnDrawGizmosSelected()
     {

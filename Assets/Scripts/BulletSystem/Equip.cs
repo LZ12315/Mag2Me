@@ -10,6 +10,11 @@ public class Equip: MonoBehaviour
     [SerializeField] private int endurance;
     private EquipHolder equipHolder;
 
+    private void Start()
+    {
+        magnet = GetComponent<Magnet>();
+    }
+
     public void EquipArmed(EquipHolder holder)
     {
         equipHolder = holder;

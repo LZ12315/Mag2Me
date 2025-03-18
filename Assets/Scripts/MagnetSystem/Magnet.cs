@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class Magnet : MonoBehaviour, IMagnetRelated
+public class Magnet : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
     private PolygonCollider2D polygonCollider;
@@ -38,7 +38,7 @@ public class Magnet : MonoBehaviour, IMagnetRelated
             snapSource.OnCollisionEnter2D(collision);
     }
 
-     public void BeingAttract(SnapSource snapSource)
+    public void BeingAttract(SnapSource snapSource)
     {
         this.snapSource = snapSource;
         Transform snapTarget = snapSource.transform;
@@ -146,9 +146,9 @@ public class Magnet : MonoBehaviour, IMagnetRelated
 
     #endregion
 
-    #region 值函数 
+    #region 其他 
 
-    float IMagnetRelated.MagPower { get => magPower; }
+
 
     #endregion
 

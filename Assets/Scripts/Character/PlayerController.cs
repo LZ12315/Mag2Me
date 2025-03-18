@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerInputControl inputControl;
     private Rigidbody2D rb;
+    private SnapSource snapSource;
     private EquipHolder equipHolder;
 
     [Header("移动参数")]
@@ -15,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("输入设置")]
     [SerializeField] bool mouseControl;
-    [SerializeField] float shootPressLimit = 0.5f;
+    [SerializeField] float shootPressLimit = 1.5f;
 
     Vector2 moveInput;
     Vector2 LookInput;
@@ -27,6 +29,8 @@ public class PlayerController : MonoBehaviour
         inputControl = new PlayerInputControl();
         rb = GetComponent<Rigidbody2D>();
         equipHolder = this?.GetComponent<EquipHolder>();
+        snapSource = this?.GetComponent<SnapSource>();
+
         screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
     }
 
@@ -36,29 +40,34 @@ public class PlayerController : MonoBehaviour
         Look();
     }
 
-
-    bool snapTrigger;
     void SnapStart(InputAction.CallbackContext text)
     {
-        snapTrigger = true;
+        snapSource.isSnap = true;
     }
 
     void SnapOver(InputAction.CallbackContext text)
     {
-        snapTrigger = false;
+        snapSource.isSnap = false;
     }
 
-    float shootPressCount;
+    float pressStartTime;
     void ShootPerformed(InputAction.CallbackContext text)
     {
-        shootPressCount += Time.deltaTime;
+        pressStartTime = Time.time;
     }
 
     void ShootOver(InputAction.CallbackContext text)
     {
-        if(equipHolder != null)
+        if (equipHolder == null) return;
+
+        float pressTime = Time.time - pressStartTime;
+
+        if (pressTime >= shootPressLimit)
+            equipHolder.Scatter(lastLookDir);
+        else
             equipHolder.Shoot(lastLookDir);
-        shootPressCount = 0;
+
+        pressStartTime = 0;
     }
 
     private void Move()
@@ -76,6 +85,8 @@ public class PlayerController : MonoBehaviour
         else
             LookInput = (Mouse.current.position.ReadValue() - screenCenter);
         lastLookDir = LookInput.normalized;
+
+        snapSource.SnapDir = lastLookDir;
     }
 
     #region 其他
@@ -84,7 +95,7 @@ public class PlayerController : MonoBehaviour
     {
         inputControl.Enable();
         inputControl.Player.Snap.started += SnapStart;
-        inputControl.Player.Fire.performed += ShootPerformed;
+        inputControl.Player.Fire.started += ShootPerformed;
         inputControl.Player.Snap.canceled += SnapOver;
         inputControl.Player.Fire.canceled += ShootOver;
     }
@@ -93,13 +104,10 @@ public class PlayerController : MonoBehaviour
     {
         inputControl.Disable();
         inputControl.Player.Snap.started -= SnapStart;
-        inputControl.Player.Fire.performed -= ShootPerformed;
+        inputControl.Player.Fire.started -= ShootPerformed;
         inputControl.Player.Snap.canceled -= SnapOver;
         inputControl.Player.Fire.canceled -= ShootOver;
     }
-
-    public Vector2 LookDir => lastLookDir;
-    public bool SnapTrigger => snapTrigger;
 
     #endregion
 

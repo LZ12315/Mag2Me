@@ -32,10 +32,8 @@ public class EquipHolder : MonoBehaviour
 
         Equip weapon = equipments.Dequeue();
         Rigidbody2D rb = weapon.GetComponent<Rigidbody2D>();
-        Magnet magnet = weapon?.GetComponent<Magnet>();
 
-        if (magnet != null)
-            magnet.MagnetRelease();
+        weapon.EquipRelieve(this);
         rb.AddForce(shootDir * shootPower, ForceMode2D.Impulse);
     }
 
@@ -51,6 +49,7 @@ public class EquipHolder : MonoBehaviour
 
             Vector2 shootDir = Vector2.zero;
             Vector2 equipDir = (weapon.transform.position - transform.position).normalized;
+
             if(Vector2.Angle(scatterDir,equipDir)*Mathf.Rad2Deg <= scatterAngle)
                 shootDir = equipDir;
             else
@@ -60,7 +59,7 @@ public class EquipHolder : MonoBehaviour
                 float sinAngle = Mathf.Sin(randomRadian);
                 float x = cosAngle * scatterDir.x - sinAngle * scatterDir.y;
                 float y = sinAngle * scatterDir.x + cosAngle * scatterDir.y;
-                shootDir = new Vector2(x, y);
+                shootDir = new Vector2(x, y).normalized;
             }
 
             rb.AddForce(shootDir * shootPower, ForceMode2D.Impulse);
