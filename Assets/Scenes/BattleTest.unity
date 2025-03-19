@@ -414,22 +414,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 271219036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36369e5a9ac984247afa5af601a38fbe, type: 3}
+  m_Script: {fileID: 11500000, guid: 7369825cdf146844c805f0d65ed1b762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   equipHolder: {fileID: 0}
   snapPower: 1
-  snapAngle: 360
+  snapAngle: 60
   snapDistance: 2
   magnetHoldRadius: 4
   ObjectinPlace: []
-  farDistanceCoef: 0.75
-  midDistanceCoef: 0.6
-  closeDistanceCoef: 0.4
-  strongAccelRange: 0.3
-  minAcceleration: 2
-  midAcceleration: 128
-  maxAcceleration: 320
+  farDistanceCoef: 0.7
+  midDistanceCoef: 0.55
+  closeDistanceCoef: 0.25
+  strongAccelRange: 0.05
+  minAcceleration: 0.5
+  midAcceleration: 8
+  maxAcceleration: 80
 --- !u!60 &271219040
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1019,22 +1019,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 689312936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36369e5a9ac984247afa5af601a38fbe, type: 3}
+  m_Script: {fileID: 11500000, guid: 7369825cdf146844c805f0d65ed1b762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   equipHolder: {fileID: 0}
   snapPower: 1
   snapAngle: 60
-  snapDistance: 6
+  snapDistance: 5
   magnetHoldRadius: 4
   ObjectinPlace: []
-  farDistanceCoef: 0.75
-  midDistanceCoef: 0.6
-  closeDistanceCoef: 0.4
-  strongAccelRange: 0.3
-  minAcceleration: 2
-  midAcceleration: 128
-  maxAcceleration: 320
+  farDistanceCoef: 0.7
+  midDistanceCoef: 0.55
+  closeDistanceCoef: 0.35
+  strongAccelRange: 0.05
+  minAcceleration: 0.5
+  midAcceleration: 8
+  maxAcceleration: 80
 --- !u!114 &689312950
 MonoBehaviour:
   m_ObjectHideFlags: 0

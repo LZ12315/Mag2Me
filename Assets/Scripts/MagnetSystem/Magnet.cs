@@ -17,7 +17,7 @@ public class Magnet : MonoBehaviour
     [SerializeField] private float radius = 1f; //物体到边的距离
     [SerializeField] private float velocityClamp = 30f; // 速度上限（防失速）
 
-    MagSource magnetParent;
+    [SerializeField] MagSource magnetParent;
     MagSource magSource;
     Sequence sequence = null;
 
@@ -74,7 +74,7 @@ public class Magnet : MonoBehaviour
     public void MagnetRelease()
     {
         magnetParent.ReleaseMagnet(this);
-        magnetParent = null;
+        //magnetParent = null;
         rigidBody.transform.SetParent(null);
         gameObject.layer = 0;
         rigidBody.isKinematic = false;

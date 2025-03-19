@@ -356,7 +356,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnet: {fileID: 0}
+  equipHolder: {fileID: 0}
   endurance: 1
+  bulletPower: 1
+  serviceable: 0
+  isBullet: 0
 --- !u!114 &100042617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,7 +501,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnet: {fileID: 0}
+  equipHolder: {fileID: 0}
   endurance: 1
+  bulletPower: 1
+  serviceable: 0
+  isBullet: 0
 --- !u!114 &221882917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,7 +646,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnet: {fileID: 0}
+  equipHolder: {fileID: 0}
   endurance: 1
+  bulletPower: 1
+  serviceable: 0
+  isBullet: 0
 --- !u!114 &272126753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -776,7 +791,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnet: {fileID: 0}
+  equipHolder: {fileID: 0}
   endurance: 1
+  bulletPower: 1
+  serviceable: 0
+  isBullet: 0
 --- !u!114 &504818551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,7 +936,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnet: {fileID: 0}
+  equipHolder: {fileID: 0}
   endurance: 1
+  bulletPower: 1
+  serviceable: 0
+  isBullet: 0
 --- !u!114 &668811194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1056,7 +1081,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnet: {fileID: 0}
+  equipHolder: {fileID: 0}
   endurance: 1
+  bulletPower: 1
+  serviceable: 0
+  isBullet: 0
 --- !u!114 &675582195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1297,7 +1327,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnet: {fileID: 0}
+  equipHolder: {fileID: 0}
   endurance: 1
+  bulletPower: 1
+  serviceable: 0
+  isBullet: 0
 --- !u!114 &786106126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1437,7 +1472,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnet: {fileID: 0}
+  equipHolder: {fileID: 0}
   endurance: 1
+  bulletPower: 1
+  serviceable: 0
+  isBullet: 0
 --- !u!114 &804482940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1678,7 +1718,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnet: {fileID: 0}
+  equipHolder: {fileID: 0}
   endurance: 1
+  bulletPower: 1
+  serviceable: 0
+  isBullet: 0
 --- !u!114 &870662155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1818,7 +1863,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnet: {fileID: 0}
+  equipHolder: {fileID: 0}
   endurance: 1
+  bulletPower: 1
+  serviceable: 0
+  isBullet: 0
 --- !u!114 &880562306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2336,7 +2386,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnet: {fileID: 0}
+  equipHolder: {fileID: 0}
   endurance: 1
+  bulletPower: 1
+  serviceable: 0
+  isBullet: 0
 --- !u!114 &1038178984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2983,6 +3038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPower: 5
   scatterAngle: 360
+  equipments: []
 --- !u!114 &1665498471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2992,21 +3048,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1665498469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36369e5a9ac984247afa5af601a38fbe, type: 3}
+  m_Script: {fileID: 11500000, guid: 7369825cdf146844c805f0d65ed1b762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   equipHolder: {fileID: 0}
   snapPower: 1
   snapAngle: 60
-  snapDistance: 6
+  snapDistance: 7
   magnetHoldRadius: 2
   ObjectinPlace: []
-  farDistanceCoef: 0.75
-  midDistanceCoef: 0.6
-  closeDistanceCoef: 0.4
-  strongAccelRange: 0.3
+  farDistanceCoef: 0.7
+  midDistanceCoef: 0.55
+  closeDistanceCoef: 0.35
+  strongAccelRange: 0.2
   minAcceleration: 2
-  midAcceleration: 128
+  midAcceleration: 32
   maxAcceleration: 320
 --- !u!114 &1665498472
 MonoBehaviour:
@@ -3208,7 +3264,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnet: {fileID: 0}
+  equipHolder: {fileID: 0}
   endurance: 1
+  bulletPower: 1
+  serviceable: 0
+  isBullet: 0
 --- !u!114 &1769240207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3642,7 +3703,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnet: {fileID: 0}
+  equipHolder: {fileID: 0}
   endurance: 1
+  bulletPower: 1
+  serviceable: 0
+  isBullet: 0
 --- !u!114 &2066368258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3782,7 +3848,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnet: {fileID: 0}
+  equipHolder: {fileID: 0}
   endurance: 1
+  bulletPower: 1
+  serviceable: 0
+  isBullet: 0
 --- !u!114 &2146090602
 MonoBehaviour:
   m_ObjectHideFlags: 0
