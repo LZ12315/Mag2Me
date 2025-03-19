@@ -74,7 +74,7 @@ public class Magnet : MonoBehaviour
     public void MagnetRelease()
     {
         magnetParent.ReleaseMagnet(this);
-        //magnetParent = null;
+        magnetParent = null;
         rigidBody.transform.SetParent(null);
         gameObject.layer = 0;
         rigidBody.isKinematic = false;

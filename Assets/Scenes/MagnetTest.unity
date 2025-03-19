@@ -377,6 +377,7 @@ MonoBehaviour:
   magPower: 0
   radius: 1
   velocityClamp: 30
+  magnetParent: {fileID: 0}
 --- !u!60 &100042618
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -522,6 +523,7 @@ MonoBehaviour:
   magPower: 0
   radius: 1
   velocityClamp: 30
+  magnetParent: {fileID: 0}
 --- !u!60 &221882918
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -667,6 +669,7 @@ MonoBehaviour:
   magPower: 0
   radius: 1
   velocityClamp: 30
+  magnetParent: {fileID: 0}
 --- !u!60 &272126754
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -812,6 +815,7 @@ MonoBehaviour:
   magPower: 0
   radius: 1
   velocityClamp: 30
+  magnetParent: {fileID: 0}
 --- !u!60 &504818552
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -957,6 +961,7 @@ MonoBehaviour:
   magPower: 0
   radius: 1
   velocityClamp: 30
+  magnetParent: {fileID: 0}
 --- !u!60 &668811195
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1102,6 +1107,7 @@ MonoBehaviour:
   magPower: 0
   radius: 1
   velocityClamp: 30
+  magnetParent: {fileID: 0}
 --- !u!60 &675582196
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1348,6 +1354,7 @@ MonoBehaviour:
   magPower: 0
   radius: 1
   velocityClamp: 30
+  magnetParent: {fileID: 0}
 --- !u!60 &786106127
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1493,6 +1500,7 @@ MonoBehaviour:
   magPower: 0
   radius: 1
   velocityClamp: 30
+  magnetParent: {fileID: 0}
 --- !u!60 &804482941
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1739,6 +1747,7 @@ MonoBehaviour:
   magPower: 0
   radius: 1
   velocityClamp: 30
+  magnetParent: {fileID: 0}
 --- !u!60 &870662156
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1884,6 +1893,7 @@ MonoBehaviour:
   magPower: 0
   radius: 1
   velocityClamp: 30
+  magnetParent: {fileID: 0}
 --- !u!60 &880562307
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2407,6 +2417,7 @@ MonoBehaviour:
   magPower: 0
   radius: 1
   velocityClamp: 30
+  magnetParent: {fileID: 0}
 --- !u!60 &1038178985
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3037,7 +3048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPower: 5
-  scatterAngle: 360
+  scatterAngle: 30
   equipments: []
 --- !u!114 &1665498471
 MonoBehaviour:
@@ -3052,7 +3063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipHolder: {fileID: 0}
-  snapPower: 1
+  snapPower: 10
   snapAngle: 60
   snapDistance: 7
   magnetHoldRadius: 2
@@ -3285,6 +3296,7 @@ MonoBehaviour:
   magPower: 0
   radius: 1
   velocityClamp: 30
+  magnetParent: {fileID: 0}
 --- !u!60 &1769240208
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3724,6 +3736,7 @@ MonoBehaviour:
   magPower: 0
   radius: 1
   velocityClamp: 30
+  magnetParent: {fileID: 0}
 --- !u!60 &2066368259
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3869,6 +3882,7 @@ MonoBehaviour:
   magPower: 0
   radius: 1
   velocityClamp: 30
+  magnetParent: {fileID: 0}
 --- !u!60 &2146090603
 PolygonCollider2D:
   m_ObjectHideFlags: 0

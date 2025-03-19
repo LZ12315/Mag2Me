@@ -99,7 +99,7 @@ public class MagSource : MonoBehaviour
         if(magnet == null || magnet.MagnetParent != null) return;
 
         if (!ObjectinPlace.Contains(magnet))
-            StartCoroutine(SnapStart(collision.collider.GetComponent<Rigidbody2D>()));
+            SnapMagnet(collision.collider?.GetComponent<Magnet>());
     }
 
     IEnumerator SnapStart(Rigidbody2D targetBody)
