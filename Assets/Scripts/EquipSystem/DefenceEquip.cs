@@ -7,9 +7,12 @@ public class DefenceEquip : Equip
     [Header("·ÀÓùÉèÖÃ")]
     [SerializeField] private float defencePower = 1;
 
-    public void GetDamage(Equip equip, int damage)
+    public bool GetDamage(Equip equip, int damage)
     {
-        Debug.Log("DefenceEquip : " + damage);
+        if (!serviceable) return false;
+
+        Debug.Log(gameObject.name + " -> " + "DefenceEquip : " + damage);
         UseEquip();
+        return true;
     }
 }

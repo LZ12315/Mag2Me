@@ -5,32 +5,43 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Equip: MonoBehaviour
 {
-    protected Magnet magnet;
-    protected EquipHolder equipHolder;
+    [SerializeField] protected Magnet magnet;
+    [SerializeField] protected EquipHolder equipHolder;
 
-    [Header("装备属性")]
+    [Header("瑁呭璁剧疆")]
     [SerializeField] protected int endurance = 3;
+
+    [Header("鍙戝皠璁剧疆")]
     [SerializeField] protected int bulletPower = 1;
+    [SerializeField] protected bool serviceable;
     [SerializeField] protected bool isBullet;
+
+    EquipHolder lastEquipHolder; // 闃叉鍙戝皠鏃跺垽瀹氫负鍘熸潵鐨刪older
 
     protected virtual void Start()
     {
         magnet = GetComponent<Magnet>();
-        equipHolder = GetComponent<EquipHolder>();
+        serviceable = true;
+        isBullet = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject == gameObject) return;
+
         if (isBullet)
         {
-            if (collision.collider?.GetComponent<EquipHolder>() == null) return;
-            collision.collider?.GetComponent<EquipHolder>().GetDamage(this, bulletPower);
+            EquipHolder target = collision?.GetComponent<EquipHolder>();
+            if (target == null || target == lastEquipHolder || target == equipHolder) return;
+            target.GetDamage(this, bulletPower);
         }
     }
 
     public void EquipArmed(EquipHolder holder)
     {
         equipHolder = holder;
+        lastEquipHolder = null;
+        serviceable = true;
     }
 
     protected void UseEquip()
@@ -45,20 +56,29 @@ public class Equip: MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void EquipRelieve(EquipHolder holder)
+    void EquipRelieve(EquipHolder holder)
     {
-        if (equipHolder = holder)
-            equipHolder = null;
-
         if (magnet != null)
             magnet.MagnetRelease();
-
-        isBullet = true;
+        if (equipHolder = holder)
+        {
+            lastEquipHolder = equipHolder;
+            equipHolder = null;
+        }
     }
 
-    #region 其他
+    public void BulletShoot(EquipHolder holder)
+    {
+        EquipRelieve(holder);
+        isBullet = true;
+        serviceable = false;
+    }
+
+    #region 鍏朵粬
 
     public EquipHolder EquipHolder => equipHolder;
+
+    public bool Serviceable => serviceable;
 
     #endregion
 

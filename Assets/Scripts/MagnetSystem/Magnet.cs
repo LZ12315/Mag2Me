@@ -8,7 +8,7 @@ using UnityEngine;
 public class Magnet : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
-    private PolygonCollider2D polygonCollider;
+    private PolygonCollider2D magnetCollider;
     private SnaperAnimation snapAnimation;
     private Equip equip;
 
@@ -17,13 +17,14 @@ public class Magnet : MonoBehaviour
     [SerializeField] private float radius = 1f; //物体到边的距离
     [SerializeField] private float velocityClamp = 30f; // 速度上限（防失速）
 
-    SnapSource snapSource;
+    MagSource magnetParent;
+    MagSource magSource;
     Sequence sequence = null;
 
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        polygonCollider = GetComponent<PolygonCollider2D>();
+        magnetCollider = GetComponent<PolygonCollider2D>();
         equip = GetComponentInChildren<Equip>();
         snapAnimation = GetComponentInChildren<SnaperAnimation>();
         radius = CalculateRadius();
@@ -34,13 +35,13 @@ public class Magnet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider?.GetComponent<Magnet>() != null && snapSource!= null)
-            snapSource.OnCollisionEnter2D(collision);
+        if(collision.collider?.GetComponent<Magnet>() != null && magnetParent != null)
+            magnetParent.OnCollisionEnter2D(collision);
     }
 
-    public void BeingAttract(SnapSource snapSource)
+    public void BeingAttract(MagSource snapSource)
     {
-        this.snapSource = snapSource;
+        this.magSource = snapSource;
         Transform snapTarget = snapSource.transform;
 
         Vector2 targetDir = (Vector2)snapTarget.position - (Vector2)transform.position;
@@ -56,10 +57,10 @@ public class Magnet : MonoBehaviour
         }
     }
 
-    public void SnapFinalize(SnapSource snapSource)
+    public void SnapFinalize(MagSource snapSource)
     {
         rigidBody.transform.SetParent(snapSource.transform);
-        this.snapSource = snapSource;
+        magnetParent = snapSource;
 
         rigidBody.isKinematic = true;
         rigidBody.gravityScale = 0;
@@ -72,17 +73,17 @@ public class Magnet : MonoBehaviour
 
     public void MagnetRelease()
     {
-        snapSource.ReleaseMagnet(this);
-        snapSource = null;
+        magnetParent.ReleaseMagnet(this);
+        magnetParent = null;
         rigidBody.transform.SetParent(null);
         gameObject.layer = 0;
         rigidBody.isKinematic = false;
-        polygonCollider.isTrigger = true;
+        magnetCollider.isTrigger = true;
     }
 
     #region 吸引速度
 
-    float CalculateAcceleration(float distance, SnapSource snapSource)
+    float CalculateAcceleration(float distance, MagSource snapSource)
     {
         /*
         速度分段规则：
@@ -118,10 +119,10 @@ public class Magnet : MonoBehaviour
 
     float CalculateRadius()
     {
-        if (polygonCollider == null)
+        if (magnetCollider == null)
             return 0;
 
-        float distance = DistanceToLine(polygonCollider.points[1], polygonCollider.points[0], Vector3.zero);
+        float distance = DistanceToLine(magnetCollider.points[1], magnetCollider.points[0], Vector3.zero);
         return distance * transform.localScale.x;
     }
 
@@ -148,7 +149,7 @@ public class Magnet : MonoBehaviour
 
     #region 其他 
 
-    public SnapSource MagnetParent => snapSource;
+    public MagSource MagnetParent => magnetParent;
 
     #endregion
 

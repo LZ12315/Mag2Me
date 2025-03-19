@@ -4,26 +4,36 @@ using UnityEngine;
 
 public class EquipHolder : MonoBehaviour
 {
-    private PlayerController controller;
-
     [Header("∑¢…‰…Ë÷√")]
     [SerializeField] private float shootPower = 10f;
     [SerializeField] private float scatterAngle = 360f;
+    [SerializeField] private List<Equip> equipments = new List<Equip>();
 
-    Queue<Equip> equipments = new Queue<Equip>();
-
-    private void Start()
-    {
-        controller = this?.GetComponent<PlayerController>();
-    }
-
-    public void EquipArmed(Transform equip)
+    public void ArmEquip(Transform equip)
     {
         Equip newEquip = equip?.GetComponent<Equip>();
         if (newEquip == null) return;
 
-        equipments.Enqueue(newEquip);
+        equipments.Add(newEquip);
         newEquip.EquipArmed(this);
+    }
+
+    Equip GetEquip()
+    {
+        if (equipments.Count == 0) return null;
+
+        Equip tmpEquip = equipments[0];
+        float tmpDistance = Vector2.Distance(tmpEquip.transform.position, transform.position);
+        foreach (var equip in equipments)
+        {
+            float distance = Vector2.Distance(equip.transform.position, transform.position);
+            if (distance <= tmpDistance) continue;
+            tmpEquip = equip;
+            tmpDistance = distance;
+        }
+
+        equipments.Remove(tmpEquip);
+        return tmpEquip;
     }
 
     public void GetDamage(Equip equip, int damage)
@@ -35,10 +45,10 @@ public class EquipHolder : MonoBehaviour
     {
         if (equipments.Count == 0) return;
 
-        Equip weapon = equipments.Dequeue();
-        Rigidbody2D rb = weapon.GetComponent<Rigidbody2D>();
+        Equip equip = GetEquip();
+        Rigidbody2D rb = equip.GetComponent<Rigidbody2D>();
 
-        weapon.EquipRelieve(this);
+        equip.BulletShoot(this);
         rb.AddForce(shootDir * shootPower, ForceMode2D.Impulse);
     }
 
@@ -48,14 +58,14 @@ public class EquipHolder : MonoBehaviour
 
         while (equipments.Count > 0)
         {
-            Equip weapon = equipments.Dequeue();
-            Rigidbody2D rb = weapon.GetComponent<Rigidbody2D>();
-            weapon.EquipRelieve(this);
+            Equip equip = GetEquip();
+            Rigidbody2D rb = equip.GetComponent<Rigidbody2D>();
+            equip.BulletShoot(this);
 
             Vector2 shootDir = Vector2.zero;
-            Vector2 equipDir = (weapon.transform.position - transform.position).normalized;
+            Vector2 equipDir = (equip.transform.position - transform.position).normalized;
 
-            if(Vector2.Angle(scatterDir,equipDir)*Mathf.Rad2Deg <= scatterAngle)
+            if(Vector2.Angle(scatterDir,equipDir) <= scatterAngle)
                 shootDir = equipDir;
             else
             {

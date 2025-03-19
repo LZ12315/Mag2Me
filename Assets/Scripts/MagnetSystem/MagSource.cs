@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class SnapSource : MonoBehaviour
+public class MagSource : MonoBehaviour
 {
     [SerializeField] private EquipHolder equipHolder;
 
@@ -78,10 +78,8 @@ public class SnapSource : MonoBehaviour
 
         if (!ObjectinPlace.Contains(magnet))
             ObjectinPlace.Add(magnet);
-
-        //等待重构 不应该放在这个类
         if (equipHolder != null)
-            equipHolder.EquipArmed(magnet.transform);
+            equipHolder.ArmEquip(magnet.transform);
 
         magnet.SnapFinalize(this);
     }
@@ -96,9 +94,9 @@ public class SnapSource : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.collider.gameObject.layer != 6) return;
         Magnet magnet = collision.collider?.GetComponent<Magnet>();
-        if(magnet == null || collision.collider.gameObject.layer != 6) return;
-        if (magnet.MagnetParent != null || collision.collider.gameObject.layer != 6) return;
+        if(magnet == null || magnet.MagnetParent != null) return;
 
         if (!ObjectinPlace.Contains(magnet))
             StartCoroutine(SnapStart(collision.collider.GetComponent<Rigidbody2D>()));

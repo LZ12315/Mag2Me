@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MagnetEnemy : EnemyController
 {
-    private SnapSource snapSource;
+    private MagSource snapSource;
     private EquipHolder equipHolder;
 
     [Header("µ–»À…Ë÷√")]
@@ -13,7 +13,7 @@ public class MagnetEnemy : EnemyController
     private void Awake()
     {
         equipHolder = GetComponent<EquipHolder>();
-        snapSource = GetComponent<SnapSource>();
+        snapSource = GetComponent<MagSource>();
     }
 
     private void Start()

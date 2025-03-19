@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerInputControl inputControl;
     private Rigidbody2D rb;
-    private SnapSource snapSource;
+    private MagSource snapSource;
     private EquipHolder equipHolder;
 
     [Header("ÒÆ¶¯²ÎÊý")]
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         inputControl = new PlayerInputControl();
         rb = GetComponent<Rigidbody2D>();
         equipHolder = this?.GetComponent<EquipHolder>();
-        snapSource = this?.GetComponent<SnapSource>();
+        snapSource = this?.GetComponent<MagSource>();
 
         screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
     }

@@ -27,14 +27,16 @@ public class AttackEquip : Equip
             counter += Time.deltaTime;
             if (counter > 2)
             {
-                AttackSearch();
+                TryAttack();
                 counter = 0;
             }
         }
     }
 
-    public void AttackSearch()
+    public void TryAttack()
     {
+        if (!serviceable) return;
+
         Collider2D[] objectInTrigger = new Collider2D[20];
         ContactFilter2D filter = new ContactFilter2D();
 
@@ -79,12 +81,13 @@ public class AttackEquip : Equip
     {
         foreach (var target in attackTargets)
         {
+            int defenceNum = target.Value.Count;
             foreach (var defence in target.Value)
-                defence.GetDamage(this, attackPower);
+                if (!defence.GetDamage(this, attackPower)) defenceNum--;
 
-            if (target.Value.Count < attackNum)
+            if (defenceNum < attackNum)
             {
-                int damageValue = (attackNum - target.Value.Count) * attackPower;
+                int damageValue = (attackNum - defenceNum) * attackPower;
                 target.Key.GetDamage(this, damageValue);
             }
         }
