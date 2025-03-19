@@ -3048,7 +3048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPower: 5
-  scatterAngle: 30
+  scatterAngle: 5
   equipments: []
 --- !u!114 &1665498471
 MonoBehaviour:
