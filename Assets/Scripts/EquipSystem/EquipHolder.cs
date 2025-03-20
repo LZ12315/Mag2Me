@@ -95,6 +95,7 @@ public class EquipHolder : MonoBehaviour
                 shootDir = new Vector2(x, y).normalized;
             }
 
+            equip.transform.position = transform.position;
             equip.ShootEquip(this, shootDir, shootPower);
         }
     }
