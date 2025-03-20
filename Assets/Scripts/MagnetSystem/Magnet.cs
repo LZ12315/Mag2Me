@@ -9,9 +9,8 @@ using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 [Serializable]
 public class Magnet : MonoBehaviour
 {
-    private Rigidbody2D rigidBody;
     private PolygonCollider2D magnetCollider;
-    private PhysicsCharacter physicsCharacter;
+    private PhysicalCharacter physicsCharacter;
     private Equip equip;
     private SnaperAnimation snapAnimation;
 
@@ -28,20 +27,22 @@ public class Magnet : MonoBehaviour
     private void Start()
     {
         magnetCollider = GetComponent<PolygonCollider2D>();
-        physicsCharacter = GetComponent<PhysicsCharacter>();
+        physicsCharacter = GetComponent<PhysicalCharacter>();
         equip = GetComponentInChildren<Equip>();
         snapAnimation = GetComponentInChildren<SnaperAnimation>();
+
+        gameObject.layer = LayerMask.NameToLayer("MagnetLayer");
     }
 
-    //private void Update()
-    //{
-    //    if (isAttracted && magSource != null)
-    //    {
-    //        float distance = Vector2.Distance(transform.position, magSource.transform.position);
-    //        float attractSpeed = CalculateSpeed(distance);
-    //        physicsCharacter.SetMoveSpeed(attractSpeed);
-    //    }
-    //}
+    private void Update()
+    {
+        if (isAttracted && magSource != null)
+        {
+            float distance = Vector2.Distance(transform.position, magSource.transform.position);
+            float attractSpeed = CalculateSpeed(distance);
+            physicsCharacter.SetMoveSpeed(attractSpeed);
+        }
+    }
 
     public void InvokeAttract(MagSource snapSource)
     {
@@ -51,7 +52,7 @@ public class Magnet : MonoBehaviour
         Transform magTarget = snapSource.transform;
         float distance = Vector3.Distance(transform.position, magTarget.position);
 
-        physicsCharacter.SetTarget(magTarget,CalculateMoveDuration(distance));
+        physicsCharacter.SetTarget(magTarget, CalculateMoveDuration(distance));
         isAttracted = true;
     }
 
@@ -63,8 +64,10 @@ public class Magnet : MonoBehaviour
 
     public void SnapFinalize(MagSource snapSource)
     {
-        rigidBody.transform.SetParent(snapSource.transform);
+        transform.SetParent(snapSource.transform);
         magnetParent = snapSource;
+        isAttracted = false;
+        gameObject.layer = 0;
 
         physicsCharacter.ToRoam();
         if (snapAnimation)
@@ -75,7 +78,7 @@ public class Magnet : MonoBehaviour
     {
         magnetParent.ReleaseMagnet(this);
         magnetParent = null;
-        rigidBody.transform.SetParent(null);
+        transform.SetParent(null);
     }
 
     #region ÎüÒýËÙ¶È

@@ -11,7 +11,7 @@ public enum MoveType
     Destinational, Physical, Roam
 }
 
-public class PhysicsCharacter : MonoBehaviour
+public class PhysicalCharacter : MonoBehaviour
 {
     [Header("移动参数")]
     [SerializeField] private float velocityCorrection = 0f;
@@ -21,6 +21,7 @@ public class PhysicsCharacter : MonoBehaviour
     private Vector2 moveDir = Vector2.zero;
     private Transform target;
     private Tweener tweener;
+
 
     private void Update()
     {
@@ -43,8 +44,9 @@ public class PhysicsCharacter : MonoBehaviour
         }
         else if (moveType == MoveType.Destinational)
         {
-            if (target == null || tweener == null) return;
+            if (target == null || tweener == null || !tweener.IsActive()) return;
             tweener.ChangeEndValue(target.position, true);  // 动态更新终点位置
+            tweener.timeScale = moveSpeed;
         }
     }
 
@@ -54,7 +56,6 @@ public class PhysicsCharacter : MonoBehaviour
         {
             tweener.Kill();  // 停止现有动画
             transform.DOComplete();  // 完成当前动画，防止立即停止
-            transform.DOLocalMove(transform.position, 1f).SetEase(Ease.OutQuad);  // 缓慢减速停止
         }
         moveType = type;
     }
@@ -74,7 +75,7 @@ public class PhysicsCharacter : MonoBehaviour
         if (target == null) return;
 
         SwitchMoveType(MoveType.Destinational);
-        tweener = transform.DOMove(target.position, 0.1f).SetEase(Ease.InQuad);
+        tweener = transform.DOMove(target.position, duration);
     }
 
     // 动态调整追踪速度

@@ -2,18 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 public class MagSource : MonoBehaviour
 {
+    [SerializeField] private Collider2D magCollider;
     [SerializeField] private EquipHolder equipHolder;
 
     [Header("吸附设置")]
     [SerializeField] private float snapPower = 1f; //物体磁力强度
     [SerializeField] private float snapAngle = 60f; //磁力效用角度
     [SerializeField] public float snapDistance = 2f; //磁力效用距离
-    [SerializeField] public float magnetHoldRadius = 2f; //最大持有距离
     [SerializeField] List<Magnet> ObjectBeingAttract = new List<Magnet>();
     [SerializeField] List<Magnet> ObjectinPlace = new List<Magnet>();
 
@@ -44,14 +45,14 @@ public class MagSource : MonoBehaviour
     {
         if (snap)
             ObjectAttract();
+        DetectMagnet();
     }
 
     void ObjectAttract()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(
         transform.position,
-        snapDistance,
-        LayerMask.GetMask("SnapLayer")
+        snapDistance
         );
 
         foreach (Collider2D hit in hits)
@@ -69,19 +70,22 @@ public class MagSource : MonoBehaviour
         }
     }
 
-    void SnapMagnet(Magnet magnet)
+    void DetectMagnet()
     {
-        if(magnet == null) return;
-        if (Vector2.Distance(transform.position, magnet.transform.position) > magnetHoldRadius) return;
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        contactFilter.SetLayerMask(LayerMask.GetMask("MagnetLayer"));
+        contactFilter.useTriggers = true;
+        Collider2D[] collisions = new Collider2D[20];
 
-        if(ObjectBeingAttract.Contains(magnet))
-            ObjectBeingAttract.Remove(magnet);
-        if (!ObjectinPlace.Contains(magnet))
-            ObjectinPlace.Add(magnet);
-        if (equipHolder != null)
-            equipHolder.ArmEquip(magnet.transform);
+        int overlapCount = magCollider.OverlapCollider(contactFilter, collisions);
+        for (int i = 0; i < overlapCount; i++)
+        {
+            Magnet magnet = collisions[i]?.GetComponent<Magnet>();
+            if (magnet == null || magnet.MagnetParent != null) continue;
 
-        magnet.SnapFinalize(this);
+            if (!ObjectinPlace.Contains(magnet))
+                SnapMagnet(collisions[i]?.GetComponent<Magnet>());
+        }
     }
 
     public void ReleaseMagnet(Magnet magnet)
@@ -90,21 +94,22 @@ public class MagSource : MonoBehaviour
             ObjectinPlace.Remove(magnet);
     }
 
+
+
     #region 物体连接
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    void SnapMagnet(Magnet magnet)
     {
-        Magnet magnet = collision.collider?.GetComponent<Magnet>();
-        if(magnet == null || magnet.MagnetParent != null) return;
+        if (magnet == null) return;
 
+        if (ObjectBeingAttract.Contains(magnet))
+            ObjectBeingAttract.Remove(magnet);
         if (!ObjectinPlace.Contains(magnet))
-            SnapMagnet(collision.collider?.GetComponent<Magnet>());
-    }
+            ObjectinPlace.Add(magnet);
+        if (equipHolder != null)
+            equipHolder.ArmEquip(magnet.transform);
 
-    IEnumerator SnapStart(Rigidbody2D targetBody)
-    {
-        yield return new WaitForSeconds(0.1f);
-        SnapMagnet(targetBody?.GetComponent<Magnet>());
+        magnet.SnapFinalize(this);
     }
 
     #endregion

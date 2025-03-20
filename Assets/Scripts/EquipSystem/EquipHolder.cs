@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class EquipHolder : MonoBehaviour
 {
+    [SerializeField] private Character character;
+
     [Header("∑¢…‰…Ë÷√")]
     [SerializeField] private float shootPower = 10f;
     [SerializeField] private float scatterAngle = 360f;
     [SerializeField] private List<Equip> equipments = new List<Equip>();
+
+    private void Start()
+    {
+        character = GetComponent<Character>();
+    }
 
     public void ArmEquip(Transform equip)
     {
@@ -36,20 +43,32 @@ public class EquipHolder : MonoBehaviour
         return tmpEquip;
     }
 
-    public void GetDamage(Equip equip, int damage)
+    public void GetDamage(Equip attackEquip, int damage)
     {
-        Debug.Log("EquipHolder : " + damage);
+        int attackTime = damage;
+        foreach (var equip in equipments)
+        {
+            if (damage <= 0) return;
+            if (equip.IsServiceable())
+            {
+                equip.EquipDamage(this);
+                attackTime--;
+            }
+        }
+
+        if (character != null)
+            character.GetDamage(attackTime);
     }
 
-    public void Shoot(Vector2 shootDir)
+    public void Shoot(Vector2 shootPos)
     {
         if (equipments.Count == 0) return;
 
         Equip equip = GetEquip();
         Rigidbody2D rb = equip.GetComponent<Rigidbody2D>();
 
-        equip.BulletShoot(this);
-        rb.AddForce(shootDir * shootPower, ForceMode2D.Impulse);
+        Vector2 shootDir = shootPos - (Vector2)transform.position;
+        equip.ShootEquip(this, shootDir, shootPower);
     }
 
     public void Scatter(Vector2 scatterDir)
@@ -60,7 +79,6 @@ public class EquipHolder : MonoBehaviour
         {
             Equip equip = GetEquip();
             Rigidbody2D rb = equip.GetComponent<Rigidbody2D>();
-            equip.BulletShoot(this);
 
             Vector2 shootDir = Vector2.zero;
             Vector2 equipDir = (equip.transform.position - transform.position).normalized;
@@ -77,7 +95,7 @@ public class EquipHolder : MonoBehaviour
                 shootDir = new Vector2(x, y).normalized;
             }
 
-            rb.AddForce(shootDir * shootPower, ForceMode2D.Impulse);
+            equip.ShootEquip(this, shootDir, shootPower);
         }
     }
 

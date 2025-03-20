@@ -21,8 +21,9 @@ public class PlayerController : MonoBehaviour
 
     Vector2 moveInput;
     Vector2 LookInput;
-    Vector2 lastLookDir = new Vector2(1, 0);
-    Vector2 screenCenter;
+    Vector2 loookDir = new Vector2(1, 0);
+    private Camera _mainCamera;
+
 
     private void Awake()
     {
@@ -30,8 +31,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         equipHolder = this?.GetComponent<EquipHolder>();
         snapSource = this?.GetComponent<MagSource>();
-
-        screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
+        _mainCamera = Camera.main;
     }
 
     private void Update()
@@ -61,11 +61,13 @@ public class PlayerController : MonoBehaviour
         if (equipHolder == null) return;
 
         float pressTime = Time.time - pressStartTime;
+        Vector3 mouseWorldPos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPos.z = 0f;
 
         if (pressTime >= shootPressLimit)
-            equipHolder.Scatter(lastLookDir);
+            equipHolder.Scatter((Vector2)mouseWorldPos);
         else
-            equipHolder.Shoot(lastLookDir);
+            equipHolder.Shoot(loookDir);
 
         pressStartTime = 0;
     }
@@ -80,13 +82,16 @@ public class PlayerController : MonoBehaviour
 
     private void Look()
     {
+        Vector3 mouseWorldPos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPos.z = 0f;
+
         if (!mouseControl)
             LookInput = inputControl.Player.Look.ReadValue<Vector2>();
         else
-            LookInput = (Mouse.current.position.ReadValue() - screenCenter);
-        lastLookDir = LookInput.normalized;
+            LookInput = (Vector2)(mouseWorldPos - transform.position);
+        loookDir = LookInput.normalized;
 
-        snapSource.SnapDir = lastLookDir;
+        snapSource.SnapDir = loookDir;
     }
 
     #region ÆäËû
