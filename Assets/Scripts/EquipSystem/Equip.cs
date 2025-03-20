@@ -59,7 +59,7 @@ public class Equip: MonoBehaviour
     void EquipRelieve(EquipHolder holder)
     {
         if (magnet != null)
-            magnet.MagnetRelease();
+            magnet.MagnetRelease(this);
         if (equipHolder = holder)
         {
             lastEquipHolder = equipHolder;
@@ -70,6 +70,7 @@ public class Equip: MonoBehaviour
     public void BulletShoot(EquipHolder holder)
     {
         EquipRelieve(holder);
+        GetComponent<Collider2D>().isTrigger = true;
         isBullet = true;
         serviceable = false;
     }

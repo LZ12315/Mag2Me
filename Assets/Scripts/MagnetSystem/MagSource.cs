@@ -14,23 +14,20 @@ public class MagSource : MonoBehaviour
     [SerializeField] private float snapAngle = 60f; //磁力效用角度
     [SerializeField] public float snapDistance = 2f; //磁力效用距离
     [SerializeField] public float magnetHoldRadius = 2f; //最大持有距离
+    [SerializeField] List<Magnet> ObjectBeingAttract = new List<Magnet>();
     [SerializeField] List<Magnet> ObjectinPlace = new List<Magnet>();
 
     [Header("磁力梯度")]
     [SerializeField]
-    public float farDistanceCoef = 0.55f;       // 远距离起始点（引力开始较弱）
+    public float maxAttractDuration = 6f; //最大吸引时间
     [SerializeField]
-    public float midDistanceCoef = 0.25f;     // 中距离起始点（线性增速）
+    public float farDistanceCoef = 0.85f; //远距离起始点（引力开始较弱）
     [SerializeField]
-    public float closeDistanceCoef = 0.15f;     // 近距离起始点（指数加速）
+    public float midDistanceCoef = 0.6f; //中距离起始点（线性增速）
     [SerializeField]
-    public float strongAccelRange = 0.05f;    // 临界接触区（最大力冲刺）
+    public float closeDistanceCoef = 0.35f; //近距离起始点（指数加速）
     [SerializeField]
-    public float minAcceleration = 0.5f;     // 极远距离基准加速度（引力微弱）
-    [SerializeField]
-    public float midAcceleration = 8f;       // 中距离加速度（线性提升）
-    [SerializeField]
-    public float maxAcceleration = 80f;      // 极近距离最大加速度（爆炸性增长）
+    public float strongAccelRange = 0.1f; //临界接触区（最大力冲刺）
 
     Vector2 lookDir = Vector2.zero;
     bool snap = false;
@@ -43,7 +40,7 @@ public class MagSource : MonoBehaviour
         Physics2D.defaultContactOffset = 0.01f;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (snap)
             ObjectAttract();
@@ -60,14 +57,15 @@ public class MagSource : MonoBehaviour
         foreach (Collider2D hit in hits)
         {
             if (hit.gameObject == gameObject) continue;
-            Magnet snapObject = hit?.GetComponent<Magnet>();
-            if(snapObject == null || hit.gameObject.layer != 6) continue;
+            Magnet magnet = hit?.GetComponent<Magnet>();
+            if(magnet == null || ObjectBeingAttract.Contains(magnet)) continue;
 
-            Vector2 objectDir = (snapObject.transform.position - transform.position).normalized;
+            Vector2 objectDir = (magnet.transform.position - transform.position).normalized;
             float angle = Vector2.Angle(lookDir, objectDir);
             if (angle >= snapAngle / 2) continue;
 
-            snapObject.BeingAttract(this);
+            magnet.InvokeAttract(this);
+            ObjectBeingAttract.Add(magnet);
         }
     }
 
@@ -76,6 +74,8 @@ public class MagSource : MonoBehaviour
         if(magnet == null) return;
         if (Vector2.Distance(transform.position, magnet.transform.position) > magnetHoldRadius) return;
 
+        if(ObjectBeingAttract.Contains(magnet))
+            ObjectBeingAttract.Remove(magnet);
         if (!ObjectinPlace.Contains(magnet))
             ObjectinPlace.Add(magnet);
         if (equipHolder != null)
@@ -94,7 +94,6 @@ public class MagSource : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.gameObject.layer != 6) return;
         Magnet magnet = collision.collider?.GetComponent<Magnet>();
         if(magnet == null || magnet.MagnetParent != null) return;
 
