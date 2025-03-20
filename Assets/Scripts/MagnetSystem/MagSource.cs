@@ -59,7 +59,7 @@ public class MagSource : MonoBehaviour
         {
             if (hit.gameObject == gameObject) continue;
             Magnet magnet = hit?.GetComponent<Magnet>();
-            if(magnet == null || ObjectBeingAttract.Contains(magnet)) continue;
+            if(magnet == null || ObjectBeingAttract.Contains(magnet) || magnet.MagnetParent != null) continue;
 
             Vector2 objectDir = (magnet.transform.position - transform.position).normalized;
             float angle = Vector2.Angle(lookDir, objectDir);

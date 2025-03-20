@@ -45,10 +45,11 @@ public class EquipHolder : MonoBehaviour
 
     public void GetDamage(Equip attackEquip, int damage)
     {
+        Debug.Log(gameObject.name + "Get Hurt : " + damage);
         int attackTime = damage;
         foreach (var equip in equipments)
         {
-            if (damage <= 0) return;
+            if (attackTime <= 0) return;
             if (equip.IsServiceable())
             {
                 equip.EquipDamage(this);
@@ -67,7 +68,7 @@ public class EquipHolder : MonoBehaviour
         Equip equip = GetEquip();
         Rigidbody2D rb = equip.GetComponent<Rigidbody2D>();
 
-        Vector2 shootDir = shootPos - (Vector2)transform.position;
+        Vector2 shootDir = shootPos - (Vector2)equip.transform.position;
         equip.ShootEquip(this, shootDir, shootPower);
     }
 
@@ -95,6 +96,7 @@ public class EquipHolder : MonoBehaviour
                 shootDir = new Vector2(x, y).normalized;
             }
 
+            equip.transform.position = transform.position;
             equip.ShootEquip(this, shootDir, shootPower);
         }
     }

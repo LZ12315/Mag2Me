@@ -12,7 +12,7 @@ public class Equip: MonoBehaviour
 
     [Header("装备设置")]
     [SerializeField] protected int maxEndurance = 3;
-    [SerializeField] protected int currentEndurance = 3;
+    [SerializeField] protected int currentEndurance;
     [SerializeField] private float defencePower = 1;
 
     [Header("发射设置")]
@@ -71,7 +71,9 @@ public class Equip: MonoBehaviour
     {
         currentEndurance--;
         if (currentEndurance <= 0)
+        {
             serviceable = false;
+        }
     }
 
     public void ShootEquip(EquipHolder holder, Vector2 dir, float speed)
