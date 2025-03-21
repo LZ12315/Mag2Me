@@ -9,7 +9,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public enum MoveType
 {
-    Destinational, Physical, Roam
+    Destinational, Velocity, Roam, Idle
 }
 
 public class PhysicalCharacter : MonoBehaviour
@@ -20,7 +20,7 @@ public class PhysicalCharacter : MonoBehaviour
     [SerializeField] private Vector2 lastOrientation;
 
     [Header("移动参数")]
-    [SerializeField] private MoveType moveType = MoveType.Physical;
+    [SerializeField] private MoveType moveType = MoveType.Idle;
     [SerializeField] private float velocityCorrection = 0f;
     [SerializeField] private float moveSpeed = 1;
     [SerializeField] private Vector2 moveDir = Vector2.zero;
@@ -29,15 +29,17 @@ public class PhysicalCharacter : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        canPhysicalMove = true;
     }
 
     private void Update()
     {
-        Move();
+        if(canPhysicalMove)
+            Move();
         CalculateOrien();
     }
 
-    #region 角色变换
+    #region 变换
 
     Vector3 lastPos = Vector3.zero;
 
@@ -65,16 +67,16 @@ public class PhysicalCharacter : MonoBehaviour
 
     #endregion
 
-
-    #region 移动相关
+    #region 移动
 
     private Tweener tweener;
+    [SerializeField] bool canPhysicalMove;
 
     public bool isMoving => tweener.IsActive();
 
     private void Move()
     {
-        if (moveType == MoveType.Physical)
+        if (moveType == MoveType.Velocity)
         {
             float moveStep = (moveSpeed + velocityCorrection) * Time.deltaTime;
             Vector3 targetPostion = transform.position + new Vector3(moveStep * moveDir.x, moveStep * moveDir.y, 0);
@@ -100,6 +102,7 @@ public class PhysicalCharacter : MonoBehaviour
             transform.DOComplete();  // 完成当前动画，防止立即停止
         }
         moveType = type;
+        canPhysicalMove = true;
     }
 
     public void SetMoveSpeed(float speed)
@@ -110,15 +113,19 @@ public class PhysicalCharacter : MonoBehaviour
     // 开始自由运动
     public void SetVelocity(Vector2 dir, float speed)
     {
+        if (!canPhysicalMove) return;
+
         moveDir = dir;
         moveSpeed = speed;
-        if(moveType != MoveType.Physical)
-            SwitchMoveType(MoveType.Physical);
+        if(moveType != MoveType.Velocity)
+            SwitchMoveType(MoveType.Velocity);
     }
 
     // 开始追踪目标
     public void SetTarget(Transform traceTarget, float duration)
     {
+        if (!canPhysicalMove) return;
+
         target = traceTarget;
         if (target == null) return;
 
@@ -130,10 +137,44 @@ public class PhysicalCharacter : MonoBehaviour
     // 开始漫游
     public void ToRoam()
     {
+        if (!canPhysicalMove) return;
         SwitchMoveType(MoveType.Roam);
+    }
+
+    public void Idle()
+    {
+        if (!canPhysicalMove) return;
+        SwitchMoveType(MoveType.Idle);
     }
 
     #endregion
 
+    #region 受力
 
+    Vector2 forceDir;
+    float force;
+
+    public void AddForce(Vector2 dir, float force)
+    {
+        forceDir = dir;
+        this.force = force;
+        SwitchMoveType(MoveType.Idle);
+        canPhysicalMove = false;
+
+        ForceMove();
+    }
+
+    void ForceMove()
+    {
+        float moveStep = force + velocityCorrection;
+        Vector3 targetPostion = transform.position + new Vector3(moveStep * forceDir.x, moveStep * forceDir.y, 0);
+
+        if (tweener != null)
+            tweener.Kill();
+        transform.DOMove(targetPostion, 0.2f)
+            .SetEase(Ease.OutQuad)
+            .OnComplete(() => SwitchMoveType(MoveType.Idle));
+    }
+
+    #endregion
 }

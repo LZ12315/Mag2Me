@@ -79,9 +79,7 @@ public class PlayerController : MonoBehaviour
         if(!Mathf.Approximately(moveInput.magnitude, 0))
             physicalCharacter.SetVelocity(moveInput.normalized, normalSpeed);
         else
-            physicalCharacter.ToRoam();
-        //Vector3 moveStep = moveInput.normalized * normalSpeed * Time.deltaTime;
-        //transform.position += moveStep;
+            physicalCharacter.Idle();
     }
 
     private void Look()
@@ -100,6 +98,7 @@ public class PlayerController : MonoBehaviour
 
     #region ÆäËû
 
+    public Vector2 LookDir => loookDir;
     private void OnEnable()
     {
         inputControl.Enable();

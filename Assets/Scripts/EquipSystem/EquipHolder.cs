@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EquipHolder : MonoBehaviour
 {
+    [SerializeField] private PhysicalCharacter physicakCharacter;
     [SerializeField] private Character character;
 
     [Header("∑¢…‰…Ë÷√")]
@@ -13,6 +14,7 @@ public class EquipHolder : MonoBehaviour
 
     private void Start()
     {
+        physicakCharacter = GetComponent<PhysicalCharacter>();
         character = GetComponent<Character>();
     }
 
@@ -45,11 +47,10 @@ public class EquipHolder : MonoBehaviour
 
     public void GetDamage(Equip attackEquip, int damage)
     {
-        Debug.Log(gameObject.name + " get hurt,Damage is " + damage);
+        //Debug.Log(gameObject.name + " get hurt,Damage is " + damage);
         int attackTime = damage;
         foreach (var equip in equipments)
         {
-            if (attackTime <= 0) return;
             if (equip.IsServiceable())
             {
                 equip.EquipDamage(this);
@@ -57,6 +58,12 @@ public class EquipHolder : MonoBehaviour
             }
         }
 
+        if (attackTime <= 0)
+            attackTime = 0;
+
+        Vector2 forceDir = (Vector2)(transform.position - attackEquip.transform.position);
+        if (physicakCharacter != null)
+            physicakCharacter.AddForce(forceDir, 1f);
         if (character != null)
             character.GetDamage(attackTime);
     }
