@@ -259,7 +259,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"85f4811741acacd419852c1e570be1b3\",\"type\":3}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"0b9d30752436b974d9545e5f40c996ee\",\"type\":3}}",
         "m_Guid": ""
     },
     "m_DefaultType": 0
