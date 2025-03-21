@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private PlayerInputControl inputControl;
-    private Rigidbody2D rb;
+    private PhysicalCharacter physicalCharacter;
     private MagSource snapSource;
     private EquipHolder equipHolder;
 
@@ -28,9 +28,9 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         inputControl = new PlayerInputControl();
-        rb = GetComponent<Rigidbody2D>();
         equipHolder = this?.GetComponent<EquipHolder>();
         snapSource = this?.GetComponent<MagSource>();
+        physicalCharacter = this?.GetComponent<PhysicalCharacter>();
         _mainCamera = Camera.main;
     }
 
@@ -76,8 +76,12 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = inputControl.Player.Move.ReadValue<Vector2>();
 
-        Vector3 moveStep = moveInput.normalized * normalSpeed * Time.deltaTime;
-        transform.position += moveStep;
+        if(!Mathf.Approximately(moveInput.magnitude, 0))
+            physicalCharacter.SetVelocity(moveInput.normalized, normalSpeed);
+        else
+            physicalCharacter.ToRoam();
+        //Vector3 moveStep = moveInput.normalized * normalSpeed * Time.deltaTime;
+        //transform.position += moveStep;
     }
 
     private void Look()

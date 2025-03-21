@@ -6,23 +6,49 @@ using UnityEngine;
 public class MagAnimation : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private PhysicalCharacter physicalCharacter;
 
-    [Header("形变参数")]
+    [Header("物理动画")]
     [SerializeField] private float squeezeFactorX = 0.7f;  // 横向挤压强度
     [SerializeField] private float stretchFactorY = 1.3f;  // 纵向拉伸强度
     [SerializeField] private float deformDuration = 0.25f;  // 形变持续时间
     [SerializeField] private Ease squeezeEase = Ease.OutElastic; // 形变曲线
-
     private Transform _deformNode; // 实际受形变控制的视觉节点（与碰撞体分离）
+
+    [Header("帧动画")]
+    [SerializeField] private float animatorSpeed = 1;
 
     private void Start()
     {
         animator = this?.GetComponent<Animator>();
-        _deformNode = transform;
+        if (physicalCharacter == null)
+        {
+            physicalCharacter = this?.GetComponent<PhysicalCharacter>();
+            if (physicalCharacter == null)
+                physicalCharacter = GetComponentInParent<PhysicalCharacter>();
+        }
+
+        animator.speed = animatorSpeed;
     }
+
+    private void Update()
+    {
+        SetAnimator();
+    }
+
+    void SetAnimator()
+    {
+        if (animator == null) return;
+
+        animator.SetBool("isMoving", physicalCharacter.isMoving);
+    }
+
+    #region 物理动画
 
     public void PlayMagneticDeform(Vector2 contactDirection)
     {
+        _deformNode = transform;
+
         // 通过接触方向决定形变方向（示例：x轴方向为横向）
         bool isHorizontalContact = Mathf.Abs(contactDirection.x) > Mathf.Abs(contactDirection.y);
 
@@ -47,5 +73,7 @@ public class MagAnimation : MonoBehaviour
             .SetEase(squeezeEase)
         );
     }
+
+    #endregion
 
 }
