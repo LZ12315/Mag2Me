@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnaperAnimation : MonoBehaviour
+public class MagAnimation : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
+
     [Header("形变参数")]
     [SerializeField] private float squeezeFactorX = 0.7f;  // 横向挤压强度
     [SerializeField] private float stretchFactorY = 1.3f;  // 纵向拉伸强度
@@ -15,6 +17,7 @@ public class SnaperAnimation : MonoBehaviour
 
     private void Start()
     {
+        animator = this?.GetComponent<Animator>();
         _deformNode = transform;
     }
 

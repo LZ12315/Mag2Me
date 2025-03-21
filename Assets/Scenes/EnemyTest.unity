@@ -2043,7 +2043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27c9fc3cf38fc940ac0d916f00da28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.2
+  moveSpeed: 10
   snapDuration: 0.5
   attackInterval: 2
 --- !u!114 &1127131896
@@ -2319,8 +2319,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1600410019}
   - component: {fileID: 1600410020}
+  - component: {fileID: 1600410021}
   m_Layer: 0
-  m_Name: BackGround
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2393,6 +2394,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1600410021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600410018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0439654b87efe384ba629edcb97bb780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  squeezeFactorX: 0.7
+  stretchFactorY: 1.3
+  deformDuration: 0.25
+  squeezeEase: 24
 --- !u!1 &1681923492
 GameObject:
   m_ObjectHideFlags: 0

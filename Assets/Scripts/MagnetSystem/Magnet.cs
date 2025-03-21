@@ -12,7 +12,7 @@ public class Magnet : MonoBehaviour
     private PolygonCollider2D magnetCollider;
     private PhysicalCharacter physicsCharacter;
     private Equip equip;
-    private SnaperAnimation snapAnimation;
+    private MagAnimation snapAnimation;
 
     [Header("磁体设置")]
     [SerializeField] private float magPower = 1; // 磁力强度 默认为1
@@ -29,7 +29,7 @@ public class Magnet : MonoBehaviour
         magnetCollider = GetComponent<PolygonCollider2D>();
         physicsCharacter = GetComponent<PhysicalCharacter>();
         equip = GetComponentInChildren<Equip>();
-        snapAnimation = GetComponentInChildren<SnaperAnimation>();
+        snapAnimation = GetComponentInChildren<MagAnimation>();
 
         gameObject.layer = LayerMask.NameToLayer("MagnetLayer");
     }

@@ -45,7 +45,7 @@ public class EquipHolder : MonoBehaviour
 
     public void GetDamage(Equip attackEquip, int damage)
     {
-        Debug.Log(gameObject.name + "Get Hurt : " + damage);
+        Debug.Log(gameObject.name + " get hurt,Damage is " + damage);
         int attackTime = damage;
         foreach (var equip in equipments)
         {
