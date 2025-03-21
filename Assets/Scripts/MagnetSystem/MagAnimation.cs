@@ -1,4 +1,5 @@
 using DG.Tweening;
+using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,17 +19,24 @@ public class MagAnimation : MonoBehaviour
     [Header("帧动画")]
     [SerializeField] private float animatorSpeed = 1;
 
+    [Header("特效")]
+    [SerializeField] private MMFeedbacks PullFeedback;
+    [SerializeField] private MMFeedbacks PushFeedback;
+    [SerializeField] private MMFeedbacks HitFeedback;
+    [SerializeField] private MMFeedbacks DeadFeedback;
+
     private void Start()
     {
         animator = this?.GetComponent<Animator>();
+        if(animator != null)
+            animator.speed = animatorSpeed;
+
         if (physicalCharacter == null)
         {
             physicalCharacter = this?.GetComponent<PhysicalCharacter>();
             if (physicalCharacter == null)
                 physicalCharacter = GetComponentInParent<PhysicalCharacter>();
         }
-
-        animator.speed = animatorSpeed;
     }
 
     private void Update()
@@ -76,4 +84,31 @@ public class MagAnimation : MonoBehaviour
 
     #endregion
 
+    #region 特效
+
+    public void PullVFX(MagSource magSource)
+    {
+        if(PullFeedback!= null)
+            PullFeedback.PlayFeedbacks();
+    }
+
+    public void PushVFX(MagSource magSource)
+    {
+        if(PushFeedback!= null)
+            PushFeedback.PlayFeedbacks();
+    }
+
+    public void HitVFX(Character character)
+    {
+        if(HitFeedback!= null)
+            HitFeedback.PlayFeedbacks();
+    }
+
+    public void DeadVFX(Character character)
+    {
+        if(DeadFeedback!= null) 
+            DeadFeedback.PlayFeedbacks();
+    }
+
+    #endregion
 }

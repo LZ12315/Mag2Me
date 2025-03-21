@@ -8,8 +8,9 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerInputControl inputControl;
     private PhysicalCharacter physicalCharacter;
-    private MagSource snapSource;
+    private MagSource magSource;
     private EquipHolder equipHolder;
+    private MagAnimation magAnimation;
 
     [Header("移动参数")]
     [SerializeField] private float normalSpeed;
@@ -29,8 +30,9 @@ public class PlayerController : MonoBehaviour
     {
         inputControl = new PlayerInputControl();
         equipHolder = this?.GetComponent<EquipHolder>();
-        snapSource = this?.GetComponent<MagSource>();
+        magSource = this?.GetComponent<MagSource>();
         physicalCharacter = this?.GetComponent<PhysicalCharacter>();
+        magAnimation = GetComponentInChildren<MagAnimation>();
         _mainCamera = Camera.main;
     }
 
@@ -42,12 +44,13 @@ public class PlayerController : MonoBehaviour
 
     void SnapStart(InputAction.CallbackContext text)
     {
-        snapSource.isSnap = true;
+        magSource.isSnap = true;
+        magAnimation.PullVFX(magSource);
     }
 
     void SnapOver(InputAction.CallbackContext text)
     {
-        snapSource.isSnap = false;
+        magSource.isSnap = false;
     }
 
     float pressStartTime;
@@ -69,6 +72,7 @@ public class PlayerController : MonoBehaviour
         else
             equipHolder.Shoot(loookDir);
 
+        magAnimation.PushVFX(magSource);
         pressStartTime = 0;
     }
 
@@ -93,7 +97,7 @@ public class PlayerController : MonoBehaviour
             LookInput = (Vector2)(mouseWorldPos - transform.position);
         loookDir = LookInput.normalized;
 
-        snapSource.SnapDir = loookDir;
+        magSource.SnapDir = loookDir;
     }
 
     #region 其他
