@@ -15,7 +15,10 @@ public class PlayerTest : MonoBehaviour
     /// a MMF_Player to play when the Hero lands after a jump
     public MMFeedbacks PushFeedback;
 
+    public MMFeedbacks HitFeedback;
+
     private bool isPulling = false;
+    private bool isHit = true;
 
     // Update is called once per frame
     private void Update()
@@ -34,11 +37,14 @@ public class PlayerTest : MonoBehaviour
     {
         isPulling = false;
         PushFeedback.PlayFeedbacks();
+        HitFeedback.PlayFeedbacks();
     }
 
     private void IsPulling()
     {
         isPulling = true;
         PullFeedback.PlayFeedbacks();
+
+       
     }
 }
