@@ -9,6 +9,7 @@ public class Equip: MonoBehaviour
     [SerializeField] protected EquipHolder equipHolder;
     [SerializeField] protected PhysicalCharacter physicCharacter;
     [SerializeField] protected Collider2D equipCollider;
+    [SerializeField] protected TrailRenderer trailRenderer;
 
     [Header("装备设置")]
     [SerializeField] protected int maxEndurance = 3;
@@ -29,10 +30,13 @@ public class Equip: MonoBehaviour
         magnet = GetComponent<Magnet>();
         physicCharacter = GetComponent<PhysicalCharacter>();
         equipCollider = GetComponent<Collider2D>();
+        trailRenderer = GetComponentInChildren<TrailRenderer>();
 
         serviceable = true;
         isBullet = false;
         currentEndurance = maxEndurance;
+        if (trailRenderer != null)
+            trailRenderer.enabled = false;
     }
 
     private void Update()
@@ -83,6 +87,8 @@ public class Equip: MonoBehaviour
         isBullet = true;
         serviceable = false;
 
+        if(trailRenderer != null)
+            trailRenderer.enabled = true;
         physicCharacter.SetVelocity(dir, speed);
     }
 
@@ -103,6 +109,7 @@ public class Equip: MonoBehaviour
             attackCounter++;
             if (attackCounter >= attackNum)
             {
+                //gameObject.SetActive(false);
                 Destroy(gameObject);
                 return;
             }

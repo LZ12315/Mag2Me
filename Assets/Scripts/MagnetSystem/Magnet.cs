@@ -70,8 +70,6 @@ public class Magnet : MonoBehaviour
         gameObject.layer = 0;
 
         physicsCharacter.ToRoam();
-        if (snapAnimation)
-        snapAnimation.PlayMagneticDeform(snapSource.transform.position - transform.position);
     }
 
     public void MagnetRelease(Equip equip)

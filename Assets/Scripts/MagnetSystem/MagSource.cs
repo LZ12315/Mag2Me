@@ -10,6 +10,7 @@ public class MagSource : MonoBehaviour
 {
     [SerializeField] private Collider2D magCollider;
     [SerializeField] private EquipHolder equipHolder;
+    [SerializeField] private MagAnimation magAnimation;
 
     [Header("吸附设置")]
     [SerializeField] private float snapPower = 1f; //物体磁力强度
@@ -37,6 +38,7 @@ public class MagSource : MonoBehaviour
     private void Start()
     {
         equipHolder = this?.GetComponent<EquipHolder>();
+        magAnimation = this?.GetComponentInChildren<MagAnimation>();
 
         Physics2D.defaultContactOffset = 0.01f;
     }
@@ -110,6 +112,7 @@ public class MagSource : MonoBehaviour
             equipHolder.ArmEquip(magnet.transform);
 
         magnet.SnapFinalize(this);
+        magAnimation.SnapVFX(this);
     }
 
     #endregion
