@@ -20,6 +20,7 @@ public class Character : MonoBehaviour
     {
         currentHealth -= damage;
         magAnimation.HitVFX(this);
+        EventCenter.Instance.EventTrigger("Combo");
         Debug.Log(gameObject.name + "'s health is : " + currentHealth);
 
         if(currentHealth <= 0)

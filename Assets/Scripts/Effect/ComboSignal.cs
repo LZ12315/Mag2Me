@@ -28,6 +28,7 @@ public class ComboSignal : MonoBehaviour
         comboPercent = 0;
         if (maskTrans != null)
             maskOriginalWidth = maskTrans.rect.width;
+        SetMask(0);
     }
 
     private void Update()
