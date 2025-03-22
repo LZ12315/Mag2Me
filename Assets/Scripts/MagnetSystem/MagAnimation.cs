@@ -86,16 +86,24 @@ public class MagAnimation : MonoBehaviour
 
     #region ÌØÐ§
 
-    public void PullVFX(MagSource magSource)
+    public void PullVFX(MagSource magSource, bool play)
     {
-        if(PullFeedback!= null)
+        if (PullFeedback == null) return;
+
+        if(play)
             PullFeedback.PlayFeedbacks();
+        else
+            PullFeedback.StopFeedbacks();
     }
 
-    public void PushVFX(MagSource magSource)
+    public void PushVFX(MagSource magSource, bool play)
     {
-        if(PushFeedback!= null)
+        if (PushFeedback == null) return;
+
+        if (play)
             PushFeedback.PlayFeedbacks();
+        else
+            PushFeedback.StopFeedbacks();
     }
 
     public void HitVFX(Character character)

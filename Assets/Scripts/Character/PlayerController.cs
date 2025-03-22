@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     Vector2 moveInput;
     Vector2 LookInput;
-    Vector2 loookDir = new Vector2(1, 0);
+    [SerializeField] Vector2 loookDir = new Vector2(1, 0);
     private Camera _mainCamera;
 
 
@@ -45,12 +45,13 @@ public class PlayerController : MonoBehaviour
     void SnapStart(InputAction.CallbackContext text)
     {
         magSource.isSnap = true;
-        magAnimation.PullVFX(magSource);
+        magAnimation.PullVFX(magSource, true);
     }
 
     void SnapOver(InputAction.CallbackContext text)
     {
         magSource.isSnap = false;
+        magAnimation.PullVFX(magSource, false);
     }
 
     float pressStartTime;
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour
         else
             equipHolder.Shoot(loookDir);
 
-        magAnimation.PushVFX(magSource);
+        magAnimation.PushVFX(magSource, true);
         pressStartTime = 0;
     }
 
@@ -88,21 +89,23 @@ public class PlayerController : MonoBehaviour
 
     private void Look()
     {
-        Vector3 mouseWorldPos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPos.z = 0f;
-
         if (!mouseControl)
             LookInput = inputControl.Player.Look.ReadValue<Vector2>();
         else
+        {
+            Vector3 mouseWorldPos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            mouseWorldPos.z = 0f;
             LookInput = (Vector2)(mouseWorldPos - transform.position);
-        loookDir = LookInput.normalized;
+        }
 
+        loookDir = LookInput.normalized;
         magSource.SnapDir = loookDir;
     }
 
     #region ÆäËû
 
     public Vector2 LookDir => loookDir;
+
     private void OnEnable()
     {
         inputControl.Enable();

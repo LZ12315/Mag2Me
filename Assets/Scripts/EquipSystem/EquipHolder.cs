@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -68,15 +67,16 @@ public class EquipHolder : MonoBehaviour
             character.GetDamage(attackTime);
     }
 
-    public void Shoot(Vector2 shootPos)
+    public void Shoot(Vector2 lookDir)
     {
         if (equipments.Count == 0) return;
 
         Equip equip = GetEquip();
         Rigidbody2D rb = equip.GetComponent<Rigidbody2D>();
 
-        Vector2 shootDir = shootPos - (Vector2)equip.transform.position;
-        equip.ShootEquip(this, shootDir, shootPower);
+        //Vector2 shootDir = (Vector2)transform.position + lookDir - (Vector2)equip.transform.position;
+        equip.transform.position = transform.position;
+        equip.ShootEquip(this, lookDir, shootPower);
     }
 
     public void Scatter(Vector2 scatterDir)
