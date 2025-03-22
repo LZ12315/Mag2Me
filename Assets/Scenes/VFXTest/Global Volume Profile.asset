@@ -18,10 +18,10 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.95
+    m_Value: 0.96
   intensity:
     m_OverrideState: 1
-    m_Value: 2.46
+    m_Value: 8.31
   scatter:
     m_OverrideState: 0
     m_Value: 0.7
@@ -62,10 +62,10 @@ MonoBehaviour:
   active: 1
   type:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.328
+    m_Value: 0.312
   response:
     m_OverrideState: 1
     m_Value: 0.833
@@ -132,7 +132,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.55
+    m_Value: 0.356
   xMultiplier:
     m_OverrideState: 1
     m_Value: 1
@@ -144,4 +144,4 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   scale:
     m_OverrideState: 1
-    m_Value: 1.08
+    m_Value: 0.97

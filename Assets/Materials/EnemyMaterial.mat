@@ -44,6 +44,7 @@ Material:
     - _LerpStrength: 0
     m_Colors:
     - _Controller: {r: 0, g: 1, b: 0, a: 0}
+    - _OutLineColor: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1643649132402098438
 MonoBehaviour:
