@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -172,9 +173,9 @@ GameObject:
   - component: {fileID: 20695159}
   - component: {fileID: 20695158}
   - component: {fileID: 20695157}
+  - component: {fileID: 20695154}
   - component: {fileID: 20695156}
   - component: {fileID: 20695155}
-  - component: {fileID: 20695154}
   - component: {fileID: 20695153}
   - component: {fileID: 20695152}
   m_Layer: 0
@@ -196,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b54d698a06aea4a9fb47e6e2291b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physicakCharacter: {fileID: 0}
+  physicalCharacter: {fileID: 0}
   character: {fileID: 0}
   shootPower: 30
   scatterAngle: 360
@@ -215,12 +216,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magCollider: {fileID: 20695157}
   equipHolder: {fileID: 0}
-  magAnimation: {fileID: 0}
   snapPower: 10
   snapAngle: 60
   snapDistance: 5
-  ObjectBeingAttract: []
-  ObjectinPlace: []
+  maxHoldNum: 2
+  MagnetBeingAttract: []
+  MagnetInPlace: []
   maxAttractDuration: 10
   farDistanceCoef: 0.75
   midDistanceCoef: 0.5
@@ -262,6 +263,7 @@ MonoBehaviour:
   moveSpeed: 1
   moveDir: {x: 0, y: 0}
   target: {fileID: 0}
+  impluseForceTime: 0
   canPhysicalMove: 0
 --- !u!114 &20695156
 MonoBehaviour:
@@ -363,6 +365,7 @@ Transform:
   m_Children:
   - {fileID: 1441243494}
   - {fileID: 880001254}
+  - {fileID: 1212316471}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &112186597
@@ -1020,7 +1023,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &171829699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1040,6 +1043,7 @@ MonoBehaviour:
   moveSpeed: 1
   moveDir: {x: 0, y: 0}
   target: {fileID: 0}
+  impluseForceTime: 0
   canPhysicalMove: 0
 --- !u!114 &171829700
 MonoBehaviour:
@@ -1053,7 +1057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b54d698a06aea4a9fb47e6e2291b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physicakCharacter: {fileID: 0}
+  physicalCharacter: {fileID: 0}
   character: {fileID: 0}
   shootPower: 5
   scatterAngle: 5
@@ -1072,12 +1076,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magCollider: {fileID: 171829704}
   equipHolder: {fileID: 0}
-  magAnimation: {fileID: 0}
   snapPower: 1
   snapAngle: 60
   snapDistance: 3
-  ObjectBeingAttract: []
-  ObjectinPlace: []
+  maxHoldNum: 2
+  MagnetBeingAttract: []
+  MagnetInPlace: []
   maxAttractDuration: 6
   farDistanceCoef: 0.85
   midDistanceCoef: 0.6
@@ -1239,6 +1243,7 @@ MonoBehaviour:
   moveSpeed: 1
   moveDir: {x: 0, y: 0}
   target: {fileID: 0}
+  impluseForceTime: 0
   canPhysicalMove: 0
 --- !u!114 &204382356
 MonoBehaviour:
@@ -8247,7 +8252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!320 &341628056
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -9205,6 +9210,7 @@ MonoBehaviour:
   moveSpeed: 1
   moveDir: {x: 0, y: 0}
   target: {fileID: 0}
+  impluseForceTime: 0
   canPhysicalMove: 0
 --- !u!114 &605266831
 MonoBehaviour:
@@ -25342,7 +25348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1004125254
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25352,14 +25358,14 @@ RectTransform:
   m_GameObject: {fileID: 1004125253}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.11, y: 0.11, z: 0.11}
+  m_LocalScale: {x: 0.59510005, y: 0.59510005, z: 0.59510005}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1190365671}
+  m_Father: {fileID: 1878597263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.9, y: -5.3}
+  m_AnchoredPosition: {x: -765, y: -500}
   m_SizeDelta: {x: 496.7, y: 979.72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1004125255
@@ -25460,6 +25466,7 @@ MonoBehaviour:
   moveSpeed: 1
   moveDir: {x: 0, y: 0}
   target: {fileID: 0}
+  impluseForceTime: 0
   canPhysicalMove: 0
 --- !u!114 &1075666095
 MonoBehaviour:
@@ -25727,6 +25734,7 @@ MonoBehaviour:
   moveSpeed: 1
   moveDir: {x: 0, y: 0}
   target: {fileID: 0}
+  impluseForceTime: 0
   canPhysicalMove: 0
 --- !u!114 &1082271529
 MonoBehaviour:
@@ -36184,12 +36192,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    m_Quality: 3
-    m_FrameInfluence: 0.1
-    m_JitterScale: 1
-    m_MipBias: 0
-    m_VarianceClampScale: 0.9
-    m_ContrastAdaptiveSharpening: 0
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!81 &1144431186
 AudioListener:
   m_ObjectHideFlags: 0
@@ -36304,6 +36312,7 @@ MonoBehaviour:
   moveSpeed: 1
   moveDir: {x: 0, y: 0}
   target: {fileID: 0}
+  impluseForceTime: 0
   canPhysicalMove: 0
 --- !u!114 &1179535911
 MonoBehaviour:
@@ -36429,7 +36438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1190365671
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36441,8 +36450,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5.41, y: 5.41, z: 5.41}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 1004125254}
+  m_Children: []
   m_Father: {fileID: 1878597263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -36555,12 +36563,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212316469}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.2999997, y: 0.82500005, z: 0}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 20695159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1213348423
 GameObject:
@@ -47038,6 +47046,7 @@ MonoBehaviour:
   moveSpeed: 1
   moveDir: {x: 0, y: 0}
   target: {fileID: 0}
+  impluseForceTime: 0
   canPhysicalMove: 0
 --- !u!114 &1372935547
 MonoBehaviour:
@@ -47680,6 +47689,7 @@ MonoBehaviour:
   moveSpeed: 1
   moveDir: {x: 0, y: 0}
   target: {fileID: 0}
+  impluseForceTime: 0
   canPhysicalMove: 0
 --- !u!114 &1461249644
 MonoBehaviour:
@@ -47971,6 +47981,7 @@ MonoBehaviour:
   moveSpeed: 1
   moveDir: {x: 0, y: 0}
   target: {fileID: 0}
+  impluseForceTime: 0
   canPhysicalMove: 0
 --- !u!114 &1537489480
 MonoBehaviour:
@@ -48796,6 +48807,7 @@ MonoBehaviour:
   moveSpeed: 1
   moveDir: {x: 0, y: 0}
   target: {fileID: 0}
+  impluseForceTime: 0
   canPhysicalMove: 0
 --- !u!114 &1598744113
 MonoBehaviour:
@@ -54388,7 +54400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1878597260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54464,6 +54476,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1004125254}
   - {fileID: 1190365671}
   - {fileID: 332679065}
   m_Father: {fileID: 0}
@@ -54601,7 +54614,7 @@ Transform:
   m_GameObject: {fileID: 1905451800}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.940483, y: -10.285195, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -55544,6 +55557,7 @@ MonoBehaviour:
   moveSpeed: 1
   moveDir: {x: 0, y: 0}
   target: {fileID: 0}
+  impluseForceTime: 0
   canPhysicalMove: 0
 --- !u!114 &2051684121
 MonoBehaviour:
@@ -61045,7 +61059,6 @@ SceneRoots:
   - {fileID: 1144431188}
   - {fileID: 1896779651}
   - {fileID: 2012600317}
-  - {fileID: 1212316471}
   - {fileID: 20695159}
   - {fileID: 1082271532}
   - {fileID: 1372935550}

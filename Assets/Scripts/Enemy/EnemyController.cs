@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IMagSourceControl
 {
     private MagSource snapSource;
     private EquipHolder equipHolder;
@@ -47,14 +47,18 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator ArmEquip()
     {
-        snapSource.isSnap = true;
+        snapSource.ExcuteSnap(this);
         yield return new WaitForSeconds(snapDuration);
-        snapSource.isSnap = false;
+        snapSource.SnapStop(this);
+    }
+
+    public void SnapObject(MagSource source)
+    {
+
     }
 
     void Attack()
     {
         equipHolder.Shoot(player.transform.position);
     }
-
 }

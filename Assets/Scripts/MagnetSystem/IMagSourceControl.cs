@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMagnetRelated
+public interface IMagSourceControl
 {
-    public float MagPower {  get;}
+    public void SnapObject(MagSource source);
 }

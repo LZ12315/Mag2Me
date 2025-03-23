@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EquipHolder : MonoBehaviour
 {
-    [SerializeField] private PhysicalCharacter physicakCharacter;
+    [SerializeField] private PhysicalCharacter physicalCharacter;
     [SerializeField] private Character character;
 
     [Header("∑¢…‰…Ë÷√")]
@@ -13,7 +13,7 @@ public class EquipHolder : MonoBehaviour
 
     private void Start()
     {
-        physicakCharacter = GetComponent<PhysicalCharacter>();
+        physicalCharacter = GetComponent<PhysicalCharacter>();
         character = GetComponent<Character>();
     }
 
@@ -61,8 +61,8 @@ public class EquipHolder : MonoBehaviour
             attackTime = 0;
 
         Vector2 forceDir = (Vector2)(transform.position - attackEquip.transform.position);
-        if (physicakCharacter != null)
-            physicakCharacter.AddForce(forceDir, 1f);
+        if (physicalCharacter != null)
+            physicalCharacter.AddForceImpluse(forceDir, 1f);
         if (character != null)
             character.GetDamage(attackTime);
     }
@@ -74,7 +74,6 @@ public class EquipHolder : MonoBehaviour
         Equip equip = GetEquip();
         Rigidbody2D rb = equip.GetComponent<Rigidbody2D>();
 
-        //Vector2 shootDir = (Vector2)transform.position + lookDir - (Vector2)equip.transform.position;
         equip.transform.position = transform.position;
         equip.ShootEquip(this, lookDir, shootPower);
     }

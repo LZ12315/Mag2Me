@@ -26,9 +26,14 @@ public class PhysicalCharacter : MonoBehaviour
     [SerializeField] private Vector2 moveDir = Vector2.zero;
     [SerializeField] private Transform target;
 
+    [Header("受力参数")]
+    [SerializeField] private float impluseForceTime = 0.2f;
+
     private void Start()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        lastOrientation = new Vector2(1, 0);
         canPhysicalMove = true;
     }
 
@@ -154,24 +159,34 @@ public class PhysicalCharacter : MonoBehaviour
     Vector2 forceDir;
     float force;
 
-    public void AddForce(Vector2 dir, float force)
+    public void AddForceImpluse(Vector2 dir, float force)
     {
         forceDir = dir;
         this.force = force;
         SwitchMoveType(MoveType.Idle);
         canPhysicalMove = false;
 
-        ForceMove();
+        ForceMove(impluseForceTime);
     }
 
-    void ForceMove()
+    public void AddForce(Vector2 dir, float force, float forceTime)
+    {
+        forceDir = dir;
+        this.force = force;
+        SwitchMoveType(MoveType.Idle);
+        canPhysicalMove = false;
+
+        ForceMove(forceTime);
+    }
+
+    void ForceMove(float moveTime)
     {
         float moveStep = force + velocityCorrection;
         Vector3 targetPostion = transform.position + new Vector3(moveStep * forceDir.x, moveStep * forceDir.y, 0);
 
         if (tweener != null)
             tweener.Kill();
-        transform.DOMove(targetPostion, 0.2f)
+        transform.DOMove(targetPostion, moveTime)
             .SetEase(Ease.OutQuad)
             .OnComplete(() => SwitchMoveType(MoveType.Idle));
     }

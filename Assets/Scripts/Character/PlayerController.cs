@@ -4,7 +4,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour,IMagSourceControl
 {
     private PlayerInputControl inputControl;
     private PhysicalCharacter physicalCharacter;
@@ -42,16 +42,22 @@ public class PlayerController : MonoBehaviour
         Look();
     }
 
-    void SnapStart(InputAction.CallbackContext text)
+    void AttractStart(InputAction.CallbackContext text)
     {
-        magSource.isSnap = true;
+        magSource.ExcuteSnap(this);
         magAnimation.PullVFX(magSource, true);
     }
 
-    void SnapOver(InputAction.CallbackContext text)
+    void AttractOver(InputAction.CallbackContext text)
     {
-        magSource.isSnap = false;
+        magSource.SnapStop(this);
         magAnimation.PullVFX(magSource, false);
+    }
+
+    public void SnapObject(MagSource source)
+    {
+        if(source != magSource) return;
+        magAnimation.SnapVFX(magSource);
     }
 
     float pressStartTime;
@@ -99,7 +105,10 @@ public class PlayerController : MonoBehaviour
         }
 
         loookDir = LookInput.normalized;
-        magSource.SnapDir = loookDir;
+        if(Mathf.Approximately(loookDir.magnitude,0))
+            loookDir = physicalCharacter.Orientation;
+
+        magSource.SetSnapDir(this, loookDir);
     }
 
     #region ÆäËû
@@ -109,18 +118,18 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         inputControl.Enable();
-        inputControl.Player.Snap.started += SnapStart;
+        inputControl.Player.Snap.started += AttractStart;
         inputControl.Player.Fire.started += ShootPerformed;
-        inputControl.Player.Snap.canceled += SnapOver;
+        inputControl.Player.Snap.canceled += AttractOver;
         inputControl.Player.Fire.canceled += ShootOver;
     }
 
     private void OnDisable()
     {
         inputControl.Disable();
-        inputControl.Player.Snap.started -= SnapStart;
+        inputControl.Player.Snap.started -= AttractStart;
         inputControl.Player.Fire.started -= ShootPerformed;
-        inputControl.Player.Snap.canceled -= SnapOver;
+        inputControl.Player.Snap.canceled -= AttractOver;
         inputControl.Player.Fire.canceled -= ShootOver;
     }
 

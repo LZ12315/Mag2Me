@@ -21,7 +21,7 @@ public class Character : MonoBehaviour
         currentHealth -= damage;
         magAnimation.HitVFX(this);
 
-        Debug.Log(gameObject.name + "'s health is : " + currentHealth);
+        //Debug.Log(gameObject.name + "'s health is : " + currentHealth);
 
         if(currentHealth <= 0)
             Dead();

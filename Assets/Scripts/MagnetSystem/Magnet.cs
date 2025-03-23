@@ -59,7 +59,9 @@ public class Magnet : MonoBehaviour
     public void StopAttract(MagSource snapSource)
     {
         isAttracted = false;
-        physicsCharacter.ToRoam();
+        magSource = null;
+        Vector2 snapDir = snapSource.transform.position - transform.position;
+        physicsCharacter.AddForce(snapDir, 0.15f, 0.5f);
     }
 
     public void SnapFinalize(MagSource snapSource)
