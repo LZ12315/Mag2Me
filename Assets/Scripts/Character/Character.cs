@@ -9,9 +9,9 @@ public class Character : MonoBehaviour
     [Header("½ÇÉ«ÊôÐÔ")]
     [SerializeField] protected int maxHealth = 3;
     [SerializeField] protected int currentHealth;
-    private bool imediateDeath;
+    [SerializeField] protected bool imediateDeath;
 
-    private void Start()
+    protected void Start()
     {
         currentHealth = maxHealth;
         magAnimation = GetComponentInChildren<MagAnimation>();
@@ -20,19 +20,35 @@ public class Character : MonoBehaviour
     public void GetDamage(int damage)
     {
         currentHealth -= damage;
-        magAnimation.HitVFX(this);
-
-        //Debug.Log(gameObject.name + "'s health is : " + currentHealth);
-
-        if(currentHealth <= 0)
+        if (currentHealth <= 0 || imediateDeath)
+        {
             Dead();
+            return;
+        }
+        magAnimation.HitVFX(this);
     }
 
-    void Dead()
+    protected void Dead()
     {
         EventCenter.Instance.EventTrigger("Combo");
         magAnimation.DeadVFX(this);
+        StartCoroutine(DestroyGameObject());
     }
+
+    protected IEnumerator DestroyGameObject()
+    {
+        Component[] components = GetComponents<Component>();
+        foreach (Component component in components)
+        {
+            Behaviour behaviour = component as Behaviour;
+            if (behaviour != null)
+                behaviour.enabled = false;
+        }
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+    }
+
+    #region Buff
 
     public void SetimediateDead(BuffManager manager, bool isTrue)
     {
@@ -45,5 +61,7 @@ public class Character : MonoBehaviour
         if(currentHealth > maxHealth)
             maxHealth = currentHealth;
     }
+
+    #endregion
 
 }

@@ -1,7 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 
 
@@ -19,9 +23,15 @@ public class BuffManager : MonoBehaviour
     [Serializable]
     public class BuffSetting
     {
-        public string name;
         [SerializeField] private int comboNum;
         [SerializeField] private BuffInfo buffInfo;
+        [SerializeField] private PlayableDirector director;
+
+        public void ExecuteTimeline(BuffManager manager, UnityAction action)
+        {
+            director.Play();
+            manager.StartCoroutine(manager.WatchTimelineProgress(director, action));
+        }
 
         public int ComboNum => comboNum;
         public BuffInfo BuffInfo => buffInfo;
@@ -40,39 +50,47 @@ public class BuffManager : MonoBehaviour
     void Combo()
     {
         comboNum++;
-        for (int i = 0; i < buffSettings.Count; i++)
+        foreach (var buff in buffSettings)
         {
-            if(comboNum >= buffSettings[i].ComboNum)
+            if (comboNum == buff.ComboNum)
             {
-                ExcuteBuff(buffSettings[i].BuffInfo);
-                buffSettings.Remove(buffSettings[i]);
+                ExcuteBuff(buff);
             }
         }
     }
 
-    void ExcuteBuff(BuffInfo buff)
+    public IEnumerator WatchTimelineProgress(PlayableDirector director, UnityAction action)
     {
-        switch(buff.valueBuff)
+        while (director.state == PlayState.Playing)
+        {
+            yield return null;
+        }
+        action?.Invoke();
+    }
+
+    void ExcuteBuff(BuffSetting buff)
+    {
+        switch(buff.BuffInfo.valueBuff)
         {
             case ValueBuff.None:
                 break;
             case ValueBuff.HealthUp:
-                HealthUp(buff.buffValue);
+                buff.ExecuteTimeline(this, () => HealthUp(buff.BuffInfo.buffValue));
                 break;
             case ValueBuff.PowerUp:
-                PowerUp(buff.buffValue);
+                buff.ExecuteTimeline(this, () => PowerUp(buff.BuffInfo.buffValue));
                 break;
         }
 
-        switch (buff.ultimateBuff)
+        switch (buff.BuffInfo.ultimateBuff)
         {
             case UltimateBuff.None:
                 break;
             case UltimateBuff.ImediateDead:
-                StartCoroutine(ImediatelyDead(buff.buffDuration));
+                buff.ExecuteTimeline(this, () => InvokeImediateDead(buff.BuffInfo.buffDuration));
                 break;
             case UltimateBuff.InfinityBullet:
-                StartCoroutine(UltimateBullet(buff.buffDuration));
+                buff.ExecuteTimeline(this, () => InvokeInfinityBullet(buff.BuffInfo.buffDuration));
                 break;
             case UltimateBuff.DividedBullet:
                 break;
@@ -91,11 +109,15 @@ public class BuffManager : MonoBehaviour
         playerHolder.PowerUp(this, value);
     }
 
+    void InvokeImediateDead(float Duration)
+    {
+        StartCoroutine(ImediatelyDead(Duration));
+    }
+
     IEnumerator ImediatelyDead(float duration)
     {
-        GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
-
-        foreach (GameObject obj in allObjects)
+        GameObject[] allObjects_Before = GameObject.FindObjectsOfType<GameObject>();
+        foreach (GameObject obj in allObjects_Before)
         {
             if (!obj.activeInHierarchy) continue;
 
@@ -106,9 +128,10 @@ public class BuffManager : MonoBehaviour
 
         yield return new WaitForSeconds(duration);
 
-        foreach (GameObject obj in allObjects)
+        GameObject[] allObjects_After = GameObject.FindObjectsOfType<GameObject>();
+        foreach (GameObject obj in allObjects_After)
         {
-            if (!obj.activeInHierarchy) continue;
+            if (!obj.activeInHierarchy || !gameObject.activeSelf) continue;
 
             Enemy enemyCharacter = obj?.GetComponent<Enemy>();
             if (enemyCharacter != null)
@@ -116,7 +139,12 @@ public class BuffManager : MonoBehaviour
         }
     }
 
-    IEnumerator UltimateBullet(float duration)
+    void InvokeInfinityBullet(float Duration)
+    {
+        StartCoroutine(InfinityBullet(Duration));
+    }
+
+    IEnumerator InfinityBullet(float duration)
     {
         MagSource playerSource = GameObject.FindWithTag("Player").GetComponent<MagSource>();
         MagSourceInfo magSourceInfo = playerSource.GetSourceInfo(this);

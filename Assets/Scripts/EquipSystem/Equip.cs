@@ -70,8 +70,16 @@ public class Equip: MonoBehaviour
         return serviceable;
     }
 
-    void EquipDestroy()
+    IEnumerator EquipDestroy()
     {
+        Component[] components = GetComponents<Component>();
+        foreach (Component component in components)
+        {
+            Behaviour behaviour = component as Behaviour;
+            if (behaviour != null)
+                behaviour.enabled = false;
+        }
+        yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
     }
 
@@ -114,7 +122,7 @@ public class Equip: MonoBehaviour
             attackCounter++;
             if (attackCounter >= attackNum)
             {
-                EquipDestroy();
+                StartCoroutine(EquipDestroy());
                 return;
             }
         }
