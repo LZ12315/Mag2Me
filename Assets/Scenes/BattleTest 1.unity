@@ -257,7 +257,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magPower: 0
   radius: 1
-  velocityClamp: 30
+  minSpeed: 2
+  speedClamp: 30
 --- !u!60 &104584932
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -364,8 +365,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnet: {fileID: 0}
   equipHolder: {fileID: 0}
-  endurance: 3
-  bulletPower: 3
+  physicCharacter: {fileID: 0}
+  equipCollider: {fileID: 0}
+  maxEndurance: 3
+  currentEndurance: 0
+  defencePower: 1
+  attackPower: 1
+  attackNum: 1
   serviceable: 0
   isBullet: 0
   attackPower: 1
@@ -402,6 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b54d698a06aea4a9fb47e6e2291b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 0}
   shootPower: 5
   scatterAngle: 360
   equipments: []
@@ -417,19 +424,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7369825cdf146844c805f0d65ed1b762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magCollider: {fileID: 0}
   equipHolder: {fileID: 0}
   snapPower: 1
   snapAngle: 60
   snapDistance: 2
-  magnetHoldRadius: 4
+  ObjectBeingAttract: []
   ObjectinPlace: []
+  maxAttractDuration: 6
   farDistanceCoef: 0.7
   midDistanceCoef: 0.55
   closeDistanceCoef: 0.25
   strongAccelRange: 0.05
-  minAcceleration: 0.5
-  midAcceleration: 8
-  maxAcceleration: 80
 --- !u!60 &271219040
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -780,8 +786,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnet: {fileID: 0}
   equipHolder: {fileID: 0}
-  endurance: 3
-  bulletPower: 1
+  physicCharacter: {fileID: 0}
+  equipCollider: {fileID: 0}
+  maxEndurance: 3
+  currentEndurance: 0
+  defencePower: 1
+  attackPower: 1
+  attackNum: 1
   serviceable: 0
   isBullet: 0
   defencePower: 1
@@ -799,7 +810,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magPower: 0
   radius: 1
-  velocityClamp: 30
+  minSpeed: 2
+  speedClamp: 30
 --- !u!60 &591757235
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1022,19 +1034,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7369825cdf146844c805f0d65ed1b762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magCollider: {fileID: 0}
   equipHolder: {fileID: 0}
   snapPower: 1
   snapAngle: 60
   snapDistance: 5
-  magnetHoldRadius: 4
+  ObjectBeingAttract: []
   ObjectinPlace: []
+  maxAttractDuration: 6
   farDistanceCoef: 0.7
   midDistanceCoef: 0.55
   closeDistanceCoef: 0.35
   strongAccelRange: 0.05
-  minAcceleration: 0.5
-  midAcceleration: 8
-  maxAcceleration: 80
 --- !u!114 &689312950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1063,6 +1074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b54d698a06aea4a9fb47e6e2291b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 0}
   shootPower: 1
   scatterAngle: 360
   equipments: []
@@ -1260,7 +1272,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magPower: 0
   radius: 1
-  velocityClamp: 30
+  minSpeed: 2
+  speedClamp: 30
 --- !u!114 &788698997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1275,8 +1288,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnet: {fileID: 0}
   equipHolder: {fileID: 0}
-  endurance: 1
-  bulletPower: 3
+  physicCharacter: {fileID: 0}
+  equipCollider: {fileID: 0}
+  maxEndurance: 3
+  currentEndurance: 0
+  defencePower: 1
+  attackPower: 1
+  attackNum: 1
   serviceable: 0
   isBullet: 0
 --- !u!1 &991549863
@@ -1616,7 +1634,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magPower: 0
   radius: 1
-  velocityClamp: 30
+  minSpeed: 2
+  speedClamp: 30
 --- !u!60 &1324754347
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1723,8 +1742,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnet: {fileID: 0}
   equipHolder: {fileID: 0}
-  endurance: 3
-  bulletPower: 1
+  physicCharacter: {fileID: 0}
+  equipCollider: {fileID: 0}
+  maxEndurance: 3
+  currentEndurance: 0
+  defencePower: 1
+  attackPower: 1
+  attackNum: 1
   serviceable: 0
   isBullet: 0
   defencePower: 1
@@ -1762,7 +1786,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magPower: 0
   radius: 1
-  velocityClamp: 30
+  minSpeed: 2
+  speedClamp: 30
 --- !u!60 &1388015229
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1869,8 +1894,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnet: {fileID: 0}
   equipHolder: {fileID: 0}
-  endurance: 1
-  bulletPower: 3
+  physicCharacter: {fileID: 0}
+  equipCollider: {fileID: 0}
+  maxEndurance: 3
+  currentEndurance: 0
+  defencePower: 1
+  attackPower: 1
+  attackNum: 1
   serviceable: 0
   isBullet: 0
 --- !u!1 &1510298827
@@ -2075,7 +2105,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magPower: 0
   radius: 1
-  velocityClamp: 30
+  minSpeed: 2
+  speedClamp: 30
 --- !u!60 &1815248587
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2182,8 +2213,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnet: {fileID: 0}
   equipHolder: {fileID: 0}
-  endurance: 1
-  bulletPower: 3
+  physicCharacter: {fileID: 0}
+  equipCollider: {fileID: 0}
+  maxEndurance: 3
+  currentEndurance: 0
+  defencePower: 1
+  attackPower: 1
+  attackNum: 1
   serviceable: 0
   isBullet: 0
 --- !u!1 &1921207115
@@ -2405,7 +2441,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magPower: 0
   radius: 1
-  velocityClamp: 30
+  minSpeed: 2
+  speedClamp: 30
 --- !u!60 &2053245962
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2512,8 +2549,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnet: {fileID: 0}
   equipHolder: {fileID: 0}
-  endurance: 3
-  bulletPower: 1
+  physicCharacter: {fileID: 0}
+  equipCollider: {fileID: 0}
+  maxEndurance: 3
+  currentEndurance: 0
+  defencePower: 1
+  attackPower: 1
+  attackNum: 1
   serviceable: 0
   isBullet: 0
   defencePower: 1

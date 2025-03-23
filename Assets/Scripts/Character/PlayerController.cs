@@ -7,9 +7,10 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private PlayerInputControl inputControl;
-    private Rigidbody2D rb;
-    private MagSource snapSource;
+    private PhysicalCharacter physicalCharacter;
+    private MagSource magSource;
     private EquipHolder equipHolder;
+    private MagAnimation magAnimation;
 
     [Header("移动参数")]
     [SerializeField] private float normalSpeed;
@@ -21,17 +22,18 @@ public class PlayerController : MonoBehaviour
 
     Vector2 moveInput;
     Vector2 LookInput;
-    Vector2 lastLookDir = new Vector2(1, 0);
-    Vector2 screenCenter;
+    [SerializeField] Vector2 loookDir = new Vector2(1, 0);
+    private Camera _mainCamera;
+
 
     private void Awake()
     {
         inputControl = new PlayerInputControl();
-        rb = GetComponent<Rigidbody2D>();
         equipHolder = this?.GetComponent<EquipHolder>();
-        snapSource = this?.GetComponent<MagSource>();
-
-        screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
+        magSource = this?.GetComponent<MagSource>();
+        physicalCharacter = this?.GetComponent<PhysicalCharacter>();
+        magAnimation = GetComponentInChildren<MagAnimation>();
+        _mainCamera = Camera.main;
     }
 
     private void Update()
@@ -42,12 +44,14 @@ public class PlayerController : MonoBehaviour
 
     void SnapStart(InputAction.CallbackContext text)
     {
-        snapSource.isSnap = true;
+        magSource.isSnap = true;
+        magAnimation.PullVFX(magSource, true);
     }
 
     void SnapOver(InputAction.CallbackContext text)
     {
-        snapSource.isSnap = false;
+        magSource.isSnap = false;
+        magAnimation.PullVFX(magSource, false);
     }
 
     float pressStartTime;
@@ -61,12 +65,15 @@ public class PlayerController : MonoBehaviour
         if (equipHolder == null) return;
 
         float pressTime = Time.time - pressStartTime;
+        Vector3 mouseWorldPos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPos.z = 0f;
 
         if (pressTime >= shootPressLimit)
-            equipHolder.Scatter(lastLookDir);
+            equipHolder.Scatter((Vector2)mouseWorldPos);
         else
-            equipHolder.Shoot(lastLookDir);
+            equipHolder.Shoot(loookDir);
 
+        magAnimation.PushVFX(magSource, true);
         pressStartTime = 0;
     }
 
@@ -74,8 +81,10 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = inputControl.Player.Move.ReadValue<Vector2>();
 
-        Vector3 moveStep = moveInput.normalized * normalSpeed * Time.deltaTime;
-        transform.position += moveStep;
+        if(!Mathf.Approximately(moveInput.magnitude, 0))
+            physicalCharacter.SetVelocity(moveInput.normalized, normalSpeed);
+        else
+            physicalCharacter.Idle();
     }
 
     private void Look()
@@ -83,13 +92,19 @@ public class PlayerController : MonoBehaviour
         if (!mouseControl)
             LookInput = inputControl.Player.Look.ReadValue<Vector2>();
         else
-            LookInput = (Mouse.current.position.ReadValue() - screenCenter);
-        lastLookDir = LookInput.normalized;
+        {
+            Vector3 mouseWorldPos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            mouseWorldPos.z = 0f;
+            LookInput = (Vector2)(mouseWorldPos - transform.position);
+        }
 
-        snapSource.SnapDir = lastLookDir;
+        loookDir = LookInput.normalized;
+        magSource.SnapDir = loookDir;
     }
 
     #region 其他
+
+    public Vector2 LookDir => loookDir;
 
     private void OnEnable()
     {

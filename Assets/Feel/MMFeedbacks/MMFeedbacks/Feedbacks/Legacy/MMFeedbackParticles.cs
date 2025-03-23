@@ -111,7 +111,7 @@ namespace MoreMountains.Feedbacks
 
 			if (ActivateOnPlay)
 			{
-				BoundParticleSystem.gameObject.SetActive(true);
+			//	BoundParticleSystem.gameObject.SetActive(true);
 				foreach (ParticleSystem system in RandomParticleSystems)
 				{
 					system.gameObject.SetActive(true);

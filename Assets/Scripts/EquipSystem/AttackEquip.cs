@@ -92,8 +92,8 @@ public class AttackEquip : Equip
             }
         }
 
-        if(attackTargets.Count > 0)
-            UseEquip();
+        //if(attackTargets.Count > 0)
+        //    UseEquip();
         attackTargets.Clear();
     }
 

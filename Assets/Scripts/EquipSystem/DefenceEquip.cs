@@ -12,7 +12,7 @@ public class DefenceEquip : Equip
         if (!serviceable) return false;
 
         Debug.Log(gameObject.name + " -> " + "DefenceEquip : " + damage);
-        UseEquip();
+        //UseEquip();
         return true;
     }
 }

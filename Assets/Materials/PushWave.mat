@@ -60,5 +60,5 @@ Material:
     m_Floats:
     - _CircleSize: 0.68
     m_Colors:
-    - _MainColor: {r: 42.722507, g: 42.722507, b: 42.722507, a: 0}
+    - _MainColor: {r: 3.9533496, g: 3.9533496, b: 3.9533496, a: 0}
   m_BuildTextureStacks: []
