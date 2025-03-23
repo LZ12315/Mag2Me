@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] private MagAnimation magAnimation;
+    [SerializeField] protected MagAnimation magAnimation;
 
     [Header("½ÇÉ«ÊôÐÔ")]
-    [SerializeField] private int maxHealth = 3;
-    [SerializeField] private int currentHealth;
+    [SerializeField] protected int maxHealth = 3;
+    [SerializeField] protected int currentHealth;
+    private bool imediateDeath;
 
     private void Start()
     {
@@ -31,6 +32,18 @@ public class Character : MonoBehaviour
     {
         EventCenter.Instance.EventTrigger("Combo");
         magAnimation.DeadVFX(this);
+    }
+
+    public void SetimediateDead(BuffManager manager, bool isTrue)
+    {
+        imediateDeath = isTrue;
+    }
+
+    public void HealthChange(BuffManager manager, int value)
+    {
+        currentHealth += value;
+        if(currentHealth > maxHealth)
+            maxHealth = currentHealth;
     }
 
 }

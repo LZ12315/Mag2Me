@@ -22,6 +22,7 @@ public class Magnet : MonoBehaviour
 
     MagSource magnetParent;
     MagSource magSource;
+    MagSourceInfo sourceInfo;
     bool isAttracted;
 
     private void Start()
@@ -39,20 +40,22 @@ public class Magnet : MonoBehaviour
         if (isAttracted && magSource != null)
         {
             float distance = Vector2.Distance(transform.position, magSource.transform.position);
-            float attractSpeed = CalculateSpeed(distance);
+            float attractSpeed = CalculateSpeed(distance, sourceInfo);
+
             physicsCharacter.SetMoveSpeed(attractSpeed);
         }
     }
 
-    public void InvokeAttract(MagSource snapSource)
+    public void InvokeAttract(MagSource snapSource, MagSourceInfo info)
     {
         if(magSource == snapSource) return;
 
         magSource = snapSource;
+        sourceInfo = info;
         Transform magTarget = snapSource.transform;
         float distance = Vector3.Distance(transform.position, magTarget.position);
 
-        physicsCharacter.SetTarget(magTarget, CalculateMoveDuration(distance));
+        physicsCharacter.SetTarget(magTarget, CalculateMoveDuration(distance, info));
         isAttracted = true;
     }
 
@@ -92,48 +95,48 @@ public class Magnet : MonoBehaviour
     5. distance ≤ strongAccel → 极限冲刺
     */
 
-    float CalculateMoveDuration(float distance)
+    float CalculateMoveDuration(float distance, MagSourceInfo info)
     {
-        if (distance > magSource.farDistanceCoef * magSource.snapDistance)
-            return magSource.maxAttractDuration;
+        if (distance > info.farDistanceCoef * info.snapDistance)
+            return info.maxAttractDuration;
 
-        if (distance > magSource.midDistanceCoef * magSource.snapDistance)
-            return magSource.maxAttractDuration * magSource.farDistanceCoef;
+        if (distance > info.midDistanceCoef * info.snapDistance)
+            return info.maxAttractDuration * info.farDistanceCoef;
 
-        if (distance > magSource.closeDistanceCoef * magSource.snapDistance)
-            return magSource.maxAttractDuration * magSource.midDistanceCoef;
+        if (distance > info.closeDistanceCoef * info.snapDistance)
+            return info.maxAttractDuration * info.midDistanceCoef;
 
-        return magSource.maxAttractDuration * magSource.closeDistanceCoef;
+        return info.maxAttractDuration * info.closeDistanceCoef;
     }
 
-    float CalculateSpeed(float distance)
+    float CalculateSpeed(float distance, MagSourceInfo info)
     {
-        if (distance > magSource.farDistanceCoef * magSource.snapDistance)
+        if (distance > info.farDistanceCoef * info.snapDistance)
             return minSpeed;
 
-        if (distance > magSource.midDistanceCoef * magSource.snapDistance)
+        if (distance > info.midDistanceCoef * info.snapDistance)
         {
             // 二次缓动提升（weak → medium），使用更平滑的插值方式
-            float t = Mathf.InverseLerp(magSource.farDistanceCoef, magSource.midDistanceCoef, distance);
+            float t = Mathf.InverseLerp(info.farDistanceCoef, info.midDistanceCoef, distance);
             return Mathf.Lerp(minSpeed, minSpeed * 4, Mathf.SmoothStep(0f, 1f, t));  // 使用 SmoothStep 来平滑过渡
         }
 
-        if (distance > magSource.closeDistanceCoef * magSource.snapDistance)
+        if (distance > info.closeDistanceCoef * info.snapDistance)
         {
             // 线性增速区 (medium → high)
             return Mathf.Lerp(minSpeed * 4, speedClamp * 0.7f,
-                Mathf.InverseLerp(magSource.midDistanceCoef, magSource.closeDistanceCoef, distance));
+                Mathf.InverseLerp(info.midDistanceCoef, info.closeDistanceCoef, distance));
         }
 
-        if (distance > magSource.strongAccelRange * magSource.snapDistance)
+        if (distance > info.strongAccelRange * info.snapDistance)
         {
             // 幂次加速 (high → max)，避免突变，使用更平滑的插值方式
-            float t = 1 - Mathf.InverseLerp(magSource.closeDistanceCoef, magSource.strongAccelRange, distance);
+            float t = 1 - Mathf.InverseLerp(info.closeDistanceCoef, info.strongAccelRange, distance);
             return Mathf.Lerp(speedClamp * 0.7f, speedClamp, Mathf.SmoothStep(0f, 1f, t));  // 使用 SmoothStep
         }
 
         // 极限冲刺区（max及超频）
-        float overflow = Mathf.Clamp01(1 - distance / magSource.strongAccelRange);
+        float overflow = Mathf.Clamp01(1 - distance / info.strongAccelRange);
         return speedClamp * (1 + overflow * 0.5f);
     }
 

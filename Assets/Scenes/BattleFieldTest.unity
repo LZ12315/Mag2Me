@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 20695158}
   - component: {fileID: 20695157}
   - component: {fileID: 20695154}
-  - component: {fileID: 20695156}
+  - component: {fileID: 20695160}
   - component: {fileID: 20695155}
   - component: {fileID: 20695153}
   - component: {fileID: 20695152}
@@ -199,7 +199,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicalCharacter: {fileID: 0}
   character: {fileID: 0}
-  shootPower: 30
+  defenceBreak: 0
+  shootPower: 10
   scatterAngle: 360
   equipments: []
 --- !u!114 &20695153
@@ -216,17 +217,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magCollider: {fileID: 20695157}
   equipHolder: {fileID: 0}
-  snapPower: 10
-  snapAngle: 60
-  snapDistance: 5
-  maxHoldNum: 2
+  sourceInfo:
+    snapPower: 10
+    snapAngle: 60
+    snapDistance: 5
+    maxHoldNum: 2
+    maxAttractDuration: 4
+    farDistanceCoef: 0.75
+    midDistanceCoef: 0.5
+    closeDistanceCoef: 0.2
+    strongAccelRange: 0.1
   MagnetBeingAttract: []
   MagnetInPlace: []
-  maxAttractDuration: 10
-  farDistanceCoef: 0.75
-  midDistanceCoef: 0.5
-  closeDistanceCoef: 0.2
-  strongAccelRange: 0.1
 --- !u!114 &20695154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,21 +267,6 @@ MonoBehaviour:
   target: {fileID: 0}
   impluseForceTime: 0
   canPhysicalMove: 0
---- !u!114 &20695156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 20695151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9562ce54da6922143958bc42b655a3ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magAnimation: {fileID: 0}
-  maxHealth: 3
-  currentHealth: 0
 --- !u!58 &20695157
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -368,6 +355,21 @@ Transform:
   - {fileID: 1212316471}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &20695160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20695151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 979c73c6cdad1234cac3425669364eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magAnimation: {fileID: 0}
+  maxHealth: 3
+  currentHealth: 0
 --- !u!1 &112186597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,7 +1025,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &171829699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1059,6 +1061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicalCharacter: {fileID: 0}
   character: {fileID: 0}
+  defenceBreak: 0
   shootPower: 5
   scatterAngle: 5
   equipments: []
@@ -1076,17 +1079,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magCollider: {fileID: 171829704}
   equipHolder: {fileID: 0}
-  snapPower: 1
-  snapAngle: 60
-  snapDistance: 3
-  maxHoldNum: 2
+  sourceInfo:
+    snapPower: 1
+    snapAngle: 60
+    snapDistance: 2
+    maxHoldNum: 2
+    maxAttractDuration: 1
+    farDistanceCoef: 0.85
+    midDistanceCoef: 0.6
+    closeDistanceCoef: 0.35
+    strongAccelRange: 0.1
   MagnetBeingAttract: []
   MagnetInPlace: []
-  maxAttractDuration: 6
-  farDistanceCoef: 0.85
-  midDistanceCoef: 0.6
-  closeDistanceCoef: 0.35
-  strongAccelRange: 0.1
 --- !u!114 &171829702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1094,7 +1098,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171829698}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b27c9fc3cf38fc940ac0d916f00da28e, type: 3}
   m_Name: 
@@ -1265,9 +1269,9 @@ MonoBehaviour:
   maxEndurance: 3
   currentEndurance: 3
   defencePower: 1
+  serviceable: 0
   attackPower: 1
   attackNum: 1
-  serviceable: 0
   isBullet: 0
 --- !u!114 &204382357
 MonoBehaviour:
@@ -8744,6 +8748,73 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!1 &411929058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 411929059}
+  - component: {fileID: 411929060}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &411929059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411929058}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &411929060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411929058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f82eef0f9df2f479cedea25d64dfc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffSettings:
+  - name: InfinityBullet
+    comboNum: 2
+    buffInfo:
+      valueBuff: 0
+      ultimateBuff: 1
+      buffValue: 0
+      buffDuration: 5
+  - name: HealthUp
+    comboNum: 1
+    buffInfo:
+      valueBuff: 1
+      ultimateBuff: 0
+      buffValue: 1
+      buffDuration: 0
+  - name: PowerUp
+    comboNum: 1
+    buffInfo:
+      valueBuff: 2
+      ultimateBuff: 0
+      buffValue: 10
+      buffDuration: 0
+  comboNum: 0
 --- !u!1 &456082209
 GameObject:
   m_ObjectHideFlags: 0
@@ -9232,9 +9303,9 @@ MonoBehaviour:
   maxEndurance: 1
   currentEndurance: 3
   defencePower: 1
+  serviceable: 0
   attackPower: 1
   attackNum: 1
-  serviceable: 0
   isBullet: 0
 --- !u!114 &605266832
 MonoBehaviour:
@@ -25488,9 +25559,9 @@ MonoBehaviour:
   maxEndurance: 3
   currentEndurance: 3
   defencePower: 1
+  serviceable: 0
   attackPower: 1
   attackNum: 1
-  serviceable: 0
   isBullet: 0
 --- !u!114 &1075666096
 MonoBehaviour:
@@ -25756,9 +25827,9 @@ MonoBehaviour:
   maxEndurance: 3
   currentEndurance: 3
   defencePower: 1
+  serviceable: 0
   attackPower: 1
   attackNum: 1
-  serviceable: 0
   isBullet: 0
 --- !u!114 &1082271530
 MonoBehaviour:
@@ -36334,9 +36405,9 @@ MonoBehaviour:
   maxEndurance: 3
   currentEndurance: 3
   defencePower: 1
+  serviceable: 0
   attackPower: 1
   attackNum: 1
-  serviceable: 0
   isBullet: 0
 --- !u!114 &1179535912
 MonoBehaviour:
@@ -47068,9 +47139,9 @@ MonoBehaviour:
   maxEndurance: 3
   currentEndurance: 3
   defencePower: 1
+  serviceable: 0
   attackPower: 1
   attackNum: 1
-  serviceable: 0
   isBullet: 0
 --- !u!114 &1372935548
 MonoBehaviour:
@@ -47711,9 +47782,9 @@ MonoBehaviour:
   maxEndurance: 1
   currentEndurance: 3
   defencePower: 1
+  serviceable: 0
   attackPower: 1
   attackNum: 1
-  serviceable: 0
   isBullet: 0
 --- !u!114 &1461249645
 MonoBehaviour:
@@ -48003,9 +48074,9 @@ MonoBehaviour:
   maxEndurance: 3
   currentEndurance: 3
   defencePower: 1
+  serviceable: 0
   attackPower: 1
   attackNum: 1
-  serviceable: 0
   isBullet: 0
 --- !u!114 &1537489481
 MonoBehaviour:
@@ -48829,9 +48900,9 @@ MonoBehaviour:
   maxEndurance: 3
   currentEndurance: 3
   defencePower: 1
+  serviceable: 0
   attackPower: 1
   attackNum: 1
-  serviceable: 0
   isBullet: 0
 --- !u!114 &1598744114
 MonoBehaviour:
@@ -55579,9 +55650,9 @@ MonoBehaviour:
   maxEndurance: 3
   currentEndurance: 3
   defencePower: 1
+  serviceable: 0
   attackPower: 1
   attackNum: 1
-  serviceable: 0
   isBullet: 0
 --- !u!114 &2051684122
 MonoBehaviour:
@@ -61059,6 +61130,7 @@ SceneRoots:
   - {fileID: 1144431188}
   - {fileID: 1896779651}
   - {fileID: 2012600317}
+  - {fileID: 411929059}
   - {fileID: 20695159}
   - {fileID: 1082271532}
   - {fileID: 1372935550}

@@ -6,7 +6,10 @@ public class EquipHolder : MonoBehaviour
     [SerializeField] private PhysicalCharacter physicalCharacter;
     [SerializeField] private Character character;
 
-    [Header("发射设置")]
+    [Header("防御设置")]
+    [SerializeField] private bool defenceBreak;
+
+    [Header("攻击设置")]
     [SerializeField] private float shootPower = 10f;
     [SerializeField] private float scatterAngle = 360f;
     [SerializeField] private List<Equip> equipments = new List<Equip>();
@@ -44,16 +47,19 @@ public class EquipHolder : MonoBehaviour
         return tmpEquip;
     }
 
-    public void GetDamage(Equip attackEquip, int damage)
+    public void HolderDefence(Equip attackEquip, int damage)
     {
         //Debug.Log(gameObject.name + " get hurt,Damage is " + damage);
         int attackTime = damage;
-        foreach (var equip in equipments)
+        if(!defenceBreak)
         {
-            if (equip.IsServiceable())
+            foreach (var equip in equipments)
             {
-                equip.EquipDamage(this);
-                attackTime--;
+                if (equip.IsServiceable())
+                {
+                    equip.EquipDamage(this);
+                    attackTime--;
+                }
             }
         }
 
@@ -107,4 +113,12 @@ public class EquipHolder : MonoBehaviour
         }
     }
 
+    #region 其他
+
+    public void PowerUp(BuffManager manager, float power)
+    {
+        shootPower += power;
+    }
+
+    #endregion
 }

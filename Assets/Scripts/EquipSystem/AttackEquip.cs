@@ -88,7 +88,7 @@ public class AttackEquip : Equip
             if (defenceNum < attackNum)
             {
                 int damageValue = (attackNum - defenceNum) * attackPower;
-                target.Key.GetDamage(this, damageValue);
+                target.Key.HolderDefence(this, damageValue);
             }
         }
 

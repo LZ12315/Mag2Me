@@ -1,28 +1,27 @@
 ﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
-public class MagSource : MonoBehaviour
+[Serializable]
+public class MagSourceInfo
 {
-    [SerializeField] private Collider2D magCollider;
-    [SerializeField] private EquipHolder equipHolder;
-    [SerializeField] private IMagSourceControl controller;
-
     [Header("吸附设置")]
-    [SerializeField] private float snapPower = 1f; //物体磁力强度
-    [SerializeField] private float snapAngle = 60f; //磁力效用角度
-    [SerializeField] public float snapDistance = 2f; //磁力效用距离
-    [SerializeField] public int maxHoldNum = 2; //最大持有磁体数量
-    [SerializeField] List<Magnet> MagnetBeingAttract = new List<Magnet>();
-    [SerializeField] List<Magnet> MagnetInPlace = new List<Magnet>();
+    [SerializeField] 
+    public float snapPower = 1f; //物体磁力强度
+    [SerializeField] 
+    public float snapAngle = 60f; //磁力效用角度
+    [SerializeField] 
+    public float snapDistance = 2f; //磁力效用距离
+    [SerializeField] 
+    public int maxHoldNum = 2; //最大持有磁体数量
 
     [Header("磁力梯度")]
     [SerializeField]
-    [Range(0,1)] public float maxAttractDuration = 6f; //最大吸引时间
+    public float maxAttractDuration = 6f; //最大吸引时间
     [SerializeField]
     [Range(0, 1)] public float farDistanceCoef = 0.85f; //远距离起始点（引力开始较弱）
     [SerializeField]
@@ -31,6 +30,26 @@ public class MagSource : MonoBehaviour
     [Range(0, 1)] public float closeDistanceCoef = 0.35f; //近距离起始点（指数加速）
     [SerializeField]
     [Range(0, 1)] public float strongAccelRange = 0.1f; //临界接触区（最大力冲刺）
+
+    public MagSourceInfo Clone()
+    {
+        return (MagSourceInfo)this.MemberwiseClone();
+    }
+}
+
+[RequireComponent(typeof(Collider2D))]
+public class MagSource : MonoBehaviour
+{
+    [SerializeField] private Collider2D magCollider;
+    [SerializeField] private EquipHolder equipHolder;
+    [SerializeField] private IMagSourceControl controller;
+
+    [Header("磁源设置")]
+    [SerializeField] private MagSourceInfo sourceInfo = new MagSourceInfo();
+
+    [Header("磁体列表")]
+    [SerializeField] List<Magnet> MagnetBeingAttract = new List<Magnet>();
+    [SerializeField] List<Magnet> MagnetInPlace = new List<Magnet>();
 
     Vector2 snapDir = Vector2.zero;
     bool snap = false;
@@ -54,7 +73,7 @@ public class MagSource : MonoBehaviour
     bool CanAttract()
     {
         int magNum = MagnetInPlace.Count;
-        if (magNum < maxHoldNum && snap)
+        if (magNum < sourceInfo.maxHoldNum && snap)
             return true;
         else
             return false;
@@ -64,7 +83,7 @@ public class MagSource : MonoBehaviour
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(
         transform.position,
-        snapDistance
+        sourceInfo.snapDistance
         );
 
         List<Magnet> magnetsBeingDetect = new List<Magnet>();
@@ -77,7 +96,7 @@ public class MagSource : MonoBehaviour
 
             Vector2 objectDir = (magnet.transform.position - transform.position).normalized;
             float angle = Vector2.Angle(snapDir, objectDir);
-            if (angle >= snapAngle / 2) continue;
+            if (angle >= sourceInfo.snapAngle / 2) continue;
 
             magnetsBeingDetect.Add(magnet);
         }
@@ -102,7 +121,7 @@ public class MagSource : MonoBehaviour
         {
             if(!MagnetBeingAttract.Contains(magnet))
             {
-                magnet.InvokeAttract(this);
+                magnet.InvokeAttract(this, sourceInfo.Clone());
                 MagnetBeingAttract.Add(magnet);
             }
         }
@@ -173,21 +192,25 @@ public class MagSource : MonoBehaviour
 
     #region 其他
 
-    public float MagPower => snapPower;
+    public float MagPower => sourceInfo.snapPower;
 
     public int NumInPlace => MagnetInPlace.Count;
 
+    public MagSourceInfo GetSourceInfo(BuffManager manager)
+    {
+        return sourceInfo;
+    }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(transform.position, snapDistance);
+        Gizmos.DrawWireSphere(transform.position, sourceInfo.snapDistance);
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, snapDistance * farDistanceCoef);
+        Gizmos.DrawWireSphere(transform.position, sourceInfo.snapDistance * sourceInfo.farDistanceCoef);
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, snapDistance * midDistanceCoef);
+        Gizmos.DrawWireSphere(transform.position, sourceInfo.snapDistance * sourceInfo.midDistanceCoef);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, snapDistance * closeDistanceCoef);
+        Gizmos.DrawWireSphere(transform.position, sourceInfo.snapDistance * sourceInfo.closeDistanceCoef);
     }
 
     #endregion

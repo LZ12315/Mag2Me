@@ -15,11 +15,11 @@ public class Equip: MonoBehaviour
     [SerializeField] protected int maxEndurance = 3;
     [SerializeField] protected int currentEndurance;
     [SerializeField] private float defencePower = 1;
+    [SerializeField] protected bool serviceable;
 
     [Header("发射设置")]
     [SerializeField] protected int attackPower = 1;
     [SerializeField] protected int attackNum = 1;
-    [SerializeField] protected bool serviceable;
     [SerializeField] protected bool isBullet;
 
     int attackCounter = 0;
@@ -70,6 +70,11 @@ public class Equip: MonoBehaviour
         return serviceable;
     }
 
+    void EquipDestroy()
+    {
+        Destroy(gameObject);
+    }
+
     #region 装备攻击
     public void EquipDamage(EquipHolder holder)
     {
@@ -105,12 +110,11 @@ public class Equip: MonoBehaviour
             EquipHolder target = collisions[i]?.GetComponent<EquipHolder>();
             if (target == null || target == equipHolder || holdersWUdi.Contains(target)) continue;
 
-            target.GetDamage(this, attackPower);
+            target.HolderDefence(this, attackPower);
             attackCounter++;
             if (attackCounter >= attackNum)
             {
-                //gameObject.SetActive(false);
-                Destroy(gameObject);
+                EquipDestroy();
                 return;
             }
         }
