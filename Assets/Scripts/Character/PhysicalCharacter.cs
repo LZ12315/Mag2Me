@@ -14,7 +14,7 @@ public enum MoveType
 
 public class PhysicalCharacter : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
 
     [Header("变换参数")]
     [SerializeField] private Vector2 lastOrientation;
@@ -22,21 +22,24 @@ public class PhysicalCharacter : MonoBehaviour
     [Header("移动参数")]
     [SerializeField] private MoveType moveType = MoveType.Idle;
     [SerializeField] private float velocityCorrection = 0f;
-    [SerializeField] private float moveSpeed = 1;
-    [SerializeField] private Vector2 moveDir = Vector2.zero;
-    [SerializeField] private Transform target;
+
+    [Header("受力参数")]
+    [SerializeField] private float impluseForceTime = 0.4f;
 
     private void Start()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        lastOrientation = new Vector2(1, 0);
         canPhysicalMove = true;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        CalculateOrien();
+
         if(canPhysicalMove)
             Move();
-        CalculateOrien();
     }
 
     #region 变换
@@ -51,7 +54,7 @@ public class PhysicalCharacter : MonoBehaviour
         if(!Mathf.Approximately(orientation.magnitude, 0))
             lastOrientation = orientation;
 
-        CharacterFlip();
+        //CharacterFlip();
         lastPos = transform.position;
     }
 
@@ -70,7 +73,10 @@ public class PhysicalCharacter : MonoBehaviour
     #region 移动
 
     private Tweener tweener;
-    [SerializeField] bool canPhysicalMove;
+    bool canPhysicalMove;
+    private float moveSpeed = 1;
+    private Vector2 moveDir = Vector2.zero;
+    private Transform target;
 
     public bool isMoving => tweener.IsActive();
 
@@ -154,24 +160,34 @@ public class PhysicalCharacter : MonoBehaviour
     Vector2 forceDir;
     float force;
 
-    public void AddForce(Vector2 dir, float force)
+    public void AddForceImpluse(Vector2 dir, float force)
     {
         forceDir = dir;
         this.force = force;
         SwitchMoveType(MoveType.Idle);
         canPhysicalMove = false;
 
-        ForceMove();
+        ForceMove(impluseForceTime);
     }
 
-    void ForceMove()
+    public void AddForce(Vector2 dir, float force, float forceTime)
+    {
+        forceDir = dir;
+        this.force = force;
+        SwitchMoveType(MoveType.Idle);
+        canPhysicalMove = false;
+
+        ForceMove(forceTime);
+    }
+
+    void ForceMove(float moveTime)
     {
         float moveStep = force + velocityCorrection;
         Vector3 targetPostion = transform.position + new Vector3(moveStep * forceDir.x, moveStep * forceDir.y, 0);
 
         if (tweener != null)
             tweener.Kill();
-        transform.DOMove(targetPostion, 0.2f)
+        transform.DOMove(targetPostion, moveTime)
             .SetEase(Ease.OutQuad)
             .OnComplete(() => SwitchMoveType(MoveType.Idle));
     }

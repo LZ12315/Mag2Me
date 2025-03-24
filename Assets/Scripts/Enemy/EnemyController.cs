@@ -3,58 +3,58 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IMagSourceControl
 {
-    private MagSource snapSource;
-    private EquipHolder equipHolder;
-    private PhysicalCharacter physicalCharacter;
+    protected Collider2D enemyCollider;
+    protected MagSource magSource;
+    protected EquipHolder equipHolder;
+    protected PhysicalCharacter physicalCharacter;
 
     [Header("µ–»À…Ë÷√")]
-    [SerializeField] private float moveSpeed = 1f;
-    [SerializeField] private float snapDuration = 0.5f;
-    [SerializeField] private float attackInterval = 0.5f;
+    [SerializeField] protected float moveSpeed = 1f;
+    [SerializeField] protected float snapDuration = 0.5f;
+    [SerializeField] protected float instantiateWaitTime = 1.5f;
+    [SerializeField] protected bool canAct;
 
-    Transform player;
+    [Header("π•ª˜ Ù–‘")]
+    [SerializeField] protected int attackPower = 1;
+    [SerializeField] protected float attackInterval = 0.25f;
+    [SerializeField] protected float attackRefreshTime = 0.5f;
 
-    private void Awake()
+    protected Transform player;
+
+    protected void Awake()
     {
         equipHolder = GetComponent<EquipHolder>();
-        snapSource = GetComponent<MagSource>();
+        magSource = GetComponent<MagSource>();
         physicalCharacter = GetComponent<PhysicalCharacter>();
+        enemyCollider = GetComponent<Collider2D>();
 
         player = GameObject.FindWithTag("Player").transform;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
-        StartCoroutine(ArmEquip());
+        //StartCoroutine(ArmEquip());
+        StartCoroutine(WaitToStart());
     }
 
-    float attackCounter = 0;
-    private void Update()
+    IEnumerator WaitToStart()
     {
-        if (player == null) return;
-        Vector2 moveDir = (Vector2)(player.position - transform.position);
-        physicalCharacter.SetVelocity(moveDir, moveSpeed);
-
-        attackCounter += Time.deltaTime;
-        if(attackCounter >= attackInterval)
-        {
-            Attack();
-            attackCounter = 0;
-        }
+        yield return new WaitForSeconds(instantiateWaitTime);
+        canAct = true;
     }
 
     IEnumerator ArmEquip()
     {
-        snapSource.isSnap = true;
+        magSource.ExcuteSnap(this);
         yield return new WaitForSeconds(snapDuration);
-        snapSource.isSnap = false;
+        magSource.SnapStop(this);
     }
 
-    void Attack()
+    public void SnapObject(MagSource source)
     {
-        equipHolder.Shoot(player.transform.position);
+        if (source != magSource) return;
     }
 
 }

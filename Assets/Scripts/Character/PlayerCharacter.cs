@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMagnetRelated
+public class PlayerCharacter : Character
 {
-    public float MagPower {  get;}
+
 }

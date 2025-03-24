@@ -4,33 +4,70 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] private MagAnimation magAnimation;
+    protected MagAnimation magAnimation;
+    protected EquipHolder equipHolder;
+    protected PhysicalCharacter physicalCharacter;
 
     [Header("½ÇÉ«ÊôÐÔ")]
-    [SerializeField] private int maxHealth = 3;
-    [SerializeField] private int currentHealth;
+    [SerializeField] protected int maxHealth = 3;
+    [SerializeField] protected int currentHealth;
+    [SerializeField] protected bool imediateDeath;
 
-    private void Start()
+    protected void Start()
     {
         currentHealth = maxHealth;
         magAnimation = GetComponentInChildren<MagAnimation>();
+        equipHolder = GetComponent<EquipHolder>();
+        physicalCharacter = GetComponent<PhysicalCharacter>();
     }
 
-    public void GetDamage(int damage)
+    public void GetDamage(Transform attackObject, int damage)
     {
-        currentHealth -= damage;
+        int finalDamage = equipHolder.HolderDefence(damage);
+        currentHealth -= finalDamage;
+
+        Vector2 forceDir = (Vector2)(transform.position - attackObject.position);
+        if (physicalCharacter != null)
+            physicalCharacter.AddForceImpluse(forceDir, 1f);
         magAnimation.HitVFX(this);
 
-        Debug.Log(gameObject.name + "'s health is : " + currentHealth);
-
-        if(currentHealth <= 0)
+        if (currentHealth <= 0 || imediateDeath)
             Dead();
     }
 
-    void Dead()
+    protected virtual void Dead()
     {
-        EventCenter.Instance.EventTrigger("Combo");
         magAnimation.DeadVFX(this);
+        StartCoroutine(DestroyGameObject());
     }
+
+    protected IEnumerator DestroyGameObject()
+    {
+        Component[] components = GetComponents<Component>();
+        foreach (Component component in components)
+        {
+            Behaviour behaviour = component as Behaviour;
+            if (behaviour != null)
+                behaviour.enabled = false;
+        }
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+    }
+
+    #region Buff
+
+    public void SetimediateDead(BuffManager manager, bool isTrue)
+    {
+        imediateDeath = isTrue;
+    }
+
+    public void HealthChange(BuffManager manager, int value)
+    {
+        currentHealth += value;
+        if(currentHealth > maxHealth)
+            maxHealth = currentHealth;
+    }
+
+    #endregion
 
 }

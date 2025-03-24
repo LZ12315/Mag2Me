@@ -1,21 +1,17 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.WSA;
 
 public class EquipHolder : MonoBehaviour
 {
-    [SerializeField] private PhysicalCharacter physicakCharacter;
-    [SerializeField] private Character character;
+    [Header("防御设置")]
+    [SerializeField] private bool defenceBreak;
 
-    [Header("发射设置")]
+    [Header("攻击设置")]
     [SerializeField] private float shootPower = 10f;
     [SerializeField] private float scatterAngle = 360f;
     [SerializeField] private List<Equip> equipments = new List<Equip>();
-
-    private void Start()
-    {
-        physicakCharacter = GetComponent<PhysicalCharacter>();
-        character = GetComponent<Character>();
-    }
 
     public void ArmEquip(Transform equip)
     {
@@ -24,6 +20,20 @@ public class EquipHolder : MonoBehaviour
 
         equipments.Add(newEquip);
         newEquip.EquipArmed(this);
+    }
+
+    public void ReleaseAllEquip()
+    {
+        foreach (var equip in equipments)
+        {
+            equip.EquipRelieve(this);
+        }
+    }
+
+    public void ReleaseEquip(Equip equip)
+    {
+        if(equipments.Contains(equip))
+            equipments.Remove(equip);
     }
 
     Equip GetEquip()
@@ -44,27 +54,24 @@ public class EquipHolder : MonoBehaviour
         return tmpEquip;
     }
 
-    public void GetDamage(Equip attackEquip, int damage)
+    public int HolderDefence(int damage)
     {
-        //Debug.Log(gameObject.name + " get hurt,Damage is " + damage);
         int attackTime = damage;
-        foreach (var equip in equipments)
+        if(!defenceBreak)
         {
-            if (equip.IsServiceable())
+            foreach (var equip in equipments.ToList())
             {
-                equip.EquipDamage(this);
-                attackTime--;
+                if (equip.IsServiceable())
+                {
+                    equip.EquipDamage(this);
+                    attackTime--;
+                }
             }
         }
 
         if (attackTime <= 0)
             attackTime = 0;
-
-        Vector2 forceDir = (Vector2)(transform.position - attackEquip.transform.position);
-        if (physicakCharacter != null)
-            physicakCharacter.AddForce(forceDir, 1f);
-        if (character != null)
-            character.GetDamage(attackTime);
+        return attackTime;
     }
 
     public void Shoot(Vector2 lookDir)
@@ -74,7 +81,6 @@ public class EquipHolder : MonoBehaviour
         Equip equip = GetEquip();
         Rigidbody2D rb = equip.GetComponent<Rigidbody2D>();
 
-        //Vector2 shootDir = (Vector2)transform.position + lookDir - (Vector2)equip.transform.position;
         equip.transform.position = transform.position;
         equip.ShootEquip(this, lookDir, shootPower);
     }
@@ -108,4 +114,12 @@ public class EquipHolder : MonoBehaviour
         }
     }
 
+    #region 其他
+
+    public void PowerUp(BuffManager manager, float power)
+    {
+        shootPower += power;
+    }
+
+    #endregion
 }

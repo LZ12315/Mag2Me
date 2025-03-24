@@ -15,15 +15,15 @@ public class Equip: MonoBehaviour
     [SerializeField] protected int maxEndurance = 3;
     [SerializeField] protected int currentEndurance;
     [SerializeField] private float defencePower = 1;
+    [SerializeField] protected bool serviceable;
 
     [Header("发射设置")]
     [SerializeField] protected int attackPower = 1;
     [SerializeField] protected int attackNum = 1;
-    [SerializeField] protected bool serviceable;
     [SerializeField] protected bool isBullet;
 
     int attackCounter = 0;
-    List<EquipHolder> holdersWUdi = new List<EquipHolder>();
+    List<GameObject> targetsCanNotAttack = new List<GameObject>();
 
     protected virtual void Start()
     {
@@ -48,18 +48,25 @@ public class Equip: MonoBehaviour
     public void EquipArmed(EquipHolder holder)
     {
         equipHolder = holder;
-        holdersWUdi.Clear();
+        targetsCanNotAttack.Clear();
         serviceable = true;
     }
 
-    void EquipRelieve(EquipHolder holder)
+    void EquipBreak()
+    {
+        serviceable = false;
+        EquipRelieve(equipHolder);
+    }
+
+    public void EquipRelieve(EquipHolder holder)
     {
         if (magnet != null)
             magnet.MagnetRelease(this);
-        if (equipHolder = holder)
+        if (equipHolder == holder)
         {
-            holdersWUdi.Add(equipHolder);
+            equipHolder.ReleaseEquip(this);
             equipHolder = null;
+            targetsCanNotAttack.Add(holder.gameObject);
         }
     }
 
@@ -70,15 +77,27 @@ public class Equip: MonoBehaviour
         return serviceable;
     }
 
-    #region 装备攻击
     public void EquipDamage(EquipHolder holder)
     {
         currentEndurance--;
         if (currentEndurance <= 0)
-        {
-            serviceable = false;
-        }
+            EquipBreak();
     }
+
+    IEnumerator EquipDestroy()
+    {
+        Component[] components = GetComponents<Component>();
+        foreach (Component component in components)
+        {
+            Behaviour behaviour = component as Behaviour;
+            if (behaviour != null)
+                behaviour.enabled = false;
+        }
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject);
+    }
+
+    #region 装备攻击
 
     public void ShootEquip(EquipHolder holder, Vector2 dir, float speed)
     {
@@ -87,7 +106,7 @@ public class Equip: MonoBehaviour
         isBullet = true;
         serviceable = false;
 
-        if(trailRenderer != null)
+        if (trailRenderer != null)
             trailRenderer.enabled = true;
         physicCharacter.SetVelocity(dir, speed);
     }
@@ -102,15 +121,15 @@ public class Equip: MonoBehaviour
         for (int i = 0; i < overlapCount; i++)
         {
             if (collisions[i].gameObject == gameObject) continue;
-            EquipHolder target = collisions[i]?.GetComponent<EquipHolder>();
-            if (target == null || target == equipHolder || holdersWUdi.Contains(target)) continue;
+            Character target = collisions[i]?.GetComponent<Character>();
+            if (target == null || targetsCanNotAttack.Contains(target.gameObject)) continue;
 
-            target.GetDamage(this, attackPower);
+            target.GetDamage(transform, attackPower);
             attackCounter++;
+            targetsCanNotAttack.Add(target.gameObject);
             if (attackCounter >= attackNum)
             {
-                //gameObject.SetActive(false);
-                Destroy(gameObject);
+                StartCoroutine(EquipDestroy());
                 return;
             }
         }
