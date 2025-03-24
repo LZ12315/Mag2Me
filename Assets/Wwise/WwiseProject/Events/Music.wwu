@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{EBF9C160-CEF5-472D-B0C6-750BB71A2ED2}" SchemaVersion="119">
+	<Events>
+		<WorkUnit Name="Music" ID="{EBF9C160-CEF5-472D-B0C6-750BB71A2ED2}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="MainMenu" ID="{A78488D1-E28D-4294-95DA-14A7472E1766}">
+					<ChildrenList>
+						<Action Name="" ID="{301B4C79-834F-4258-B5B6-1EF29F0B7D8B}" ShortID="650179766">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="InteractiveMusic" ID="{F5DA65A0-F75E-4157-B230-A7149E06978C}" WorkUnitID="{22995755-D4C0-45E3-8209-C45D3D75C31E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{DE58B11B-9CC3-4DD1-BA43-7F559709FF9F}" ShortID="154815049">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MainMenu" ID="{52B4866F-C00D-4963-A929-515F3F48C903}" WorkUnitID="{7A452F1E-A846-471E-8FAF-039B43D5AD2D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{4B69923E-C470-46AB-A044-2BF194D09173}" ShortID="383979654">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="InteractiveMusic" ID="{F5DA65A0-F75E-4157-B230-A7149E06978C}" WorkUnitID="{22995755-D4C0-45E3-8209-C45D3D75C31E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SwitchToComBat" ID="{AC12781A-B009-4BD7-BE8B-863CC8AC9038}">
+					<ChildrenList>
+						<Action Name="" ID="{C2BAE24D-87E4-4A6B-B758-BEA2438FEB6B}" ShortID="458309519">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Combat" ID="{1D8ABB37-0890-4A01-A76B-D4DFB80E2D67}" WorkUnitID="{7A452F1E-A846-471E-8FAF-039B43D5AD2D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SwitchToBoss" ID="{6A1DDDAC-C493-46FA-B3D8-257137F20419}">
+					<ChildrenList>
+						<Action Name="" ID="{14AE06D2-F235-4560-A1FA-335B16DAC2E5}" ShortID="1052248540">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Boss" ID="{EC06E1DC-6BFC-4519-AB3E-EFF95C93469B}" WorkUnitID="{7A452F1E-A846-471E-8FAF-039B43D5AD2D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SwitchToRest" ID="{BAD3B3CB-C865-44C7-9313-26A8662DF2C0}">
+					<ChildrenList>
+						<Action Name="" ID="{44224BBD-432C-4B5A-8A1D-B7D2EB7928A9}" ShortID="196129549">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Rest" ID="{F4D18743-E362-48B5-A7FB-8D77A93E04BA}" WorkUnitID="{7A452F1E-A846-471E-8FAF-039B43D5AD2D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="GameOver" ID="{96195917-7D07-47FA-8B33-0A7A5557AE3E}">
+					<ChildrenList>
+						<Action Name="" ID="{EA65077F-0D1C-49D7-A238-B6D5A580B200}" ShortID="848467635">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="End" ID="{52758D4F-9DEF-400B-9B52-25BDC9C1E216}" WorkUnitID="{7A452F1E-A846-471E-8FAF-039B43D5AD2D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

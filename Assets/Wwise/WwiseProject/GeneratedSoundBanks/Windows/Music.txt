@@ -1,0 +1,59 @@
+Event	ID	Name			Wwise Object Path	Notes
+	12287153	SwitchToBoss			\Music\SwitchToBoss	
+	865805832	SwitchToRest			\Music\SwitchToRest	
+	1441103266	SwitchToComBat			\Music\SwitchToComBat	
+	3604647259	MainMenu			\Music\MainMenu	
+	4158285989	GameOver			\Music\GameOver	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	1926883983	Scene			\Music\Scene	
+
+State	ID	Name	State Group			Notes
+	529726532	End	Scene			
+	748895195	None	Scene			
+	1560169506	Boss	Scene			
+	2277599019	Rest	Scene			
+	2764240573	Combat	Scene			
+	3604647259	MainMenu	Scene			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	430234	4 - boss-lead1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-drop\4 - boss-lead-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Boss\Boss-A\4 - boss-lead1-128bpm		167795
+	17033257	8 - boss- violin-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-drop\8 - boss- violin-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Boss\Boss-A\8 - boss- violin-128bpm		145213
+	43794238	7 - normal-viola2-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-drop1\7 - normal-viola2-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Combat\Combat-A\7 - normal-viola2-128bpm		223184
+	56512636	6 - boss- viola1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-drop\6 - boss- viola1-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Boss\Boss-A\6 - boss- viola1-128bpm		250205
+	136849614	8 - normal- violin-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-drop1\8 - normal- violin-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Combat\Combat-begin\8 - normal- violin-128bpm		146237
+	191041347	2 - boss-drum-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal&boss-outro\2 - boss-drum-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Outro\Outro\2 - boss-drum-128bpm		84599
+	320818939	5 - normal- pluck1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-drop1\5 - normal- pluck-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Combat\Combat-A\5 - normal- pluck1-128bpm		163050
+	375307661	1 - boss-bass-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-bridge\1 - boss-bass-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Boss\Boss-B\1 - boss-bass-128bpm		193279
+	377634181	5 - normal- violin-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-bridge\5 - normal- violin-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Combat\Combat-B\5 - normal- violin-128bpm		164424
+	385042019	2 - normal- drum-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-drop1\2 - normal- drum-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Rest\Rest\2 - normal- drum-128bpm		189680
+	402796751	4 - normal-lead1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-drop1\4 - normal-lead-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Combat\Combat-A\4 - normal-lead1-128bpm		149505
+	456989529	3 - normal- guitar1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-bridge2\1 - normal- guitar-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Combat\Combat-B\3 - normal- guitar1-128bpm		308258
+	513470588	3 - normal- guitar1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-bridge\3 - normal- guitar-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Combat\Combat-B\3 - normal- guitar1-128bpm		289913
+	524930938	6 - normal- viola1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-drop1\6 - normal- viola1-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Combat\Combat-A\6 - normal- viola1-128bpm		250038
+	541046098	3 - normal- guitar1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-drop1\3 - normal- guitar-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Combat\Combat-A\3 - normal- guitar1-128bpm		282557
+	545583163	4 - normal-lead1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-drop2\2 - normal-lead-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Combat\Combat-A\4 - normal-lead1-128bpm		177616
+	572670340	9 - boss-string-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-drop\9 - boss-string-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Boss\Boss-A\9 - boss-string-128bpm		232443
+	592767562	4 - normal- viola1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-bridge\4 - normal- viola1-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Combat\Combat-B\4 - normal- viola1-128bpm		181917
+	605718537	3 - boss- guitar1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-drop2\1 - boss- guitar-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Boss\Boss-A\3 - boss- guitar1-128bpm		304598
+	607811681	3 - boss- guitar1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-bridge\3 - boss- guitar-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Outro\Boss-B\3 - boss- guitar1-128bpm		304518
+	653898259	1 - normal-bass-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-drop1\1 - normal-bass-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Combat\Combat-A\1 - normal-bass-128bpm		195935
+	659986424	1 - boss-bass-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal&boss-outro\1 - boss-bass-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Outro\Outro\1 - boss-bass-128bpm		110205
+	673884081	2 - boss-drum-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-bridge\2 - boss-drum-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Boss\Boss-B\2 - boss-drum-128bpm		188420
+	708277448	5 - boss-pluck1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-drop2\3 - boss-pluck-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Boss\Boss-A\5 - boss-pluck1-128bpm		194881
+	724381773	5 - normal- pluck1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-drop2\3 - normal- pluck-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Combat\Combat-A\5 - normal- pluck1-128bpm		196138
+	750608874	2 - boss-drum-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-drop\2 - boss-drum-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Boss\Boss-A\2 - boss-drum-128bpm		200768
+	769460925	3 - boss- guitar1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-bridge2\1 - boss- guitar-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Boss\Boss-B\3 - boss- guitar1-128bpm		315195
+	793007805	9 - normal-string-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-drop1\9 - normal-string-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Combat\Combat-begin\9 - normal-string-128bpm		232139
+	805985867	2 - normal- drum-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-bridge\2 - normal- drum-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Combat\Combat-B\2 - normal- drum-128bpm		188434
+	895167087	5 - boss- violin-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-bridge\5 - boss- violin-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Outro\Boss-B\5 - boss- violin-128bpm		165355
+	895940316	5 - boss-pluck1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-drop\5 - boss-pluck-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Boss\Boss-A\5 - boss-pluck1-128bpm		162601
+	913487579	1 - normal-bass-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-bridge\1 - normal-bass-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Combat\Combat-B\1 - normal-bass-128bpm		193491
+	962431065	1 - boss-bass-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-drop\1 - boss-bass-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Boss\Boss-A\1 - boss-bass-128bpm		196306
+	964451174	1 - normal-bass-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal&boss-intro\1 - normal-bass-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Intro\Intro\1 - normal-bass-128bpm		196255
+	975516518	3 - normal- guitar1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\normal-drop2\1 - normal- guitar-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Combat\Combat-begin\3 - normal- guitar1-128bpm		300318
+	998411177	3 - boss- guitar1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-drop\3 - boss- guitar-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Boss\Boss-A\3 - boss- guitar1-128bpm		286330
+	1006509267	4 - boss- viola1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-bridge\4 - boss- viola1-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Outro\Boss-B\4 - boss- viola1-128bpm		181177
+	1020248836	7 - boss- viola2-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-drop\7 - boss- viola2-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Boss\Boss-A\7 - boss- viola2-128bpm		222882
+	1055231334	4 - boss-lead1-128bpm	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\boss-drop2\2 - boss-lead-128bpm_56CEF360.wem		\Interactive Music Hierarchy\Music\InteractiveMusic\Boss\Boss-A\4 - boss-lead1-128bpm		175216
+

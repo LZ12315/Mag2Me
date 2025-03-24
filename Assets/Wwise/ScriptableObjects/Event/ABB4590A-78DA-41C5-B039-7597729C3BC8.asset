@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb4d4f30dd9c5d548ad766db3c5a73d3, type: 3}
+  m_Name: ABB4590A-78DA-41C5-B039-7597729C3BC8
+  m_EditorClassIdentifier: 
+  objectName: Price_Normal
+  id: 4257650534
+  guid: ABB4590A-78DA-41C5-B039-7597729C3BC8

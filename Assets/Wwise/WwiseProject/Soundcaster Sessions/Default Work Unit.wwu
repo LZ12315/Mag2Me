@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{D24C520C-4CBD-4591-82CF-8C7173211C52}" SchemaVersion="119">
+	<SoundcasterSessions>
+		<WorkUnit Name="Default Work Unit" ID="{D24C520C-4CBD-4591-82CF-8C7173211C52}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="test" ID="{912B7F58-F786-4FC2-8E2F-B73911587D0A}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="InteractiveMusic" ID="{F5DA65A0-F75E-4157-B230-A7149E06978C}" WorkUnitID="{22995755-D4C0-45E3-8209-C45D3D75C31E}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="GameOver" ID="{96195917-7D07-47FA-8B33-0A7A5557AE3E}" WorkUnitID="{EBF9C160-CEF5-472D-B0C6-750BB71A2ED2}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="MainMenu" ID="{A78488D1-E28D-4294-95DA-14A7472E1766}" WorkUnitID="{EBF9C160-CEF5-472D-B0C6-750BB71A2ED2}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="SwitchToBoss" ID="{6A1DDDAC-C493-46FA-B3D8-257137F20419}" WorkUnitID="{EBF9C160-CEF5-472D-B0C6-750BB71A2ED2}"/>
+							<Position X="2" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="SwitchToComBat" ID="{AC12781A-B009-4BD7-BE8B-863CC8AC9038}" WorkUnitID="{EBF9C160-CEF5-472D-B0C6-750BB71A2ED2}"/>
+							<Position X="3" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="SwitchToRest" ID="{BAD3B3CB-C865-44C7-9313-26A8662DF2C0}" WorkUnitID="{EBF9C160-CEF5-472D-B0C6-750BB71A2ED2}"/>
+							<Position X="4" Y="1"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true"/>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="End" ID="{52758D4F-9DEF-400B-9B52-25BDC9C1E216}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundcasterSessions>
+</WwiseDocument>
