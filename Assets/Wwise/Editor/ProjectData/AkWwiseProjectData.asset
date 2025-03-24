@@ -344,7 +344,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Music
     guid: 0d5466602564ca48a8bbed9fac8c8f76
     GuidInternal: 
-    m_lastTime: -8584588480648285550
+    m_lastTime: -8584588468253084347
     List:
     - name: Music
       guid: db293ac0a2c04d4091a4ad9c1ef2310a
@@ -360,6 +360,33 @@ MonoBehaviour:
         ObjectType: 7
         guid: db293ac0a2c04d4091a4ad9c1ef2310a
       Path: SoundBanks\Music\Music
+  - PhysicalPath: SoundBanks\SFX.wwu
+    PathAndIcons:
+    - ElementName: SoundBanks
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: SFX
+      ObjectType: 12
+      guid: 14c74d59bd071d4c9c02d9c4ecd37c5e
+    ParentPath: SoundBanks\SFX
+    guid: 14c74d59bd071d4c9c02d9c4ecd37c5e
+    GuidInternal: 
+    m_lastTime: -8584587887801533667
+    List:
+    - name: SFX
+      guid: f03e3b40d8f3bf4da8623450f11a53a1
+      id: 393239870
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SFX
+        ObjectType: 12
+        guid: 14c74d59bd071d4c9c02d9c4ecd37c5e
+      - ElementName: SFX
+        ObjectType: 7
+        guid: f03e3b40d8f3bf4da8623450f11a53a1
+      Path: SoundBanks\SFX\SFX
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
@@ -385,7 +412,7 @@ MonoBehaviour:
     ParentPath: Events\Music
     guid: 60c1f9ebf5ce2d47b0c6750bb71a2ed2
     GuidInternal: 
-    m_lastTime: -8584588474436379190
+    m_lastTime: -8584587932413599005
     List:
     - name: GameOver
       guid: 17591996077dfa478b330a7a5557ae3e
@@ -402,8 +429,8 @@ MonoBehaviour:
         guid: 17591996077dfa478b330a7a5557ae3e
       Path: Events\Music\GameOver
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: MainMenu
       guid: d18884a78de2944295da14a7472e1766
       id: 3604647259
@@ -436,8 +463,8 @@ MonoBehaviour:
         guid: acdd1d6a93c4fa46b3d8257137f20419
       Path: Events\Music\SwitchToBoss
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: SwitchToComBat
       guid: 1a7812ac09b0d74bbe8b863cc8ac9038
       id: 1441103266
@@ -453,8 +480,8 @@ MonoBehaviour:
         guid: 1a7812ac09b0d74bbe8b863cc8ac9038
       Path: Events\Music\SwitchToComBat
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: SwitchToRest
       guid: cbb3d3ba65c8c744931326a8662df2c0
       id: 865805832
@@ -470,8 +497,276 @@ MonoBehaviour:
         guid: cbb3d3ba65c8c744931326a8662df2c0
       Path: Events\Music\SwitchToRest
       maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+  - PhysicalPath: Events\SFX.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: SFX
+      ObjectType: 12
+      guid: afed7f7814ca8141ac14ba81daada642
+    ParentPath: Events\SFX
+    guid: afed7f7814ca8141ac14ba81daada642
+    GuidInternal: 
+    m_lastTime: -8584587891493206741
+    List:
+    - name: Boss_Attack
+      guid: 25e4902a3d0e2e40b2b83948e6633925
+      id: 2883369105
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SFX
+        ObjectType: 12
+        guid: afed7f7814ca8141ac14ba81daada642
+      - ElementName: Boss_Attack
+        ObjectType: 3
+        guid: 25e4902a3d0e2e40b2b83948e6633925
+      Path: Events\SFX\Boss_Attack
+      maxAttenuation: 0
+      maxDuration: 0.7268285
+      minDuration: 0.5139454
+    - name: Boss_Dash
+      guid: bd62625ed82e714f996cb3c1a7d2ace1
+      id: 797248733
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SFX
+        ObjectType: 12
+        guid: afed7f7814ca8141ac14ba81daada642
+      - ElementName: Boss_Dash
+        ObjectType: 3
+        guid: bd62625ed82e714f996cb3c1a7d2ace1
+      Path: Events\SFX\Boss_Dash
+      maxAttenuation: 0
+      maxDuration: 3.14996
+      minDuration: 2.6487901
+    - name: Boss_Fight
+      guid: 7e2fc8b47604f544b2ffdbbadd5f4976
+      id: 3688152761
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SFX
+        ObjectType: 12
+        guid: afed7f7814ca8141ac14ba81daada642
+      - ElementName: Boss_Fight
+        ObjectType: 3
+        guid: 7e2fc8b47604f544b2ffdbbadd5f4976
+      Path: Events\SFX\Boss_Fight
+      maxAttenuation: 0
+      maxDuration: 5.2674165
+      minDuration: 5.2674165
+    - name: Boss_Start
+      guid: ff875bcce8098a45a26230a986e803f0
+      id: 2985974755
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SFX
+        ObjectType: 12
+        guid: afed7f7814ca8141ac14ba81daada642
+      - ElementName: Boss_Start
+        ObjectType: 3
+        guid: ff875bcce8098a45a26230a986e803f0
+      Path: Events\SFX\Boss_Start
+      maxAttenuation: 0
+      maxDuration: 2.2510417
+      minDuration: 2.2510417
+    - name: Enemy_Died
+      guid: 2625dedea7052a4b98dbdd1f143e4fe3
+      id: 3874299596
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SFX
+        ObjectType: 12
+        guid: afed7f7814ca8141ac14ba81daada642
+      - ElementName: Enemy_Died
+        ObjectType: 3
+        guid: 2625dedea7052a4b98dbdd1f143e4fe3
+      Path: Events\SFX\Enemy_Died
+      maxAttenuation: 0
+      maxDuration: 0.48962146
+      minDuration: 0.32678312
+    - name: Enemy_TakeDamage
+      guid: ce261058e182b944b3211989b38af8d8
+      id: 842135496
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SFX
+        ObjectType: 12
+        guid: afed7f7814ca8141ac14ba81daada642
+      - ElementName: Enemy_TakeDamage
+        ObjectType: 3
+        guid: ce261058e182b944b3211989b38af8d8
+      Path: Events\SFX\Enemy_TakeDamage
+      maxAttenuation: 0
+      maxDuration: 1.0037439
+      minDuration: 0.65084743
+    - name: Main_Button
+      guid: 3dc90d2aeecd3a4187b56be3b821c4bf
+      id: 1515637321
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SFX
+        ObjectType: 12
+        guid: afed7f7814ca8141ac14ba81daada642
+      - ElementName: Main_Button
+        ObjectType: 3
+        guid: 3dc90d2aeecd3a4187b56be3b821c4bf
+      Path: Events\SFX\Main_Button
+      maxAttenuation: 0
+      maxDuration: 0.275375
+      minDuration: 0.275375
+    - name: Player_Absorb
+      guid: 8cd553863f418148a2fedece47e560ed
+      id: 2133521774
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SFX
+        ObjectType: 12
+        guid: afed7f7814ca8141ac14ba81daada642
+      - ElementName: Player_Absorb
+        ObjectType: 3
+        guid: 8cd553863f418148a2fedece47e560ed
+      Path: Events\SFX\Player_Absorb
+      maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Player_Died
+      guid: 59b3a24624b879408c27ca4cb15b857d
+      id: 2295196519
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SFX
+        ObjectType: 12
+        guid: afed7f7814ca8141ac14ba81daada642
+      - ElementName: Player_Died
+        ObjectType: 3
+        guid: 59b3a24624b879408c27ca4cb15b857d
+      Path: Events\SFX\Player_Died
+      maxAttenuation: 0
+      maxDuration: 10.616042
+      minDuration: 1.2053334
+    - name: Player_Shoot
+      guid: 08d5dcf11ef634499592ef6bec11ea71
+      id: 4004702906
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SFX
+        ObjectType: 12
+        guid: afed7f7814ca8141ac14ba81daada642
+      - ElementName: Player_Shoot
+        ObjectType: 3
+        guid: 08d5dcf11ef634499592ef6bec11ea71
+      Path: Events\SFX\Player_Shoot
+      maxAttenuation: 0
+      maxDuration: 1.1568612
+      minDuration: 0.16980815
+    - name: Player_TakeDamage
+      guid: 9ddc502a578a4846a9b14e1731781d7d
+      id: 3870290027
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SFX
+        ObjectType: 12
+        guid: afed7f7814ca8141ac14ba81daada642
+      - ElementName: Player_TakeDamage
+        ObjectType: 3
+        guid: 9ddc502a578a4846a9b14e1731781d7d
+      Path: Events\SFX\Player_TakeDamage
+      maxAttenuation: 0
+      maxDuration: 0.7719936
+      minDuration: 0.5458819
+    - name: Player_Win
+      guid: 07bc55c9408e0e47a5485e9f3cb20162
+      id: 1002342001
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SFX
+        ObjectType: 12
+        guid: afed7f7814ca8141ac14ba81daada642
+      - ElementName: Player_Win
+        ObjectType: 3
+        guid: 07bc55c9408e0e47a5485e9f3cb20162
+      Path: Events\SFX\Player_Win
+      maxAttenuation: 0
+      maxDuration: 2.3946667
+      minDuration: 2.3946667
+    - name: Price_Normal
+      guid: 0a59b4abda78c541b0397597729c3bc8
+      id: 4257650534
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SFX
+        ObjectType: 12
+        guid: afed7f7814ca8141ac14ba81daada642
+      - ElementName: Price_Normal
+        ObjectType: 3
+        guid: 0a59b4abda78c541b0397597729c3bc8
+      Path: Events\SFX\Price_Normal
+      maxAttenuation: 0
+      maxDuration: 1.3493216
+      minDuration: 1.1346396
+    - name: Price_Special
+      guid: 309c5b4089406149a1c8ace32a174209
+      id: 2179586256
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SFX
+        ObjectType: 12
+        guid: afed7f7814ca8141ac14ba81daada642
+      - ElementName: Price_Special
+        ObjectType: 3
+        guid: 309c5b4089406149a1c8ace32a174209
+      Path: Events\SFX\Price_Special
+      maxAttenuation: 0
+      maxDuration: 8.614603
+      minDuration: 8.614603
+    - name: Switch_RestOver
+      guid: f11d5dd5530b1240a59b8c2160c10f70
+      id: 1164803900
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: SFX
+        ObjectType: 12
+        guid: afed7f7814ca8141ac14ba81daada642
+      - ElementName: Switch_RestOver
+        ObjectType: 3
+        guid: f11d5dd5530b1240a59b8c2160c10f70
+      Path: Events\SFX\Switch_RestOver
+      maxAttenuation: 0
+      maxDuration: 1.5777084
+      minDuration: 1.5777084
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -809,7 +1104,7 @@ MonoBehaviour:
     m_lastTime: -8584588872070196723
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 010000000600000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001400000017000000
+  ExpandedWaapiItemIds: 010000000600000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000140000001700000022000000c4255e00
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
