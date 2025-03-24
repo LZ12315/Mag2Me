@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{6066540D-6425-48CA-A8BB-ED9FAC8C8F76}" SchemaVersion="119">
+	<SoundBanks>
+		<WorkUnit Name="Music" ID="{6066540D-6425-48CA-A8BB-ED9FAC8C8F76}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Music" ID="{C03A29DB-C0A2-404D-91A4-AD9C1EF2310A}">
+					<ObjectInclusionList>
+						<ObjectRef Name="MainMenu" ID="{A78488D1-E28D-4294-95DA-14A7472E1766}" WorkUnitID="{EBF9C160-CEF5-472D-B0C6-750BB71A2ED2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SwitchToRest" ID="{BAD3B3CB-C865-44C7-9313-26A8662DF2C0}" WorkUnitID="{EBF9C160-CEF5-472D-B0C6-750BB71A2ED2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SwitchToBoss" ID="{6A1DDDAC-C493-46FA-B3D8-257137F20419}" WorkUnitID="{EBF9C160-CEF5-472D-B0C6-750BB71A2ED2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="GameOver" ID="{96195917-7D07-47FA-8B33-0A7A5557AE3E}" WorkUnitID="{EBF9C160-CEF5-472D-B0C6-750BB71A2ED2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SwitchToComBat" ID="{AC12781A-B009-4BD7-BE8B-863CC8AC9038}" WorkUnitID="{EBF9C160-CEF5-472D-B0C6-750BB71A2ED2}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

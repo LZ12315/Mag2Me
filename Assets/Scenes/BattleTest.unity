@@ -257,7 +257,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magPower: 0
   radius: 1
-  velocityClamp: 30
+  minSpeed: 2
+  speedClamp: 30
 --- !u!60 &104584932
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -364,8 +365,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnet: {fileID: 0}
   equipHolder: {fileID: 0}
-  endurance: 3
-  bulletPower: 3
+  physicCharacter: {fileID: 0}
+  equipCollider: {fileID: 0}
+  trailRenderer: {fileID: 0}
+  maxEndurance: 3
+  currentEndurance: 0
+  defencePower: 1
+  attackPower: 1
+  attackNum: 1
   serviceable: 0
   isBullet: 0
   attackPower: 1
@@ -402,6 +409,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b54d698a06aea4a9fb47e6e2291b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  physicakCharacter: {fileID: 0}
+  character: {fileID: 0}
   shootPower: 5
   scatterAngle: 360
   equipments: []
@@ -417,19 +426,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7369825cdf146844c805f0d65ed1b762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magCollider: {fileID: 0}
   equipHolder: {fileID: 0}
+  magAnimation: {fileID: 0}
   snapPower: 1
   snapAngle: 60
   snapDistance: 2
-  magnetHoldRadius: 4
+  ObjectBeingAttract: []
   ObjectinPlace: []
+  maxAttractDuration: 6
   farDistanceCoef: 0.7
   midDistanceCoef: 0.55
   closeDistanceCoef: 0.25
   strongAccelRange: 0.05
-  minAcceleration: 0.5
-  midAcceleration: 8
-  maxAcceleration: 80
 --- !u!60 &271219040
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -518,8 +527,9 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420034}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -527,14 +537,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,6 +647,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0840528a041a6684d9f35fe84a70bad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDefaultListener: 1
+  listenerId: 0
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78104345b91791045bcff240ae040064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 0
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!1 &587524820
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,8 +818,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnet: {fileID: 0}
   equipHolder: {fileID: 0}
-  endurance: 3
-  bulletPower: 1
+  physicCharacter: {fileID: 0}
+  equipCollider: {fileID: 0}
+  trailRenderer: {fileID: 0}
+  maxEndurance: 3
+  currentEndurance: 0
+  defencePower: 1
+  attackPower: 1
+  attackNum: 1
   serviceable: 0
   isBullet: 0
   defencePower: 1
@@ -799,7 +843,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magPower: 0
   radius: 1
-  velocityClamp: 30
+  minSpeed: 2
+  speedClamp: 30
 --- !u!60 &591757235
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1022,19 +1067,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7369825cdf146844c805f0d65ed1b762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magCollider: {fileID: 0}
   equipHolder: {fileID: 0}
+  magAnimation: {fileID: 0}
   snapPower: 1
   snapAngle: 60
   snapDistance: 5
-  magnetHoldRadius: 4
+  ObjectBeingAttract: []
   ObjectinPlace: []
+  maxAttractDuration: 6
   farDistanceCoef: 0.7
   midDistanceCoef: 0.55
   closeDistanceCoef: 0.35
   strongAccelRange: 0.05
-  minAcceleration: 0.5
-  midAcceleration: 8
-  maxAcceleration: 80
 --- !u!114 &689312950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,6 +1096,7 @@ MonoBehaviour:
   canMove: 1
   mouseControl: 1
   shootPressLimit: 1.5
+  loookDir: {x: 1, y: 0}
 --- !u!114 &689312951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1063,6 +1109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b54d698a06aea4a9fb47e6e2291b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  physicakCharacter: {fileID: 0}
+  character: {fileID: 0}
   shootPower: 1
   scatterAngle: 360
   equipments: []
@@ -1260,7 +1308,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magPower: 0
   radius: 1
-  velocityClamp: 30
+  minSpeed: 2
+  speedClamp: 30
 --- !u!114 &788698997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1275,8 +1324,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnet: {fileID: 0}
   equipHolder: {fileID: 0}
-  endurance: 1
-  bulletPower: 3
+  physicCharacter: {fileID: 0}
+  equipCollider: {fileID: 0}
+  trailRenderer: {fileID: 0}
+  maxEndurance: 3
+  currentEndurance: 0
+  defencePower: 1
+  attackPower: 1
+  attackNum: 1
   serviceable: 0
   isBullet: 0
 --- !u!1 &991549863
@@ -1616,7 +1671,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magPower: 0
   radius: 1
-  velocityClamp: 30
+  minSpeed: 2
+  speedClamp: 30
 --- !u!60 &1324754347
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1723,8 +1779,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnet: {fileID: 0}
   equipHolder: {fileID: 0}
-  endurance: 3
-  bulletPower: 1
+  physicCharacter: {fileID: 0}
+  equipCollider: {fileID: 0}
+  trailRenderer: {fileID: 0}
+  maxEndurance: 3
+  currentEndurance: 0
+  defencePower: 1
+  attackPower: 1
+  attackNum: 1
   serviceable: 0
   isBullet: 0
   defencePower: 1
@@ -1762,7 +1824,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magPower: 0
   radius: 1
-  velocityClamp: 30
+  minSpeed: 2
+  speedClamp: 30
 --- !u!60 &1388015229
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1869,8 +1932,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnet: {fileID: 0}
   equipHolder: {fileID: 0}
-  endurance: 1
-  bulletPower: 3
+  physicCharacter: {fileID: 0}
+  equipCollider: {fileID: 0}
+  trailRenderer: {fileID: 0}
+  maxEndurance: 3
+  currentEndurance: 0
+  defencePower: 1
+  attackPower: 1
+  attackNum: 1
   serviceable: 0
   isBullet: 0
 --- !u!1 &1510298827
@@ -2041,6 +2110,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1768845864
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1768845866}
+  - component: {fileID: 1768845865}
+  m_Layer: 0
+  m_Name: WwiseGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1768845865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768845864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e877a2342b4309a46a8844ad4d569e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationSettings: {fileID: 11400000, guid: e7a0933654aa25a448d5c0bb5e8f6c99, type: 2}
+  basePath: 
+  language: 
+  defaultPoolSize: 0
+  lowerPoolSize: 0
+  streamingPoolSize: 0
+  memoryCutoffThreshold: 0
+  monitorPoolSize: 0
+  monitorQueuePoolSize: 0
+  callbackManagerBufferSize: 0
+  spatialAudioPoolSize: 0
+  maxSoundPropagationDepth: 0
+  engineLogging: 0
+--- !u!4 &1768845866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768845864}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1815248585
 GameObject:
   m_ObjectHideFlags: 0
@@ -2075,7 +2201,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magPower: 0
   radius: 1
-  velocityClamp: 30
+  minSpeed: 2
+  speedClamp: 30
 --- !u!60 &1815248587
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2182,8 +2309,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnet: {fileID: 0}
   equipHolder: {fileID: 0}
-  endurance: 1
-  bulletPower: 3
+  physicCharacter: {fileID: 0}
+  equipCollider: {fileID: 0}
+  trailRenderer: {fileID: 0}
+  maxEndurance: 3
+  currentEndurance: 0
+  defencePower: 1
+  attackPower: 1
+  attackNum: 1
   serviceable: 0
   isBullet: 0
 --- !u!1 &1921207115
@@ -2405,7 +2538,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magPower: 0
   radius: 1
-  velocityClamp: 30
+  minSpeed: 2
+  speedClamp: 30
 --- !u!60 &2053245962
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2512,8 +2646,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnet: {fileID: 0}
   equipHolder: {fileID: 0}
-  endurance: 3
-  bulletPower: 1
+  physicCharacter: {fileID: 0}
+  equipCollider: {fileID: 0}
+  trailRenderer: {fileID: 0}
+  maxEndurance: 3
+  currentEndurance: 0
+  defencePower: 1
+  attackPower: 1
+  attackNum: 1
   serviceable: 0
   isBullet: 0
   defencePower: 1
@@ -2633,3 +2773,4 @@ SceneRoots:
   - {fileID: 1324754349}
   - {fileID: 2053245964}
   - {fileID: 591757237}
+  - {fileID: 1768845866}
