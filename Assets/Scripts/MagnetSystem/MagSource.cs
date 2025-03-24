@@ -40,9 +40,9 @@ public class MagSourceInfo
 [RequireComponent(typeof(Collider2D))]
 public class MagSource : MonoBehaviour
 {
-    [SerializeField] private Collider2D magCollider;
-    [SerializeField] private EquipHolder equipHolder;
-    [SerializeField] private IMagSourceControl controller;
+    private Collider2D magCollider;
+    private EquipHolder equipHolder;
+    private IMagSourceControl controller;
 
     [Header("磁源设置")]
     [SerializeField] private MagSourceInfo sourceInfo = new MagSourceInfo();
@@ -54,11 +54,11 @@ public class MagSource : MonoBehaviour
     Vector2 snapDir = Vector2.zero;
     bool snap = false;
 
-
     private void Start()
     {
         equipHolder = this?.GetComponent<EquipHolder>();
         controller = this?.GetComponent<IMagSourceControl>();
+        magCollider = GetComponent<Collider2D>();
 
         Physics2D.defaultContactOffset = 0.01f;
     }
@@ -130,7 +130,7 @@ public class MagSource : MonoBehaviour
     void DetectMagInPlace()
     {
         ContactFilter2D contactFilter = new ContactFilter2D();
-        //contactFilter.SetLayerMask(LayerMask.GetMask("MagnetLayer"));
+        contactFilter.SetLayerMask(LayerMask.GetMask("MagnetLayer"));
         contactFilter.useTriggers = true;
         Collider2D[] collisions = new Collider2D[20];
 

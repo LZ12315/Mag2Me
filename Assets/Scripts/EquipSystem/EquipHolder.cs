@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class EquipHolder : MonoBehaviour
 {
-    [SerializeField] private PhysicalCharacter physicalCharacter;
-    [SerializeField] private Character character;
-
     [Header("∑¿”˘…Ë÷√")]
     [SerializeField] private bool defenceBreak;
 
@@ -13,12 +10,6 @@ public class EquipHolder : MonoBehaviour
     [SerializeField] private float shootPower = 10f;
     [SerializeField] private float scatterAngle = 360f;
     [SerializeField] private List<Equip> equipments = new List<Equip>();
-
-    private void Start()
-    {
-        physicalCharacter = GetComponent<PhysicalCharacter>();
-        character = GetComponent<Character>();
-    }
 
     public void ArmEquip(Transform equip)
     {
@@ -47,7 +38,7 @@ public class EquipHolder : MonoBehaviour
         return tmpEquip;
     }
 
-    public void HolderDefence(Equip attackEquip, int damage)
+    public int HolderDefence(int damage)
     {
         int attackTime = damage;
         if(!defenceBreak)
@@ -64,12 +55,7 @@ public class EquipHolder : MonoBehaviour
 
         if (attackTime <= 0)
             attackTime = 0;
-
-        Vector2 forceDir = (Vector2)(transform.position - attackEquip.transform.position);
-        if (physicalCharacter != null)
-            physicalCharacter.AddForceImpluse(forceDir, 1f);
-        if (character != null)
-            character.GetDamage(attackTime);
+        return attackTime;
     }
 
     public void Shoot(Vector2 lookDir)

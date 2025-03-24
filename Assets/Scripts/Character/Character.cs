@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] protected MagAnimation magAnimation;
-    [SerializeField] protected EquipHolder equipHolder;
+    protected MagAnimation magAnimation;
+    protected EquipHolder equipHolder;
+    protected PhysicalCharacter physicalCharacter;
 
     [Header("½ÇÉ«ÊôÐÔ")]
     [SerializeField] protected int maxHealth = 3;
@@ -17,22 +18,25 @@ public class Character : MonoBehaviour
         currentHealth = maxHealth;
         magAnimation = GetComponentInChildren<MagAnimation>();
         equipHolder = GetComponent<EquipHolder>();
+        physicalCharacter = GetComponent<PhysicalCharacter>();
     }
 
-    public void GetDamage(int damage)
+    public void GetDamage(Transform attackObject, int damage)
     {
-        currentHealth -= damage;
-        if (currentHealth <= 0 || imediateDeath)
-        {
-            Dead();
-            return;
-        }
+        int finalDamage = equipHolder.HolderDefence(damage);
+        currentHealth -= finalDamage;
+
+        Vector2 forceDir = (Vector2)(transform.position - attackObject.position);
+        if (physicalCharacter != null)
+            physicalCharacter.AddForceImpluse(forceDir, 1f);
         magAnimation.HitVFX(this);
+
+        if (currentHealth <= 0 || imediateDeath)
+            Dead();
     }
 
-    protected void Dead()
+    protected virtual void Dead()
     {
-        EventCenter.Instance.EventTrigger("Combo");
         magAnimation.DeadVFX(this);
         StartCoroutine(DestroyGameObject());
     }

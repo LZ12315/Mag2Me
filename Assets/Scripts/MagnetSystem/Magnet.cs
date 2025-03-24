@@ -63,7 +63,7 @@ public class Magnet : MonoBehaviour
         isAttracted = false;
         magSource = null;
         Vector2 snapDir = snapSource.transform.position - transform.position;
-        physicsCharacter.AddForce(snapDir, 0.15f, 0.5f);
+        physicsCharacter.AddForceImpluse(snapDir, 0.15f);
     }
 
     public void SnapFinalize(MagSource snapSource)
@@ -78,6 +78,7 @@ public class Magnet : MonoBehaviour
 
     public void MagnetRelease(Equip equip)
     {
+        gameObject.layer = LayerMask.NameToLayer("Default");
         magnetParent.ReleaseMagnet(this);
         magnetParent = null;
         transform.SetParent(null);

@@ -14,7 +14,7 @@ public enum MoveType
 
 public class PhysicalCharacter : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
 
     [Header("变换参数")]
     [SerializeField] private Vector2 lastOrientation;
@@ -22,12 +22,9 @@ public class PhysicalCharacter : MonoBehaviour
     [Header("移动参数")]
     [SerializeField] private MoveType moveType = MoveType.Idle;
     [SerializeField] private float velocityCorrection = 0f;
-    [SerializeField] private float moveSpeed = 1;
-    [SerializeField] private Vector2 moveDir = Vector2.zero;
-    [SerializeField] private Transform target;
 
     [Header("受力参数")]
-    [SerializeField] private float impluseForceTime = 0.2f;
+    [SerializeField] private float impluseForceTime = 0.4f;
 
     private void Start()
     {
@@ -37,11 +34,12 @@ public class PhysicalCharacter : MonoBehaviour
         canPhysicalMove = true;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        CalculateOrien();
+
         if(canPhysicalMove)
             Move();
-        CalculateOrien();
     }
 
     #region 变换
@@ -56,7 +54,7 @@ public class PhysicalCharacter : MonoBehaviour
         if(!Mathf.Approximately(orientation.magnitude, 0))
             lastOrientation = orientation;
 
-        CharacterFlip();
+        //CharacterFlip();
         lastPos = transform.position;
     }
 
@@ -75,7 +73,10 @@ public class PhysicalCharacter : MonoBehaviour
     #region 移动
 
     private Tweener tweener;
-    [SerializeField] bool canPhysicalMove;
+    bool canPhysicalMove;
+    private float moveSpeed = 1;
+    private Vector2 moveDir = Vector2.zero;
+    private Transform target;
 
     public bool isMoving => tweener.IsActive();
 

@@ -20,7 +20,7 @@ public class ComboSignal : MonoBehaviour
 
     private void Start()
     {
-        EventCenter.Instance.AddEventListener("Combo", RefreshCounter);
+        EventCenter.Instance.AddEventListener(EventName.Combo.ToString(), RefreshCounter);
         mask = GetComponentInChildren<RectMask2D>();
         maskTrans = mask.GetComponent<RectTransform>();
 

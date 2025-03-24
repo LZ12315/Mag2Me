@@ -7,8 +7,6 @@ using UnityEngine.Events;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-
-
 public class BuffManager : MonoBehaviour
 {
     [Serializable]
@@ -44,12 +42,13 @@ public class BuffManager : MonoBehaviour
 
     private void Start()
     {
-        EventCenter.Instance.AddEventListener("Combo", Combo);
+        EventCenter.Instance.AddEventListener<GameObject>(EventName.EnemyDead.ToString(), (value) => Combo());
     }
 
     void Combo()
     {
         comboNum++;
+        EventCenter.Instance.EventTrigger(EventName.Combo.ToString());
         foreach (var buff in buffSettings)
         {
             if (comboNum == buff.ComboNum)
@@ -99,13 +98,19 @@ public class BuffManager : MonoBehaviour
 
     void HealthUp(int value)
     {
-        Player playerCharacter = GameObject.FindWithTag("Player").GetComponent<Player>();
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player == null) return;
+
+        PlayerCharacter playerCharacter = player.GetComponent<PlayerCharacter>();
         playerCharacter.HealthChange(this, value);
     }
 
     void PowerUp(int value)
     {
-        EquipHolder playerHolder = GameObject.FindWithTag("Player").GetComponent<EquipHolder>();
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player == null) return;
+
+        EquipHolder playerHolder = player.GetComponent<EquipHolder>();
         playerHolder.PowerUp(this, value);
     }
 
@@ -146,7 +151,10 @@ public class BuffManager : MonoBehaviour
 
     IEnumerator InfinityBullet(float duration)
     {
-        MagSource playerSource = GameObject.FindWithTag("Player").GetComponent<MagSource>();
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player == null) yield break;
+
+        MagSource playerSource = player.GetComponent<MagSource>();
         MagSourceInfo magSourceInfo = playerSource.GetSourceInfo(this);
 
         int maxHoldNum = magSourceInfo.maxHoldNum;

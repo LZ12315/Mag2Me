@@ -5,14 +5,21 @@ using UnityEngine.InputSystem;
 
 public class EnemyController : MonoBehaviour, IMagSourceControl
 {
+    protected Collider2D enemyCollider;
     protected MagSource magSource;
     protected EquipHolder equipHolder;
     protected PhysicalCharacter physicalCharacter;
-    [SerializeField] protected Collider2D enemyCollider;
 
     [Header("µ–»À…Ë÷√")]
     [SerializeField] protected float moveSpeed = 1f;
     [SerializeField] protected float snapDuration = 0.5f;
+    [SerializeField] protected float instantiateWaitTime = 1.5f;
+    [SerializeField] protected bool canAct;
+
+    [Header("π•ª˜ Ù–‘")]
+    [SerializeField] protected int attackPower = 1;
+    [SerializeField] protected float attackInterval = 0.25f;
+    [SerializeField] protected float attackRefreshTime = 0.5f;
 
     protected Transform player;
 
@@ -26,9 +33,16 @@ public class EnemyController : MonoBehaviour, IMagSourceControl
         player = GameObject.FindWithTag("Player").transform;
     }
 
-    protected void Start()
+    protected virtual void Start()
     {
-        StartCoroutine(ArmEquip());
+        //StartCoroutine(ArmEquip());
+        StartCoroutine(WaitToStart());
+    }
+
+    IEnumerator WaitToStart()
+    {
+        yield return new WaitForSeconds(instantiateWaitTime);
+        canAct = true;
     }
 
     IEnumerator ArmEquip()

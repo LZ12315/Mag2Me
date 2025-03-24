@@ -23,7 +23,7 @@ public class Equip: MonoBehaviour
     [SerializeField] protected bool isBullet;
 
     int attackCounter = 0;
-    List<EquipHolder> lastAttackedHolder = new List<EquipHolder>();
+    List<GameObject> attackedTarget = new List<GameObject>();
 
     protected virtual void Start()
     {
@@ -48,7 +48,7 @@ public class Equip: MonoBehaviour
     public void EquipArmed(EquipHolder holder)
     {
         equipHolder = holder;
-        lastAttackedHolder.Clear();
+        attackedTarget.Clear();
         serviceable = true;
     }
 
@@ -56,10 +56,10 @@ public class Equip: MonoBehaviour
     {
         if (magnet != null)
             magnet.MagnetRelease(this);
-        if (equipHolder = holder)
+        if (equipHolder == holder)
         {
-            lastAttackedHolder.Add(equipHolder);
             equipHolder = null;
+            attackedTarget.Add(holder.gameObject);
         }
     }
 
@@ -115,11 +115,12 @@ public class Equip: MonoBehaviour
         for (int i = 0; i < overlapCount; i++)
         {
             if (collisions[i].gameObject == gameObject) continue;
-            EquipHolder target = collisions[i]?.GetComponent<EquipHolder>();
-            if (target == null || lastAttackedHolder.Contains(target)) continue;
+            Character target = collisions[i]?.GetComponent<Character>();
+            if (target == null || attackedTarget.Contains(target.gameObject)) continue;
 
-            target.HolderDefence(this, attackPower);
+            target.GetDamage(transform, attackPower);
             attackCounter++;
+            attackedTarget.Add(target.gameObject);
             if (attackCounter >= attackNum)
             {
                 StartCoroutine(EquipDestroy());

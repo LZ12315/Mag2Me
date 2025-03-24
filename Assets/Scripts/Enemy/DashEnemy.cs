@@ -2,22 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChaseEnemy :EnemyController
+public class DashEnemy : EnemyController
 {
+    [Header("≥Â¥Ã…Ë÷√")]
+    [SerializeField] private float dashInterval = 2f;
+    [SerializeField] private float dashChargeDuration = 0.5f;
+    [SerializeField] private float dashPower = 2f;
+
+    float waitDashCounter = 0;
     List<PlayerCharacter> attackedObjects = new List<PlayerCharacter>();
 
     private void Update()
     {
+        AttckDetect();
+
         if (!canAct) return;
 
+        TryDash();
         ChaseTarget();
-        AttckDetect();
+    }
+
+    void TryDash()
+    {
+        if (player == null) return;
+
+        waitDashCounter += Time.deltaTime;
+        if(waitDashCounter >= dashInterval)
+            StartCoroutine(Dash());
+    }
+
+    IEnumerator Dash()
+    {
+        physicalCharacter.AddForce(Vector2.zero, 0, dashChargeDuration);
+        canAct = false;
+
+        yield return new WaitForSeconds(dashChargeDuration);
+
+        Vector2 dashDir = (Vector2)(player.position - transform.position).normalized;
+        physicalCharacter.AddForceImpluse(dashDir, dashPower);
+
+        canAct = true;
+        waitDashCounter = 0;
     }
 
     void ChaseTarget()
     {
-        if(player == null) return;
-   
+        if (player == null) return;
         Vector2 moveDir = (Vector2)(player.position - transform.position).normalized;
         physicalCharacter.SetVelocity(moveDir, moveSpeed);
     }
@@ -38,7 +68,7 @@ public class ChaseEnemy :EnemyController
             attackedObjects.Add(playerCharacter);
             StartCoroutine(AttackInterval());
 
-            Vector2 forceDir = (Vector2)(transform.position - playerCharacter.transform.position);
+            Vector2 forceDir = (Vector2)(transform.position - playerCharacter.transform.position).normalized;
             if (physicalCharacter != null)
                 physicalCharacter.AddForceImpluse(forceDir, 1.5f);
         }
@@ -59,5 +89,4 @@ public class ChaseEnemy :EnemyController
         yield return new WaitForSeconds(attackRefreshTime);
         attackedObjects.Clear();
     }
-
 }
