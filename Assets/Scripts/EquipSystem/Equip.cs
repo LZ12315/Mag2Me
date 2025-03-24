@@ -23,7 +23,7 @@ public class Equip: MonoBehaviour
     [SerializeField] protected bool isBullet;
 
     int attackCounter = 0;
-    List<GameObject> attackedTarget = new List<GameObject>();
+    List<GameObject> targetsCanNotAttack = new List<GameObject>();
 
     protected virtual void Start()
     {
@@ -48,18 +48,25 @@ public class Equip: MonoBehaviour
     public void EquipArmed(EquipHolder holder)
     {
         equipHolder = holder;
-        attackedTarget.Clear();
+        targetsCanNotAttack.Clear();
         serviceable = true;
     }
 
-    void EquipRelieve(EquipHolder holder)
+    void EquipBreak()
+    {
+        serviceable = false;
+        EquipRelieve(equipHolder);
+    }
+
+    public void EquipRelieve(EquipHolder holder)
     {
         if (magnet != null)
             magnet.MagnetRelease(this);
         if (equipHolder == holder)
         {
+            equipHolder.ReleaseEquip(this);
             equipHolder = null;
-            attackedTarget.Add(holder.gameObject);
+            targetsCanNotAttack.Add(holder.gameObject);
         }
     }
 
@@ -68,6 +75,13 @@ public class Equip: MonoBehaviour
         if(currentEndurance <= 0)
             serviceable = false;
         return serviceable;
+    }
+
+    public void EquipDamage(EquipHolder holder)
+    {
+        currentEndurance--;
+        if (currentEndurance <= 0)
+            EquipBreak();
     }
 
     IEnumerator EquipDestroy()
@@ -84,14 +98,6 @@ public class Equip: MonoBehaviour
     }
 
     #region 装备攻击
-    public void EquipDamage(EquipHolder holder)
-    {
-        currentEndurance--;
-        if (currentEndurance <= 0)
-        {
-            serviceable = false;
-        }
-    }
 
     public void ShootEquip(EquipHolder holder, Vector2 dir, float speed)
     {
@@ -100,7 +106,7 @@ public class Equip: MonoBehaviour
         isBullet = true;
         serviceable = false;
 
-        if(trailRenderer != null)
+        if (trailRenderer != null)
             trailRenderer.enabled = true;
         physicCharacter.SetVelocity(dir, speed);
     }
@@ -116,11 +122,11 @@ public class Equip: MonoBehaviour
         {
             if (collisions[i].gameObject == gameObject) continue;
             Character target = collisions[i]?.GetComponent<Character>();
-            if (target == null || attackedTarget.Contains(target.gameObject)) continue;
+            if (target == null || targetsCanNotAttack.Contains(target.gameObject)) continue;
 
             target.GetDamage(transform, attackPower);
             attackCounter++;
-            attackedTarget.Add(target.gameObject);
+            targetsCanNotAttack.Add(target.gameObject);
             if (attackCounter >= attackNum)
             {
                 StartCoroutine(EquipDestroy());

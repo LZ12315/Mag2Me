@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.WSA;
 
 public class EquipHolder : MonoBehaviour
 {
@@ -18,6 +20,20 @@ public class EquipHolder : MonoBehaviour
 
         equipments.Add(newEquip);
         newEquip.EquipArmed(this);
+    }
+
+    public void ReleaseAllEquip()
+    {
+        foreach (var equip in equipments)
+        {
+            equip.EquipRelieve(this);
+        }
+    }
+
+    public void ReleaseEquip(Equip equip)
+    {
+        if(equipments.Contains(equip))
+            equipments.Remove(equip);
     }
 
     Equip GetEquip()
@@ -43,7 +59,7 @@ public class EquipHolder : MonoBehaviour
         int attackTime = damage;
         if(!defenceBreak)
         {
-            foreach (var equip in equipments)
+            foreach (var equip in equipments.ToList())
             {
                 if (equip.IsServiceable())
                 {

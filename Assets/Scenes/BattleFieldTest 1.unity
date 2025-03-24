@@ -20222,7 +20222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1212316471}
-  - component: {fileID: 1212316470}
+  - component: {fileID: 1212316472}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -20230,35 +20230,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1212316470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1212316469}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21f1f92fff2baae4c86ba0d0957045f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentWaveCount: 0
-  maxEnemiesAllowed: 0
-  reachedMaxEnemies: 0
-  enemiesAlive: 0
-  enemiesDead: 0
-  waveInterval: 0
-  spawnerTimer: 0
-  waveDuration: 0
-  waveTimer: 0
-  enemySpawnBounds: []
-  waves:
-  - waveName: Wave1
-    spawnCount: 0
-    waveQuota: 0
-    spawnInterval: 0
-    placeToSpawn: []
-    enemyGroups: []
 --- !u!4 &1212316471
 Transform:
   m_ObjectHideFlags: 0
@@ -20274,6 +20245,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1212316472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212316469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd024088edf20544bc186752eda7189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemySpawnInterval: 2
+  minSpawnRadius: 3
+  maxSpawnRadius: 6
+  waveCount: 0
+  currentWave:
+    waveName: 
+    waveInterval: 0
+    enemyGroups: []
+    enemyNumToSpawn: 0
+    enemyNumSpawned: 0
+    enemyAlive: []
+  waves: []
 --- !u!1 &1213348423
 GameObject:
   m_ObjectHideFlags: 0

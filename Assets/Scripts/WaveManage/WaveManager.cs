@@ -80,7 +80,7 @@ public class WaveManager : MonoBehaviour
             for (int i = 0; i< group.spawnNum; i++)
             {
                 GameObject newEnemy = Instantiate(group.enemyprefab, GetSpawnPlace(), Quaternion.identity);
-                newEnemy.name = $"Enemy_{System.Guid.NewGuid()}";
+
                 currentWave.enemyAlive.Add(newEnemy);
                 currentWave.enemyNumSpawned++;
                 yield return EnemySpawnInterval;
