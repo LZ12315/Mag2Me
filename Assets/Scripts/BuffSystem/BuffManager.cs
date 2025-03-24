@@ -121,7 +121,7 @@ public class BuffManager : MonoBehaviour
         {
             if (!obj.activeInHierarchy) continue;
 
-            Enemy enemyCharacter = obj?.GetComponent<Enemy>();
+            EnemyCharacter enemyCharacter = obj?.GetComponent<EnemyCharacter>();
             if (enemyCharacter != null)
                 enemyCharacter.SetimediateDead(this, true);
         }
@@ -133,7 +133,7 @@ public class BuffManager : MonoBehaviour
         {
             if (!obj.activeInHierarchy || !gameObject.activeSelf) continue;
 
-            Enemy enemyCharacter = obj?.GetComponent<Enemy>();
+            EnemyCharacter enemyCharacter = obj?.GetComponent<EnemyCharacter>();
             if (enemyCharacter != null)
                 enemyCharacter.SetimediateDead(this, false);
         }

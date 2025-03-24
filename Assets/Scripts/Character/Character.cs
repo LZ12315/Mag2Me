@@ -5,6 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [SerializeField] protected MagAnimation magAnimation;
+    [SerializeField] protected EquipHolder equipHolder;
 
     [Header("½ÇÉ«ÊôÐÔ")]
     [SerializeField] protected int maxHealth = 3;
@@ -15,6 +16,7 @@ public class Character : MonoBehaviour
     {
         currentHealth = maxHealth;
         magAnimation = GetComponentInChildren<MagAnimation>();
+        equipHolder = GetComponent<EquipHolder>();
     }
 
     public void GetDamage(int damage)

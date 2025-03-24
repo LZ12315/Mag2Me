@@ -130,7 +130,7 @@ public class MagSource : MonoBehaviour
     void DetectMagInPlace()
     {
         ContactFilter2D contactFilter = new ContactFilter2D();
-        contactFilter.SetLayerMask(LayerMask.GetMask("MagnetLayer"));
+        //contactFilter.SetLayerMask(LayerMask.GetMask("MagnetLayer"));
         contactFilter.useTriggers = true;
         Collider2D[] collisions = new Collider2D[20];
 

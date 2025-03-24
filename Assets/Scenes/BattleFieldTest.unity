@@ -5982,8 +5982,8 @@ GameObject:
   - component: {fileID: 171829706}
   - component: {fileID: 171829705}
   - component: {fileID: 171829704}
-  - component: {fileID: 171829702}
   - component: {fileID: 171829707}
+  - component: {fileID: 171829708}
   - component: {fileID: 171829701}
   - component: {fileID: 171829700}
   - component: {fileID: 171829699}
@@ -6059,21 +6059,6 @@ MonoBehaviour:
     strongAccelRange: 0.1
   MagnetBeingAttract: []
   MagnetInPlace: []
---- !u!114 &171829702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171829698}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b27c9fc3cf38fc940ac0d916f00da28e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 0.1
-  snapDuration: 0.5
-  attackInterval: 2
 --- !u!58 &171829704
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6177,6 +6162,20 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 0
   imediateDeath: 0
+--- !u!114 &171829708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171829698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c3482c9b487f44a9094d031c3ce747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  snapDuration: 0.5
 --- !u!1 &186918633
 GameObject:
   m_ObjectHideFlags: 0
@@ -80030,7 +80029,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.1
   snapDuration: 0.5
-  attackInterval: 2
 --- !u!58 &1362007424
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -93982,7 +93980,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.1
   snapDuration: 0.5
-  attackInterval: 2
 --- !u!58 &1767234255
 CircleCollider2D:
   m_ObjectHideFlags: 0

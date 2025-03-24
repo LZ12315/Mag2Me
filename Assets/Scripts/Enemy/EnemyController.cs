@@ -5,60 +5,42 @@ using UnityEngine.InputSystem;
 
 public class EnemyController : MonoBehaviour, IMagSourceControl
 {
-    private MagSource snapSource;
-    private EquipHolder equipHolder;
-    private PhysicalCharacter physicalCharacter;
+    protected MagSource magSource;
+    protected EquipHolder equipHolder;
+    protected PhysicalCharacter physicalCharacter;
+    [SerializeField] protected Collider2D enemyCollider;
 
     [Header("µ–»À…Ë÷√")]
-    [SerializeField] private float moveSpeed = 1f;
-    [SerializeField] private float snapDuration = 0.5f;
-    [SerializeField] private float attackInterval = 0.5f;
+    [SerializeField] protected float moveSpeed = 1f;
+    [SerializeField] protected float snapDuration = 0.5f;
 
-    Transform player;
+    protected Transform player;
 
-    private void Awake()
+    protected void Awake()
     {
         equipHolder = GetComponent<EquipHolder>();
-        snapSource = GetComponent<MagSource>();
+        magSource = GetComponent<MagSource>();
         physicalCharacter = GetComponent<PhysicalCharacter>();
+        enemyCollider = GetComponent<Collider2D>();
 
         player = GameObject.FindWithTag("Player").transform;
     }
 
-    private void Start()
+    protected void Start()
     {
         StartCoroutine(ArmEquip());
     }
 
-    float attackCounter = 0;
-    private void Update()
-    {
-        if (player == null) return;
-        Vector2 moveDir = (Vector2)(player.position - transform.position);
-        physicalCharacter.SetVelocity(moveDir, moveSpeed);
-
-        attackCounter += Time.deltaTime;
-        if(attackCounter >= attackInterval)
-        {
-            Attack();
-            attackCounter = 0;
-        }
-    }
-
     IEnumerator ArmEquip()
     {
-        snapSource.ExcuteSnap(this);
+        magSource.ExcuteSnap(this);
         yield return new WaitForSeconds(snapDuration);
-        snapSource.SnapStop(this);
+        magSource.SnapStop(this);
     }
 
     public void SnapObject(MagSource source)
     {
-
+        if (source != magSource) return;
     }
 
-    void Attack()
-    {
-        equipHolder.Shoot(player.transform.position);
-    }
 }

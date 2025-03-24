@@ -49,7 +49,6 @@ public class EquipHolder : MonoBehaviour
 
     public void HolderDefence(Equip attackEquip, int damage)
     {
-        //Debug.Log(gameObject.name + " get hurt,Damage is " + damage);
         int attackTime = damage;
         if(!defenceBreak)
         {

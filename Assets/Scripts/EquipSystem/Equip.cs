@@ -23,7 +23,7 @@ public class Equip: MonoBehaviour
     [SerializeField] protected bool isBullet;
 
     int attackCounter = 0;
-    List<EquipHolder> holdersWUdi = new List<EquipHolder>();
+    List<EquipHolder> lastAttackedHolder = new List<EquipHolder>();
 
     protected virtual void Start()
     {
@@ -48,7 +48,7 @@ public class Equip: MonoBehaviour
     public void EquipArmed(EquipHolder holder)
     {
         equipHolder = holder;
-        holdersWUdi.Clear();
+        lastAttackedHolder.Clear();
         serviceable = true;
     }
 
@@ -58,7 +58,7 @@ public class Equip: MonoBehaviour
             magnet.MagnetRelease(this);
         if (equipHolder = holder)
         {
-            holdersWUdi.Add(equipHolder);
+            lastAttackedHolder.Add(equipHolder);
             equipHolder = null;
         }
     }
@@ -116,7 +116,7 @@ public class Equip: MonoBehaviour
         {
             if (collisions[i].gameObject == gameObject) continue;
             EquipHolder target = collisions[i]?.GetComponent<EquipHolder>();
-            if (target == null || target == equipHolder || holdersWUdi.Contains(target)) continue;
+            if (target == null || lastAttackedHolder.Contains(target)) continue;
 
             target.HolderDefence(this, attackPower);
             attackCounter++;
