@@ -31,7 +31,7 @@ public class Character : MonoBehaviour
             Dead();
     }
 
-    public void GetDamage(Transform attackObject, int damage)
+    public virtual void GetDamage(Transform attackObject, int damage)
     {
         Vector2 forceDir = (Vector2)(transform.position - attackObject.position);
         if (physicalCharacter != null)
@@ -66,9 +66,9 @@ public class Character : MonoBehaviour
 
     #region Buff
 
-    public void SetimediateDead(BuffManager manager, bool isTrue)
+    public void SetimediateDead(BuffManager manager)
     {
-        imediateDeath = isTrue;
+        imediateDeath = true;
     }
 
     public virtual void HealthChangeBuff(BuffManager manager, int value)

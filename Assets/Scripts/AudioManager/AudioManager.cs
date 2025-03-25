@@ -69,6 +69,8 @@ public class AudioManager : MonoBehaviour
     {
         AddEvent();
         TriggerMusicEvent(MainMenu);
+
+        TriggerMusicEvent(Combat);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

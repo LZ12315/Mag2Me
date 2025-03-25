@@ -1,3 +1,4 @@
+using MoreMountains.Tools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,12 +45,15 @@ public class PlayerController : MonoBehaviour,IMagSourceControl
     void AttractStart(InputAction.CallbackContext text)
     {
         magSource.ExcuteSnap(this);
+        EventCenter.Instance.EventTrigger("玩家吸收开始");
+
         magAnimation.PullVFX(magSource, true);
     }
 
     void AttractOver(InputAction.CallbackContext text)
     {
         magSource.SnapStop(this);
+        EventCenter.Instance.EventTrigger("玩家吸收结束");
         magAnimation.PullVFX(magSource, false);
     }
 
@@ -78,6 +82,7 @@ public class PlayerController : MonoBehaviour,IMagSourceControl
         else
             equipHolder.Shoot(loookDir);
 
+        EventCenter.Instance.EventTrigger("玩家攻击");
         magAnimation.PushVFX(magSource, true);
         pressStartTime = 0;
     }

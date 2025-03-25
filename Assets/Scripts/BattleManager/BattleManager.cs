@@ -34,6 +34,6 @@ public class BattleManager : MonoBehaviour
 
     private void EndPrice()
     {
-        aniPrice.SetBool("endStart", true);
+        aniPrice.SetBool("priceStart", false);
     }
 }
