@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -41,7 +42,26 @@ public class AudioManager : MonoBehaviour
 
 
 
+    private static AudioManager _instance;
 
+    void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject); // 使该物体在场景切换时不被销毁
+            SceneManager.sceneLoaded += OnSceneLoaded; // 订阅场景加载事件
+        }
+        else
+        {
+            Destroy(gameObject); // 如果已经存在一个实例，则销毁自身
+        }
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
 
 
@@ -49,6 +69,12 @@ public class AudioManager : MonoBehaviour
     {
         AddEvent();
         TriggerMusicEvent(MainMenu);
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // 在这里调用你想要执行的函数
+        AddEvent();
     }
 
 
