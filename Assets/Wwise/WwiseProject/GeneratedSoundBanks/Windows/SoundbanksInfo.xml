@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{BAAB838F-309C-6CF1-EF32-9C5144374E4D}">
+		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{CCE3F9CB-362B-A096-A6D1-7F5B145F33E7}">
 			<ShortName>SFX</ShortName>
 			<Path>SFX.bnk</Path>
 			<Media>
@@ -55,7 +55,7 @@
 				</File>
 				<File Id="454733004" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>sfx_player_absorb_loop.wav</ShortName>
-					<CachePath>SFX/sfx_player_absorb_loop_DF97F718.wem</CachePath>
+					<CachePath>SFX/sfx_player_absorb_loop_8B50E3E7.wem</CachePath>
 				</File>
 				<File Id="473031009" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>sfx_player_takedamage.wav</ShortName>
@@ -87,7 +87,7 @@
 				</File>
 				<File Id="923210744" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>sfx_player_absorb_head.wav</ShortName>
-					<CachePath>SFX/sfx_player_absorb_head_DD8833B0.wem</CachePath>
+					<CachePath>SFX/sfx_player_absorb_head_17AA10BB.wem</CachePath>
 				</File>
 				<File Id="1018109902" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>sfx_switch_restover.wav</ShortName>
@@ -341,6 +341,41 @@
 					</Properties>
 				</AcousticTexture>
 			</AcousticTextures>
+		</SoundBank>
+		<SoundBank Id="3138142872" Type="User" Language="SFX" Hash="{EC585AAF-B907-D691-4284-8E4D93070E09}">
+			<ShortName>Vocal</ShortName>
+			<Path>Vocal.bnk</Path>
+			<Media>
+				<File Id="154188241" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>vo_buff_HP.wav</ShortName>
+					<CachePath>SFX/vo_buff_HP_8E324C96.wem</CachePath>
+				</File>
+				<File Id="316745574" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>vo_buff_special.wav</ShortName>
+					<CachePath>SFX/vo_buff_special_8E324C96.wem</CachePath>
+				</File>
+				<File Id="737358494" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>vo_buff_equippablelimit.wav</ShortName>
+					<CachePath>SFX/vo_buff_equippablelimit_8E324C96.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="2533239118" Name="Buff_EquippableLimit" DurationType="OneShot" DurationMin="2.5263264" DurationMax="2.5263264">
+					<MediaRefs>
+						<MediaRef Id="737358494"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2487706381" Name="Buff_HP" DurationType="OneShot" DurationMin="1.8157823" DurationMax="1.8157823">
+					<MediaRefs>
+						<MediaRef Id="154188241"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2918584802" Name="Buff_Special" DurationType="OneShot" DurationMin="3.236848" DurationMax="3.236848">
+					<MediaRefs>
+						<MediaRef Id="316745574"/>
+					</MediaRefs>
+				</Event>
+			</Events>
 		</SoundBank>
 		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{F98C272A-3AD1-31B3-7D24-E0BF73F6C508}">
 			<ShortName>Music</ShortName>
@@ -618,5 +653,5 @@
 			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{F31496B5-567E-3C98-67F9-AC4544075134}</FileHash>
+	<FileHash>{A3A6C941-650A-CB09-B52C-8E3C9256B2B1}</FileHash>
 </SoundBanksInfo>
