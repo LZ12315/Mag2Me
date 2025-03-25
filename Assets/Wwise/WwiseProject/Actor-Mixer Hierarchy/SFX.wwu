@@ -158,6 +158,11 @@
 										</ModifierInfo>
 									</ModifierList>
 								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -250,6 +255,11 @@
 											</Modifier>
 										</ModifierInfo>
 									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-2</Value>
+									</ValueList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>
@@ -348,7 +358,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>7</Value>
+										<Value>10</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -431,6 +441,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<Sound Name="sfx_player_died1" ID="{D05C4933-200A-43CA-BB9B-D242D52EA37A}" ShortID="985316170">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>5</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{656CFA29-86B2-4BEE-B6AD-33BE9FBD0462}"/>
@@ -453,6 +470,13 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="sfx_player_died2" ID="{51A1AB28-536A-40CE-930C-7BABC35401AD}" ShortID="441124066">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-7</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{656CFA29-86B2-4BEE-B6AD-33BE9FBD0462}"/>
@@ -549,6 +573,13 @@
 							</ChildrenList>
 						</RandomSequenceContainer>
 						<Sound Name="sfx_player_absorb" ID="{0C669FB3-E220-4781-9106-6F198D30C7E2}" ShortID="937430108">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{656CFA29-86B2-4BEE-B6AD-33BE9FBD0462}"/>
@@ -571,6 +602,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="sfx_player_absorb_head" ID="{208BDC6B-CF95-4A4A-A2EC-A59627BB3A26}" ShortID="549688352">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="SFX" ID="{32DC39A2-EB76-40B3-A078-9F42EDEE5E6D}" WorkUnitID="{656CFA29-86B2-4BEE-B6AD-33BE9FBD0462}"/>
@@ -600,6 +638,11 @@
 						<Sound Name="sfx_player_absorb_loop" ID="{A8D6AFB3-8707-4A1C-958F-D8BEBD28D18D}" ShortID="406628346">
 							<PropertyList>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>10</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -643,6 +686,11 @@
 											</Modifier>
 										</ModifierInfo>
 									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-7</Value>
+									</ValueList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>
