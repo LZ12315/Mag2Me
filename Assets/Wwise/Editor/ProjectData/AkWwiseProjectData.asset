@@ -398,7 +398,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Vocal
     guid: 5e1cd9482a41ea42a433f049f8b1945b
     GuidInternal: 
-    m_lastTime: -8584587228921938506
+    m_lastTime: -8584587215824077957
     List:
     - name: Vocal
       guid: ce2dd42975099b4994f237013f931b00
@@ -805,7 +805,7 @@ MonoBehaviour:
     ParentPath: Events\Vocal
     guid: 09fea744223a9542b2fe6b784e6d98c9
     GuidInternal: 
-    m_lastTime: -8584587229379030799
+    m_lastTime: -8584587215824333105
     List:
     - name: Buff_EquippableLimit
       guid: 61ee49284183c04790316e4742dbb0e9
