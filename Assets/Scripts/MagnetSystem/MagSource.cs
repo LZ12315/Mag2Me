@@ -92,7 +92,7 @@ public class MagSource : MonoBehaviour
             if (hit.gameObject == gameObject) continue;
 
             Magnet magnet = hit?.GetComponent<Magnet>();
-            if (magnet == null || magnet.MagnetParent != null) continue;
+            if (magnet == null || magnet.MagnetParent != null || !magnet.Serviceable) continue;
 
             Vector2 objectDir = (magnet.transform.position - transform.position).normalized;
             float angle = Vector2.Angle(snapDir, objectDir);
@@ -130,7 +130,6 @@ public class MagSource : MonoBehaviour
     void DetectMagInPlace()
     {
         ContactFilter2D contactFilter = new ContactFilter2D();
-        contactFilter.SetLayerMask(LayerMask.GetMask("MagnetLayer"));
         contactFilter.useTriggers = true;
         Collider2D[] collisions = new Collider2D[20];
 
@@ -138,7 +137,9 @@ public class MagSource : MonoBehaviour
         for (int i = 0; i < overlapCount; i++)
         {
             Magnet magnet = collisions[i]?.GetComponent<Magnet>();
-            if (magnet == null || magnet.MagnetParent != null) continue;
+            if (magnet == null) continue;
+
+            if (magnet.MagnetParent != null || !magnet.Serviceable) continue;
 
             if (!MagnetInPlace.Contains(magnet))
                 SnapMagInPlace(collisions[i]?.GetComponent<Magnet>());

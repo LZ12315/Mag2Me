@@ -12,10 +12,8 @@ public class Equip: MonoBehaviour
     [SerializeField] protected TrailRenderer trailRenderer;
 
     [Header("装备设置")]
-    [SerializeField] protected int maxEndurance = 3;
+    [SerializeField] protected int maxEndurance =  1;
     [SerializeField] protected int currentEndurance;
-    [SerializeField] private float defencePower = 1;
-    [SerializeField] protected bool serviceable;
 
     [Header("发射设置")]
     [SerializeField] protected int attackPower = 1;
@@ -32,7 +30,6 @@ public class Equip: MonoBehaviour
         equipCollider = GetComponent<Collider2D>();
         trailRenderer = GetComponentInChildren<TrailRenderer>();
 
-        serviceable = true;
         isBullet = false;
         currentEndurance = maxEndurance;
         if (trailRenderer != null)
@@ -49,39 +46,37 @@ public class Equip: MonoBehaviour
     {
         equipHolder = holder;
         targetsCanNotAttack.Clear();
-        serviceable = true;
-    }
-
-    void EquipBreak()
-    {
-        serviceable = false;
-        EquipRelieve(equipHolder);
+        currentEndurance = maxEndurance;
     }
 
     public void EquipRelieve(EquipHolder holder)
     {
         if (magnet != null)
-            magnet.MagnetRelease(this);
-        if (equipHolder == holder)
         {
-            equipHolder.ReleaseEquip(this);
-            equipHolder = null;
-            targetsCanNotAttack.Add(holder.gameObject);
+            magnet.MagnetRelease(this);
+            StartCoroutine(magnet.MagnetBanned(this, 2f));
         }
+
+        equipHolder.ReleaseEquip(this);
+        targetsCanNotAttack.Add(equipHolder.gameObject);
+        equipHolder = null;
     }
 
-    public bool IsServiceable()
+    void DropEquip()
     {
-        if(currentEndurance <= 0)
-            serviceable = false;
-        return serviceable;
+        float angle = Random.Range(0, Mathf.PI * 2);
+        Vector2 dir = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+        physicCharacter.AddForceImpluse(dir, 2);
     }
 
     public void EquipDamage(EquipHolder holder)
     {
         currentEndurance--;
         if (currentEndurance <= 0)
-            EquipBreak();
+        {
+            EquipRelieve(equipHolder);
+            DropEquip();
+        }
     }
 
     IEnumerator EquipDestroy()
@@ -102,9 +97,10 @@ public class Equip: MonoBehaviour
     public void ShootEquip(EquipHolder holder, Vector2 dir, float speed)
     {
         EquipRelieve(holder);
+        if (magnet != null)
+            StartCoroutine(magnet.MagnetBanned(this));
         GetComponent<Collider2D>().isTrigger = true;
         isBullet = true;
-        serviceable = false;
 
         if (trailRenderer != null)
             trailRenderer.enabled = true;
@@ -141,7 +137,10 @@ public class Equip: MonoBehaviour
 
     public EquipHolder EquipHolder => equipHolder;
 
-    public bool Serviceable => serviceable;
+    public bool IsServiceable()
+    {
+        return currentEndurance > 0;
+    }
 
     #endregion
 
