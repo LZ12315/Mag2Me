@@ -73,7 +73,7 @@ public class PhysicalCharacter : MonoBehaviour
     #region ÒÆ¶¯
 
     private Tweener tweener;
-    bool canPhysicalMove;
+    [SerializeField] bool canPhysicalMove;
     private float moveSpeed = 1;
     private Vector2 moveDir = Vector2.zero;
     private Transform target;
@@ -120,7 +120,6 @@ public class PhysicalCharacter : MonoBehaviour
     public void SetVelocity(Vector2 dir, float speed)
     {
         if (!canPhysicalMove) return;
-
         moveDir = dir;
         moveSpeed = speed;
         if(moveType != MoveType.Velocity)

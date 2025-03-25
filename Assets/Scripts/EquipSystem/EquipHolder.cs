@@ -21,12 +21,11 @@ public class EquipHolder : MonoBehaviour
         newEquip.EquipArmed(this);
     }
 
-    public void ReleaseAllEquip()
+    public void ReleaseEquipAll()
     {
         foreach (var equip in equipments)
-        {
             equip.EquipRelieve(this);
-        }
+        equipments.Clear();
     }
 
     public void ReleaseEquip(Equip equip)
@@ -60,6 +59,8 @@ public class EquipHolder : MonoBehaviour
         {
             foreach (var equip in equipments.ToList())
             {
+                if (attackTime <= 0) break;
+
                 if (equip.IsServiceable())
                 {
                     equip.EquipDamage(this);

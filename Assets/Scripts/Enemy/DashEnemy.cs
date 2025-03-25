@@ -12,8 +12,9 @@ public class DashEnemy : EnemyController
     float waitDashCounter = 0;
     List<PlayerCharacter> attackedObjects = new List<PlayerCharacter>();
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         AttckDetect();
 
         if (!canAct) return;

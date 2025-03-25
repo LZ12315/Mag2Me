@@ -15,9 +15,9 @@ public class Magnet : MonoBehaviour
 
     [Header("磁体设置")]
     [SerializeField] private float magPower = 1; // 磁力强度 默认为1
-    [SerializeField] private float radius = 1f; //物体到边的距离
-    [SerializeField] private float minSpeed = 2f; // 速度
+    [SerializeField] private float minSpeed = 2f; // 速度下限
     [SerializeField] private float speedClamp = 30f; // 速度上限（防失速）
+    [SerializeField] private bool serviceable = true; // 是否可以被吸引
 
     MagSource magnetParent;
     MagSource magSource;
@@ -30,8 +30,6 @@ public class Magnet : MonoBehaviour
         physicsCharacter = GetComponent<PhysicalCharacter>();
         equip = GetComponentInChildren<Equip>();
         snapAnimation = GetComponentInChildren<MagAnimation>();
-
-        gameObject.layer = LayerMask.NameToLayer("MagnetLayer");
     }
 
     private void Update()
@@ -47,6 +45,7 @@ public class Magnet : MonoBehaviour
 
     public void InvokeAttract(MagSource snapSource, MagSourceInfo info)
     {
+        if (!serviceable) return;
         if(magSource == snapSource) return;
 
         magSource = snapSource;
@@ -68,21 +67,30 @@ public class Magnet : MonoBehaviour
 
     public void SnapFinalize(MagSource snapSource)
     {
+        if(!serviceable) return;
+
         transform.SetParent(snapSource.transform);
         magnetParent = snapSource;
         isAttracted = false;
-        gameObject.layer = 0;
 
-        physicsCharacter.ToRoam();
+        if(physicsCharacter != null)
+            physicsCharacter.ToRoam();
     }
 
     public void MagnetRelease(Equip equip)
     {
-        gameObject.layer = LayerMask.NameToLayer("Default");
         magnetParent.ReleaseMagnet(this);
         magnetParent = null;
         transform.SetParent(null);
     }
+
+    public IEnumerator MagnetBanned(Equip equip, float duration = 100000)
+    {
+        serviceable = false;
+        yield return new WaitForSeconds(duration);
+        serviceable = true;
+    }
+
 
     #region 吸引速度
 
@@ -177,6 +185,8 @@ public class Magnet : MonoBehaviour
     #region 其他 
 
     public MagSource MagnetParent => magnetParent;
+
+    public bool Serviceable => serviceable;
 
     #endregion
 

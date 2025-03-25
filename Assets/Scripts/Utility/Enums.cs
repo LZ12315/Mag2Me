@@ -14,5 +14,5 @@ public enum UltimateBuff
 
 public enum EventName
 {
-    Combo, StartSpawn, EnemyDead
+    Combo, StartSpawn, EnemyDead, HealthUp
 }

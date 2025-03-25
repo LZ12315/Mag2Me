@@ -7,7 +7,7 @@ public class EnemyCharacter : Character
     protected override void Dead()
     {
         base.Dead();
-        equipHolder.ReleaseAllEquip();
+        equipHolder.ReleaseEquipAll();
         EventCenter.Instance.EventTrigger<GameObject>(EventName.EnemyDead.ToString(), gameObject);
     }
 }
