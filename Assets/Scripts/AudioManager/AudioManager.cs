@@ -2,146 +2,136 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager
+public class AudioManager : MonoBehaviour
 {
-    private static AudioManager instance;
-    public static AudioManager Instance { get => instance ?? (instance = new AudioManager()); }
+
+    [Header("音乐")]
+    [SerializeField] AK.Wwise.Event MainMenu;
+    [SerializeField] AK.Wwise.Event Combat;
+    [SerializeField] AK.Wwise.Event Rest;
+    [SerializeField] AK.Wwise.Event End;
+    [SerializeField] AK.Wwise.Event Boss;
+
+    [Header("音效")]
+    [SerializeField] AK.Wwise.Event Boss_Attack;
+    [SerializeField] AK.Wwise.Event Boss_Dash;
+    [SerializeField] AK.Wwise.Event Boss_Fight;
+    [SerializeField] AK.Wwise.Event Boss_Start;
+    [SerializeField] AK.Wwise.Event Enemy_Died;
+    [SerializeField] AK.Wwise.Event Enemy_TakeDamage;
+    [SerializeField] AK.Wwise.Event Main_Button;
+    [SerializeField] AK.Wwise.Event Player_Absorb;
+    [SerializeField] AK.Wwise.Event Player_Died;
+    [SerializeField] AK.Wwise.Event Player_Shoot;
+    [SerializeField] AK.Wwise.Event Player_TakeDamage;
+    [SerializeField] AK.Wwise.Event Player_Win; 
+    [SerializeField] AK.Wwise.Event Price_Normal;
+    [SerializeField] AK.Wwise.Event Price_Special;
+    [SerializeField] AK.Wwise.Event Switch_RestOver;
+
+    [Header("配音")]
+    [SerializeField] AK.Wwise.Event Buff_EquippableLimit;
+    [SerializeField] AK.Wwise.Event Buff_HP;
+    [SerializeField] AK.Wwise.Event Buff_Special;
+
+    [Header("声音源物体")]
+    [SerializeField] GameObject VocalManager;
+    [SerializeField] GameObject MusicManager;
+    [SerializeField] GameObject SoundManager;
 
 
-    /// <summary>
-    /// 播放音乐
-    /// </summary>
-    /// <param name="path"></param>
-    public void PlayMusic(string path)
+
+
+
+
+
+    private void Start()
     {
-        AudioSource aud;
-        GameObject go = GameObject.FindGameObjectWithTag("Music");
-
-        aud = go.GetComponent<AudioSource>();
-
-        aud.clip = Resources.Load<AudioClip>(path);
-
-        aud.Play();
+        AddEvent();
+        TriggerMusicEvent(MainMenu);
     }
 
 
-    /// <summary>
-    /// 让音乐声音+=o
-    /// </summary>
-    /// <param name="o"></param>
-    public void SetMusic(float o)
+    private void TriggerVocalEvent(AK.Wwise.Event wwiseEvent)
     {
-        AudioSource aud;
-        GameObject go = GameObject.FindGameObjectWithTag("Music");
-
-        aud = go.GetComponent<AudioSource>();
-
-        if (o <= 0)
+        if (wwiseEvent != null)
         {
-            if (aud.volume >= 0.1f)
-            {
-                aud.volume += o;
-            }
+            // 使用当前游戏对象作为发射体
+            wwiseEvent.Post(VocalManager);
         }
         else
         {
-            aud.volume += o;
+            Debug.LogWarning("Wwise事件未分配！");
         }
     }
 
-
-    /// <summary>
-    /// 播放音效
-    /// </summary>
-    /// <param name="path"></param>
-    public void PlaySound(string path)
+    private void TriggerMusicEvent(AK.Wwise.Event wwiseEvent)
     {
-
-        AudioSource aud;
-        GameObject go = GameObject.FindGameObjectWithTag("Sound");
-
-        aud = go.GetComponent<AudioSource>();
-
-
-        AudioClip clip = Resources.Load<AudioClip>(path);
-
-        aud.PlayOneShot(clip);
-    }
-
-
-
-
-    public void SetSound(float o)
-    {
-        AudioSource aud;
-        GameObject go = GameObject.FindGameObjectWithTag("Sound");
-
-        aud = go.GetComponent<AudioSource>();
-        aud.volume += o;
-    }
-
-
-    public void PlayBreath(string path)
-    {
-        AudioSource aud;
-        GameObject go = GameObject.FindGameObjectWithTag("Breath");
-
-        aud = go.GetComponent<AudioSource>();
-
-
-        AudioClip clip = Resources.Load<AudioClip>(path);
-
-        aud.PlayOneShot(clip);
-    }
-
-
-    public void SetBreath(float o)
-    {
-        AudioSource aud;
-        GameObject go = GameObject.FindGameObjectWithTag("Breath");
-
-        aud = go.GetComponent<AudioSource>();
-        aud.volume += o;
-    }
-
-
-
-    /// <summary>
-    /// 设置BGM
-    /// </summary>
-    /// <param name="o"></param>
-    public void SetBGM(float o)
-    {
-        AudioSource aud;
-        GameObject go = GameObject.FindGameObjectWithTag("BGM");
-
-        aud = go.GetComponent<AudioSource>();
-
-        if (o <= 0)
+        if (wwiseEvent != null)
         {
-            if (aud.volume >= 0.1f)
-            {
-                aud.volume += o;
-            }
+            // 使用当前游戏对象作为发射体
+            wwiseEvent.Post(MusicManager);
         }
         else
         {
-            aud.volume += o;
+            Debug.LogWarning("Wwise事件未分配！");
+        }
+    }
+
+    private void TriggerSoundEvent(AK.Wwise.Event wwiseEvent)
+    {
+        if (wwiseEvent != null)
+        {
+            // 使用当前游戏对象作为发射体
+            wwiseEvent.Post(SoundManager);
+        }
+        else
+        {
+            Debug.LogWarning("Wwise事件未分配！");
         }
     }
 
 
-    public void PlayBGM(string path)
+    private void AddEvent()
     {
-        AudioSource aud;
-        GameObject go = GameObject.FindGameObjectWithTag("BGM");
+        #region Sound
+        EventCenter.Instance.AddEventListener("BOSS攻击", () => TriggerSoundEvent(Boss_Attack));
+        EventCenter.Instance.AddEventListener("BOSS冲刺", () => TriggerSoundEvent(Boss_Dash));
+        EventCenter.Instance.AddEventListener("BOSS战斗", () => TriggerSoundEvent(Boss_Fight));
+        EventCenter.Instance.AddEventListener("BOSS战开始", () => TriggerSoundEvent(Boss_Start));
+        EventCenter.Instance.AddEventListener("敌人死亡", () => TriggerSoundEvent(Enemy_Died));
+        EventCenter.Instance.AddEventListener("敌人受伤", () => TriggerSoundEvent(Enemy_TakeDamage));
+        EventCenter.Instance.AddEventListener("开始游戏", () => TriggerSoundEvent(Main_Button));
+        EventCenter.Instance.AddEventListener("玩家吸收开始", () => TriggerSoundEvent(Player_Absorb));
+        EventCenter.Instance.AddEventListener("玩家吸收结束", () => Player_Absorb.Stop(SoundManager));
 
-        aud = go.GetComponent<AudioSource>();
+        EventCenter.Instance.AddEventListener("玩家死亡", () => TriggerSoundEvent(Player_Died));
+        EventCenter.Instance.AddEventListener("玩家攻击", () => TriggerSoundEvent(Player_Shoot));
+        EventCenter.Instance.AddEventListener("玩家受伤", () => TriggerSoundEvent(Player_TakeDamage));
+        EventCenter.Instance.AddEventListener("胜利", () => TriggerSoundEvent(Player_Win));
+        EventCenter.Instance.AddEventListener("普通奖励", () => TriggerSoundEvent(Price_Normal));
+        EventCenter.Instance.AddEventListener("特殊奖励", () => TriggerSoundEvent(Price_Special));
+        EventCenter.Instance.AddEventListener("休息开始", () => TriggerSoundEvent(Switch_RestOver));
 
-        aud.clip = Resources.Load<AudioClip>(path);
+        #endregion
 
-        aud.Play();
+
+
+        #region Music
+        EventCenter.Instance.AddEventListener("主界面", () => TriggerMusicEvent(MainMenu));
+        EventCenter.Instance.AddEventListener("战斗", () => TriggerMusicEvent(Combat));
+        EventCenter.Instance.AddEventListener("休息", () => TriggerMusicEvent(Rest));
+        EventCenter.Instance.AddEventListener("结束", () => TriggerMusicEvent(End));
+        EventCenter.Instance.AddEventListener("BOSS", () => TriggerMusicEvent(Boss));
+
+        #endregion
+
+        #region Vocal
+        EventCenter.Instance.AddEventListener("血量增加", () => TriggerVocalEvent(Buff_HP));
+        EventCenter.Instance.AddEventListener("组件增加", () => TriggerVocalEvent(Buff_EquippableLimit));
+        EventCenter.Instance.AddEventListener("乌萨奇特殊奖励", () => TriggerVocalEvent(Buff_Special));
+
+
+        #endregion
     }
-
-
 }

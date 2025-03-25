@@ -398,7 +398,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Vocal
     guid: 5e1cd9482a41ea42a433f049f8b1945b
     GuidInternal: 
-    m_lastTime: -8584587215824077957
+    m_lastTime: -8584587209525771803
     List:
     - name: Vocal
       guid: ce2dd42975099b4994f237013f931b00
@@ -805,7 +805,7 @@ MonoBehaviour:
     ParentPath: Events\Vocal
     guid: 09fea744223a9542b2fe6b784e6d98c9
     GuidInternal: 
-    m_lastTime: -8584587215824333105
+    m_lastTime: -8584587209526769919
     List:
     - name: Buff_EquippableLimit
       guid: 61ee49284183c04790316e4742dbb0e9
@@ -1195,7 +1195,7 @@ MonoBehaviour:
     m_lastTime: -8584587836344913295
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 0100000006000000090000000a0000000b0000000c0000000d0000000f00000010000000110000001200000014000000170000001e00000022000000260000002c000000c4255e00
+  ExpandedWaapiItemIds: 010000000600000008000000090000000a0000000b0000000c0000000d0000000e0000000f00000010000000110000001200000014000000170000001e0000002200000025000000260000002c000000c4255e00
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
