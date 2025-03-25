@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour,IMagSourceControl
     [Header("输入设置")]
     [SerializeField] bool mouseControl;
     [SerializeField] float shootPressLimit = 1.5f;
+    [SerializeField] private float lowFrequency = 0.5f;  // 低频震动
+    [SerializeField] private float highFrequency = 0.5f;  // 高频震动
+    [SerializeField] private float duration = 0.5f;  // 震动持续时间
 
     Vector2 moveInput;
     Vector2 LookInput;
@@ -56,6 +59,8 @@ public class PlayerController : MonoBehaviour,IMagSourceControl
     public void SnapObject(MagSource source)
     {
         if(source != magSource) return;
+        if (Gamepad.current != null)
+            StartCoroutine(VibrateController());
         magAnimation.SnapVFX(magSource);
     }
 
@@ -78,8 +83,25 @@ public class PlayerController : MonoBehaviour,IMagSourceControl
         else
             equipHolder.Shoot(loookDir);
 
+        if (Gamepad.current != null)
+            StartCoroutine(VibrateController());
         magAnimation.PushVFX(magSource, true);
         pressStartTime = 0;
+    }
+
+    IEnumerator VibrateController()
+    {
+        if (Gamepad.current != null)
+        {
+            // 设置手柄震动
+            Gamepad.current.SetMotorSpeeds(lowFrequency, highFrequency);
+
+            // 等待指定的持续时间
+            yield return new WaitForSeconds(duration);
+
+            // 停止震动
+            Gamepad.current.SetMotorSpeeds(0, 0);
+        }
     }
 
     private void Move()

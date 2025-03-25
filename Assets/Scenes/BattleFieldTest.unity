@@ -15359,7 +15359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 20695154}
-  radius: 1.5
+  radius: 1
 --- !u!212 &1114023574
 SpriteRenderer:
   m_ObjectHideFlags: 0

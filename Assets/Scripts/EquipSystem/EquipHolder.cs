@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -23,7 +24,8 @@ public class EquipHolder : MonoBehaviour
 
     public void ReleaseEquipAll()
     {
-        foreach (var equip in equipments)
+        List<Equip> equipmentsCopy = new List<Equip>(equipments);
+        foreach (var equip in equipmentsCopy)
             equip.EquipRelieve(this);
         equipments.Clear();
     }
