@@ -14,6 +14,13 @@
 					</ReferenceList>
 					<ChildrenList>
 						<Sound Name="vo_buff_equippablelimit" ID="{6E887040-6B93-4A3E-B95F-08DD9E12E633}" ShortID="541469277">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{656CFA29-86B2-4BEE-B6AD-33BE9FBD0462}"/>
@@ -36,6 +43,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="vo_buff_HP" ID="{3694B89A-8DB8-4C9E-B7B7-91C7C1CC471E}" ShortID="654197086">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{656CFA29-86B2-4BEE-B6AD-33BE9FBD0462}"/>
@@ -58,6 +72,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="vo_buff_special" ID="{A66AF693-A1D2-483B-A41F-7C574D00CB18}" ShortID="669032045">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{656CFA29-86B2-4BEE-B6AD-33BE9FBD0462}"/>
