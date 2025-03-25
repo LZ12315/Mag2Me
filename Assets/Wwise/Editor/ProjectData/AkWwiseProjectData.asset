@@ -387,6 +387,33 @@ MonoBehaviour:
         ObjectType: 7
         guid: f03e3b40d8f3bf4da8623450f11a53a1
       Path: SoundBanks\SFX\SFX
+  - PhysicalPath: SoundBanks\Vocal.wwu
+    PathAndIcons:
+    - ElementName: SoundBanks
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Vocal
+      ObjectType: 12
+      guid: 5e1cd9482a41ea42a433f049f8b1945b
+    ParentPath: SoundBanks\Vocal
+    guid: 5e1cd9482a41ea42a433f049f8b1945b
+    GuidInternal: 
+    m_lastTime: -8584587228921938506
+    List:
+    - name: Vocal
+      guid: ce2dd42975099b4994f237013f931b00
+      id: 3138142872
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Vocal
+        ObjectType: 12
+        guid: 5e1cd9482a41ea42a433f049f8b1945b
+      - ElementName: Vocal
+        ObjectType: 7
+        guid: ce2dd42975099b4994f237013f931b00
+      Path: SoundBanks\Vocal\Vocal
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
@@ -767,6 +794,70 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.5777084
       minDuration: 1.5777084
+  - PhysicalPath: Events\Vocal.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Vocal
+      ObjectType: 12
+      guid: 09fea744223a9542b2fe6b784e6d98c9
+    ParentPath: Events\Vocal
+    guid: 09fea744223a9542b2fe6b784e6d98c9
+    GuidInternal: 
+    m_lastTime: -8584587229379030799
+    List:
+    - name: Buff_EquippableLimit
+      guid: 61ee49284183c04790316e4742dbb0e9
+      id: 2533239118
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Vocal
+        ObjectType: 12
+        guid: 09fea744223a9542b2fe6b784e6d98c9
+      - ElementName: Buff_EquippableLimit
+        ObjectType: 3
+        guid: 61ee49284183c04790316e4742dbb0e9
+      Path: Events\Vocal\Buff_EquippableLimit
+      maxAttenuation: 0
+      maxDuration: 2.5263264
+      minDuration: 2.5263264
+    - name: Buff_HP
+      guid: 2ac21ddebfa7454488b6eed7d0a75fb2
+      id: 2487706381
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Vocal
+        ObjectType: 12
+        guid: 09fea744223a9542b2fe6b784e6d98c9
+      - ElementName: Buff_HP
+        ObjectType: 3
+        guid: 2ac21ddebfa7454488b6eed7d0a75fb2
+      Path: Events\Vocal\Buff_HP
+      maxAttenuation: 0
+      maxDuration: 1.8157823
+      minDuration: 1.8157823
+    - name: Buff_Special
+      guid: 71beae366fcb5c4e86459926b0ac5359
+      id: 2918584802
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Vocal
+        ObjectType: 12
+        guid: 09fea744223a9542b2fe6b784e6d98c9
+      - ElementName: Buff_Special
+        ObjectType: 3
+        guid: 71beae366fcb5c4e86459926b0ac5359
+      Path: Events\Vocal\Buff_Special
+      maxAttenuation: 0
+      maxDuration: 3.236848
+      minDuration: 3.236848
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -1104,7 +1195,7 @@ MonoBehaviour:
     m_lastTime: -8584588872070196723
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 010000000600000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000140000001700000022000000c4255e00
+  ExpandedWaapiItemIds: 0100000006000000090000000a0000000b0000000c0000000d0000000f00000010000000110000001200000014000000170000001e00000022000000260000002c000000c4255e00
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

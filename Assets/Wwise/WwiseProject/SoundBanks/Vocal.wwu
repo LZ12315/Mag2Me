@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{48D91C5E-412A-42EA-A433-F049F8B1945B}" SchemaVersion="119">
+	<SoundBanks>
+		<WorkUnit Name="Vocal" ID="{48D91C5E-412A-42EA-A433-F049F8B1945B}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Vocal" ID="{29D42DCE-0975-499B-94F2-37013F931B00}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Buff_HP" ID="{DE1DC22A-A7BF-4445-88B6-EED7D0A75FB2}" WorkUnitID="{44A7FE09-3A22-4295-B2FE-6B784E6D98C9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Buff_EquippableLimit" ID="{2849EE61-8341-47C0-9031-6E4742DBB0E9}" WorkUnitID="{44A7FE09-3A22-4295-B2FE-6B784E6D98C9}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Buff_Special" ID="{36AEBE71-CB6F-4E5C-8645-9926B0AC5359}" WorkUnitID="{44A7FE09-3A22-4295-B2FE-6B784E6D98C9}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>
