@@ -15,6 +15,7 @@ public class Wave
 {
     public string waveName;
     public float waveInterval = 0;
+    public List<string> waveEvents = new List<string>();
     public List<EnemyGroup> enemyGroups = new List<EnemyGroup>();
     [HideInInspector]
     public int enemyNumToSpawn;
@@ -61,6 +62,9 @@ public class EnemyWaveManager : MonoBehaviour
         foreach (var group in currentWave.enemyGroups)
             currentWave.enemyNumToSpawn += group.spawnNum;
 
+        foreach(var eventName in currentWave.waveEvents)
+            EventCenter.Instance.EventTrigger(eventName);
+
         StartCoroutine(SpawnEnemy());
     }
 
@@ -75,6 +79,12 @@ public class EnemyWaveManager : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
+        if(currentWave.enemyGroups.Count == 0)
+        {
+            StartCoroutine(NextWave());
+            yield break;
+        }
+
         foreach (var group in currentWave.enemyGroups)
         {
             for (int i = 0; i< group.spawnNum; i++)

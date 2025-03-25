@@ -1,0 +1,10 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2487706381	Buff_HP			\Vocal\Buff_HP	
+	2533239118	Buff_EquippableLimit			\Vocal\Buff_EquippableLimit	
+	2918584802	Buff_Special			\Vocal\Buff_Special	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	154188241	vo_buff_HP	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\vo_buff_HP_8E324C96.wem		\Actor-Mixer Hierarchy\Vocal\Player\vo_buff_HP		23306
+	316745574	vo_buff_special	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\vo_buff_special_8E324C96.wem		\Actor-Mixer Hierarchy\Vocal\Player\vo_buff_special		35895
+	737358494	vo_buff_equippablelimit	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\vo_buff_equippablelimit_8E324C96.wem		\Actor-Mixer Hierarchy\Vocal\Player\vo_buff_equippablelimit		28622
+

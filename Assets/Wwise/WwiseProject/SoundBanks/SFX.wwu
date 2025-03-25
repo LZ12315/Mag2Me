@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{594DC714-07BD-4C1D-9C02-D9C4ECD37C5E}" SchemaVersion="119">
+	<SoundBanks>
+		<WorkUnit Name="SFX" ID="{594DC714-07BD-4C1D-9C02-D9C4ECD37C5E}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="SFX" ID="{403B3EF0-F3D8-4DBF-A862-3450F11A53A1}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Switch_RestOver" ID="{D55D1DF1-0B53-4012-A59B-8C2160C10F70}" WorkUnitID="{787FEDAF-CA14-4181-AC14-BA81DAADA642}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Boss_Attack" ID="{2A90E425-0E3D-402E-B2B8-3948E6633925}" WorkUnitID="{787FEDAF-CA14-4181-AC14-BA81DAADA642}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_Died" ID="{46A2B359-B824-4079-8C27-CA4CB15B857D}" WorkUnitID="{787FEDAF-CA14-4181-AC14-BA81DAADA642}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Main_Button" ID="{2A0DC93D-CDEE-413A-87B5-6BE3B821C4BF}" WorkUnitID="{787FEDAF-CA14-4181-AC14-BA81DAADA642}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Price_Normal" ID="{ABB4590A-78DA-41C5-B039-7597729C3BC8}" WorkUnitID="{787FEDAF-CA14-4181-AC14-BA81DAADA642}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_TakeDamage" ID="{581026CE-82E1-44B9-B321-1989B38AF8D8}" WorkUnitID="{787FEDAF-CA14-4181-AC14-BA81DAADA642}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Boss_Fight" ID="{B4C82F7E-0476-44F5-B2FF-DBBADD5F4976}" WorkUnitID="{787FEDAF-CA14-4181-AC14-BA81DAADA642}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Boss_Start" ID="{CC5B87FF-09E8-458A-A262-30A986E803F0}" WorkUnitID="{787FEDAF-CA14-4181-AC14-BA81DAADA642}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_TakeDamage" ID="{2A50DC9D-8A57-4648-A9B1-4E1731781D7D}" WorkUnitID="{787FEDAF-CA14-4181-AC14-BA81DAADA642}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_Win" ID="{C955BC07-8E40-470E-A548-5E9F3CB20162}" WorkUnitID="{787FEDAF-CA14-4181-AC14-BA81DAADA642}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_Absorb" ID="{8653D58C-413F-4881-A2FE-DECE47E560ED}" WorkUnitID="{787FEDAF-CA14-4181-AC14-BA81DAADA642}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_Shoot" ID="{F1DCD508-F61E-4934-9592-EF6BEC11EA71}" WorkUnitID="{787FEDAF-CA14-4181-AC14-BA81DAADA642}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Price_Special" ID="{405B9C30-4089-4961-A1C8-ACE32A174209}" WorkUnitID="{787FEDAF-CA14-4181-AC14-BA81DAADA642}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Died" ID="{DEDE2526-05A7-4B2A-98DB-DD1F143E4FE3}" WorkUnitID="{787FEDAF-CA14-4181-AC14-BA81DAADA642}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Boss_Dash" ID="{5E6262BD-2ED8-4F71-996C-B3C1A7D2ACE1}" WorkUnitID="{787FEDAF-CA14-4181-AC14-BA81DAADA642}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

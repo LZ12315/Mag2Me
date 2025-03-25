@@ -40,17 +40,25 @@ public class EquipHolder : MonoBehaviour
     {
         if (equipments.Count == 0) return null;
 
-        Equip tmpEquip = equipments[0];
-        float tmpDistance = Vector2.Distance(tmpEquip.transform.position, transform.position);
-        foreach (var equip in equipments)
-        {
-            float distance = Vector2.Distance(equip.transform.position, transform.position);
-            if (distance <= tmpDistance) continue;
-            tmpEquip = equip;
-            tmpDistance = distance;
-        }
+        //Equip tmpEquip = equipments[0];
+        //float tmpDistance = Vector2.Distance(tmpEquip.transform.position, transform.position);
+        //foreach (var equip in equipments)
+        //{
+        //    if(equip == null)
+        //    {
+        //        ReleaseEquip(equip);
+        //        continue;
+        //    }
 
-        equipments.Remove(tmpEquip);
+        //    float distance = Vector2.Distance(equip.transform.position, transform.position);
+        //    if (distance <= tmpDistance) continue;
+        //    tmpEquip = equip;
+        //    tmpDistance = distance;
+        //}
+
+        Equip tmpEquip = equipments[0];
+
+        ReleaseEquip(tmpEquip);
         return tmpEquip;
     }
 

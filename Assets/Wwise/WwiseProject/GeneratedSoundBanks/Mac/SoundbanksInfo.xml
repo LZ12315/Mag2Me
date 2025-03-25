@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Mac</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="393239870" Type="User" Language="SFX" Hash="{3D0185EF-17C4-1269-F872-02D4CE47E89F}">
+			<ShortName>SFX</ShortName>
+			<Path>SFX.bnk</Path>
+			<Media>
+				<File Id="70568686" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_boss_attack.wav</ShortName>
+					<CachePath>SFX/sfx_boss_attack_8E324C96.wem</CachePath>
+				</File>
+				<File Id="93447752" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_enemy_takedamage.wav</ShortName>
+					<CachePath>SFX/sfx_enemy_takedamage_8E324C96.wem</CachePath>
+				</File>
+				<File Id="137354930" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_boss_dash.wav</ShortName>
+					<CachePath>SFX/sfx_boss_dash_8E324C96.wem</CachePath>
+				</File>
+				<File Id="220891435" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_player_shoot1.wav</ShortName>
+					<CachePath>SFX/sfx_player_shoot1_8E324C96.wem</CachePath>
+				</File>
+				<File Id="291910768" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_price_normal.wav</ShortName>
+					<CachePath>SFX/sfx_price_normal_8E324C96.wem</CachePath>
+				</File>
+				<File Id="300171205" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_main_button.wav</ShortName>
+					<CachePath>SFX/sfx_main_button_8E324C96.wem</CachePath>
+				</File>
+				<File Id="337304185" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_boss_start.wav</ShortName>
+					<CachePath>SFX/sfx_boss_start_8E324C96.wem</CachePath>
+				</File>
+				<File Id="375286350" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_boss_fight.wav</ShortName>
+					<CachePath>SFX/sfx_boss_fight_8E324C96.wem</CachePath>
+				</File>
+				<File Id="388342632" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_player_died2.wav</ShortName>
+					<CachePath>SFX/sfx_player_died2_8E324C96.wem</CachePath>
+				</File>
+				<File Id="414811608" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_enemy_died2.wav</ShortName>
+					<CachePath>SFX/sfx_enemy_died2_8E324C96.wem</CachePath>
+				</File>
+				<File Id="454733004" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_player_absorb_loop.wav</ShortName>
+					<CachePath>SFX/sfx_player_absorb_loop_8B50E3E7.wem</CachePath>
+				</File>
+				<File Id="473031009" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_player_takedamage.wav</ShortName>
+					<CachePath>SFX/sfx_player_takedamage_8E324C96.wem</CachePath>
+				</File>
+				<File Id="521361034" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_player_shoot2.wav</ShortName>
+					<CachePath>SFX/sfx_player_shoot2_8E324C96.wem</CachePath>
+				</File>
+				<File Id="620917061" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_player_died1.wav</ShortName>
+					<CachePath>SFX/sfx_player_died1_8E324C96.wem</CachePath>
+				</File>
+				<File Id="663514043" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_enemy_died3.wav</ShortName>
+					<CachePath>SFX/sfx_enemy_died3_8E324C96.wem</CachePath>
+				</File>
+				<File Id="677192018" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_player_win.wav</ShortName>
+					<CachePath>SFX/sfx_player_win_8E324C96.wem</CachePath>
+				</File>
+				<File Id="692216866" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_price_special.wav</ShortName>
+					<CachePath>SFX/sfx_price_special_8E324C96.wem</CachePath>
+				</File>
+				<File Id="910320486" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_enemy_died1.wav</ShortName>
+					<CachePath>SFX/sfx_enemy_died1_8E324C96.wem</CachePath>
+				</File>
+				<File Id="923210744" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_player_absorb_head.wav</ShortName>
+					<CachePath>SFX/sfx_player_absorb_head_17AA10BB.wem</CachePath>
+				</File>
+				<File Id="1018109902" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_switch_restover.wav</ShortName>
+					<CachePath>SFX/sfx_switch_restover_8E324C96.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="2883369105" Name="Boss_Attack" DurationType="OneShot" DurationMin="0.5139454" DurationMax="0.7268285">
+					<MediaRefs>
+						<MediaRef Id="70568686"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="797248733" Name="Boss_Dash" DurationType="OneShot" DurationMin="2.6487901" DurationMax="3.14996">
+					<MediaRefs>
+						<MediaRef Id="137354930"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3688152761" Name="Boss_Fight" DurationType="OneShot" DurationMin="5.2674165" DurationMax="5.2674165">
+					<MediaRefs>
+						<MediaRef Id="375286350"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2985974755" Name="Boss_Start" DurationType="OneShot" DurationMin="2.2510417" DurationMax="2.2510417">
+					<MediaRefs>
+						<MediaRef Id="337304185"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3874299596" Name="Enemy_Died" DurationType="OneShot" DurationMin="0.32678312" DurationMax="0.48962146">
+					<MediaRefs>
+						<MediaRef Id="414811608"/>
+						<MediaRef Id="663514043"/>
+						<MediaRef Id="910320486"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="842135496" Name="Enemy_TakeDamage" DurationType="OneShot" DurationMin="0.65084743" DurationMax="1.0037439">
+					<MediaRefs>
+						<MediaRef Id="93447752"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1515637321" Name="Main_Button" DurationType="OneShot" DurationMin="0.275375" DurationMax="0.275375">
+					<MediaRefs>
+						<MediaRef Id="300171205"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2133521774" Name="Player_Absorb" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="454733004"/>
+						<MediaRef Id="923210744"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2295196519" Name="Player_Died" DurationType="OneShot" DurationMin="1.2053334" DurationMax="10.616042">
+					<MediaRefs>
+						<MediaRef Id="388342632"/>
+						<MediaRef Id="620917061"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4004702906" Name="Player_Shoot" DurationType="OneShot" DurationMin="0.16980815" DurationMax="1.1568612">
+					<MediaRefs>
+						<MediaRef Id="220891435"/>
+						<MediaRef Id="521361034"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3870290027" Name="Player_TakeDamage" DurationType="OneShot" DurationMin="0.5458819" DurationMax="0.7719936">
+					<MediaRefs>
+						<MediaRef Id="473031009"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1002342001" Name="Player_Win" DurationType="OneShot" DurationMin="2.3946667" DurationMax="2.3946667">
+					<MediaRefs>
+						<MediaRef Id="677192018"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4257650534" Name="Price_Normal" DurationType="OneShot" DurationMin="1.1346396" DurationMax="1.3493216">
+					<MediaRefs>
+						<MediaRef Id="291910768"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2179586256" Name="Price_Special" DurationType="OneShot" DurationMin="8.614603" DurationMax="8.614603">
+					<MediaRefs>
+						<MediaRef Id="692216866"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1164803900" Name="Switch_RestOver" DurationType="OneShot" DurationMin="1.5777084" DurationMax="1.5777084">
+					<MediaRefs>
+						<MediaRef Id="1018109902"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{A5602626-EFC0-2E0E-382E-23E669BF119D}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+			<GameParameters>
+				<GameParameter Id="822163944" Name="SS_Air_RPM"/>
+				<GameParameter Id="1029930033" Name="SS_Air_Fury"/>
+				<GameParameter Id="1351367891" Name="SS_Air_Fear"/>
+				<GameParameter Id="2648548617" Name="SS_Air_Month"/>
+				<GameParameter Id="3002758120" Name="SS_Air_Freefall"/>
+				<GameParameter Id="3074696722" Name="SS_Air_Size"/>
+				<GameParameter Id="3203397129" Name="SS_Air_TimeOfDay"/>
+				<GameParameter Id="3715662592" Name="SS_Air_Storm"/>
+				<GameParameter Id="3847924954" Name="SS_Air_Presence"/>
+				<GameParameter Id="4160247818" Name="SS_Air_Turbulence"/>
+			</GameParameters>
+			<StateGroups>
+				<StateGroup Id="1926883983" Name="Scene">
+					<States>
+						<State Id="529726532" Name="End"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="1560169506" Name="Boss"/>
+						<State Id="2277599019" Name="Rest"/>
+						<State Id="2764240573" Name="Combat"/>
+						<State Id="3604647259" Name="MainMenu"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
+			<AcousticTextures>
+				<AcousticTexture Id="504532776" Name="Brick">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="12"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="18"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="23"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="513139656" Name="Mountain">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="0"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="841620460" Name="Concrete">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="14"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1755085759" Name="Wood_Deep">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="1"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="8"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="20"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1873957695" Name="Anechoic">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1970351858" Name="Fabric">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="3"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="13"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="48"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="72"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2058049674" Name="Wood">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="32"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="25"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="20"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2412606308" Name="Carpet">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="46"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="45"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="76"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2637588553" Name="Tile">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="67"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="41"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="12"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="0"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2928161104" Name="Curtains">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="7"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="60"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="84"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="3195498748" Name="Cork_Tiles">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="14"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="30"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="73"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="3670307564" Name="Drywall">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="2"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="4168643977" Name="Acoustic_Banner">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="37"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="4262522749" Name="Wood_Bright">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="32"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="25"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="10"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="9"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+			</AcousticTextures>
+		</SoundBank>
+		<SoundBank Id="3138142872" Type="User" Language="SFX" Hash="{0BA93A7E-914D-0A9C-001B-BB197E34279D}">
+			<ShortName>Vocal</ShortName>
+			<Path>Vocal.bnk</Path>
+			<Media>
+				<File Id="154188241" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>vo_buff_HP.wav</ShortName>
+					<CachePath>SFX/vo_buff_HP_8E324C96.wem</CachePath>
+				</File>
+				<File Id="316745574" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>vo_buff_special.wav</ShortName>
+					<CachePath>SFX/vo_buff_special_8E324C96.wem</CachePath>
+				</File>
+				<File Id="737358494" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>vo_buff_equippablelimit.wav</ShortName>
+					<CachePath>SFX/vo_buff_equippablelimit_8E324C96.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="2533239118" Name="Buff_EquippableLimit" DurationType="OneShot" DurationMin="2.5263264" DurationMax="2.5263264">
+					<MediaRefs>
+						<MediaRef Id="737358494"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2487706381" Name="Buff_HP" DurationType="OneShot" DurationMin="1.8157823" DurationMax="1.8157823">
+					<MediaRefs>
+						<MediaRef Id="154188241"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2918584802" Name="Buff_Special" DurationType="OneShot" DurationMin="3.236848" DurationMax="3.236848">
+					<MediaRefs>
+						<MediaRef Id="316745574"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3991942870" Type="User" Language="SFX" Hash="{F98C272A-3AD1-31B3-7D24-E0BF73F6C508}">
+			<ShortName>Music</ShortName>
+			<Path>Music.bnk</Path>
+			<Media>
+				<File Id="430234" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-drop\4 - boss-lead-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-drop/4 - boss-lead-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="17033257" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-drop\8 - boss- violin-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-drop/8 - boss- violin-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="43794238" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-drop1\7 - normal-viola2-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-drop1/7 - normal-viola2-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="56512636" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-drop\6 - boss- viola1-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-drop/6 - boss- viola1-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="136849614" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-drop1\8 - normal- violin-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-drop1/8 - normal- violin-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="191041347" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal&amp;boss-outro\2 - boss-drum-128bpm.wav</ShortName>
+					<CachePath>SFX/normal&amp;boss-outro/2 - boss-drum-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="320818939" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-drop1\5 - normal- pluck-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-drop1/5 - normal- pluck-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="375307661" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-bridge\1 - boss-bass-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-bridge/1 - boss-bass-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="377634181" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-bridge\5 - normal- violin-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-bridge/5 - normal- violin-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="385042019" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-drop1\2 - normal- drum-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-drop1/2 - normal- drum-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="402796751" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-drop1\4 - normal-lead-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-drop1/4 - normal-lead-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="456989529" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-bridge2\1 - normal- guitar-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-bridge2/1 - normal- guitar-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="513470588" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-bridge\3 - normal- guitar-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-bridge/3 - normal- guitar-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="524930938" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-drop1\6 - normal- viola1-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-drop1/6 - normal- viola1-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="541046098" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-drop1\3 - normal- guitar-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-drop1/3 - normal- guitar-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="545583163" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-drop2\2 - normal-lead-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-drop2/2 - normal-lead-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="572670340" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-drop\9 - boss-string-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-drop/9 - boss-string-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="592767562" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-bridge\4 - normal- viola1-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-bridge/4 - normal- viola1-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="605718537" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-drop2\1 - boss- guitar-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-drop2/1 - boss- guitar-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="607811681" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-bridge\3 - boss- guitar-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-bridge/3 - boss- guitar-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="653898259" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-drop1\1 - normal-bass-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-drop1/1 - normal-bass-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="659986424" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal&amp;boss-outro\1 - boss-bass-128bpm.wav</ShortName>
+					<CachePath>SFX/normal&amp;boss-outro/1 - boss-bass-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="673884081" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-bridge\2 - boss-drum-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-bridge/2 - boss-drum-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="708277448" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-drop2\3 - boss-pluck-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-drop2/3 - boss-pluck-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="724381773" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-drop2\3 - normal- pluck-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-drop2/3 - normal- pluck-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="750608874" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-drop\2 - boss-drum-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-drop/2 - boss-drum-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="769460925" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-bridge2\1 - boss- guitar-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-bridge2/1 - boss- guitar-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="793007805" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-drop1\9 - normal-string-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-drop1/9 - normal-string-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="805985867" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-bridge\2 - normal- drum-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-bridge/2 - normal- drum-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="895167087" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-bridge\5 - boss- violin-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-bridge/5 - boss- violin-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="895940316" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-drop\5 - boss-pluck-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-drop/5 - boss-pluck-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="913487579" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-bridge\1 - normal-bass-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-bridge/1 - normal-bass-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="962431065" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-drop\1 - boss-bass-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-drop/1 - boss-bass-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="964451174" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal&amp;boss-intro\1 - normal-bass-128bpm.wav</ShortName>
+					<CachePath>SFX/normal&amp;boss-intro/1 - normal-bass-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="975516518" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>normal-drop2\1 - normal- guitar-128bpm.wav</ShortName>
+					<CachePath>SFX/normal-drop2/1 - normal- guitar-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="998411177" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-drop\3 - boss- guitar-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-drop/3 - boss- guitar-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="1006509267" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-bridge\4 - boss- viola1-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-bridge/4 - boss- viola1-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="1020248836" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-drop\7 - boss- viola2-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-drop/7 - boss- viola2-128bpm_56CEF360.wem</CachePath>
+				</File>
+				<File Id="1055231334" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>boss-drop2\2 - boss-lead-128bpm.wav</ShortName>
+					<CachePath>SFX/boss-drop2/2 - boss-lead-128bpm_56CEF360.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="4158285989" Name="GameOver" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetState>
+						<ActionSetStateEntry GroupId="1926883983" Id="529726532" Name="End"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="3604647259" Name="MainMenu" DurationType="Infinite">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="1926883983" Id="1560169506"/>
+							<MediaRefs>
+								<MediaRef Id="430234"/>
+								<MediaRef Id="17033257"/>
+								<MediaRef Id="56512636"/>
+								<MediaRef Id="375307661"/>
+								<MediaRef Id="572670340"/>
+								<MediaRef Id="605718537"/>
+								<MediaRef Id="607811681"/>
+								<MediaRef Id="673884081"/>
+								<MediaRef Id="708277448"/>
+								<MediaRef Id="750608874"/>
+								<MediaRef Id="769460925"/>
+								<MediaRef Id="895167087"/>
+								<MediaRef Id="895940316"/>
+								<MediaRef Id="962431065"/>
+								<MediaRef Id="998411177"/>
+								<MediaRef Id="1006509267"/>
+								<MediaRef Id="1020248836"/>
+								<MediaRef Id="1055231334"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="1926883983" Id="2764240573"/>
+							<MediaRefs>
+								<MediaRef Id="43794238"/>
+								<MediaRef Id="136849614"/>
+								<MediaRef Id="320818939"/>
+								<MediaRef Id="377634181"/>
+								<MediaRef Id="385042019"/>
+								<MediaRef Id="402796751"/>
+								<MediaRef Id="456989529"/>
+								<MediaRef Id="513470588"/>
+								<MediaRef Id="524930938"/>
+								<MediaRef Id="541046098"/>
+								<MediaRef Id="545583163"/>
+								<MediaRef Id="592767562"/>
+								<MediaRef Id="653898259"/>
+								<MediaRef Id="724381773"/>
+								<MediaRef Id="793007805"/>
+								<MediaRef Id="805985867"/>
+								<MediaRef Id="913487579"/>
+								<MediaRef Id="975516518"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="1926883983" Id="3604647259"/>
+							<MediaRefs>
+								<MediaRef Id="964451174"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="1926883983" Id="529726532"/>
+							<MediaRefs>
+								<MediaRef Id="191041347"/>
+								<MediaRef Id="375307661"/>
+								<MediaRef Id="607811681"/>
+								<MediaRef Id="659986424"/>
+								<MediaRef Id="673884081"/>
+								<MediaRef Id="895167087"/>
+								<MediaRef Id="1006509267"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="State" GroupId="1926883983" Id="2277599019"/>
+							<MediaRefs>
+								<MediaRef Id="385042019"/>
+								<MediaRef Id="653898259"/>
+								<MediaRef Id="793007805"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
+					<ActionSetState>
+						<ActionSetStateEntry GroupId="1926883983" Id="3604647259" Name="MainMenu"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="12287153" Name="SwitchToBoss" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetState>
+						<ActionSetStateEntry GroupId="1926883983" Id="1560169506" Name="Boss"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="1441103266" Name="SwitchToComBat" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetState>
+						<ActionSetStateEntry GroupId="1926883983" Id="2764240573" Name="Combat"/>
+					</ActionSetState>
+				</Event>
+				<Event Id="865805832" Name="SwitchToRest" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetState>
+						<ActionSetStateEntry GroupId="1926883983" Id="2277599019" Name="Rest"/>
+					</ActionSetState>
+				</Event>
+			</Events>
+			<StateGroups>
+				<StateGroup Id="1926883983" Name="Scene">
+					<States>
+						<State Id="529726532" Name="End"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="1560169506" Name="Boss"/>
+						<State Id="2277599019" Name="Rest"/>
+						<State Id="2764240573" Name="Combat"/>
+						<State Id="3604647259" Name="MainMenu"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{7ACDE377-768F-96CC-2F13-91DBAF4C5343}</FileHash>
+</SoundBanksInfo>

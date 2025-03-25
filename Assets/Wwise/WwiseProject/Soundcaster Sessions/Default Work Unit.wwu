@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{D24C520C-4CBD-4591-82CF-8C7173211C52}" SchemaVersion="119">
+	<SoundcasterSessions>
+		<WorkUnit Name="Default Work Unit" ID="{D24C520C-4CBD-4591-82CF-8C7173211C52}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="test" ID="{912B7F58-F786-4FC2-8E2F-B73911587D0A}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="InteractiveMusic" ID="{F5DA65A0-F75E-4157-B230-A7149E06978C}" WorkUnitID="{22995755-D4C0-45E3-8209-C45D3D75C31E}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="sfx_player_absorb_head" ID="{208BDC6B-CF95-4A4A-A2EC-A59627BB3A26}" WorkUnitID="{AE23D2E4-07F7-42DB-8BEB-B80281DFECCC}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Player_Shoot" ID="{69AE8083-7AE2-4D8D-AA8F-87E1646F5B41}" WorkUnitID="{AE23D2E4-07F7-42DB-8BEB-B80281DFECCC}"/>
+							<Position X="0" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="sfx_price_normal" ID="{A88A9C57-BFCA-4A7F-8FA7-5AA4A59DF0C1}" WorkUnitID="{AE23D2E4-07F7-42DB-8BEB-B80281DFECCC}"/>
+							<Position X="0" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="vo_buff_equippablelimit" ID="{6E887040-6B93-4A3E-B95F-08DD9E12E633}" WorkUnitID="{A7E2709C-285B-4FAC-88F0-BA4EF5DAAEEB}"/>
+							<Position X="0" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="sfx_player_absorb_loop" ID="{A8D6AFB3-8707-4A1C-958F-D8BEBD28D18D}" WorkUnitID="{AE23D2E4-07F7-42DB-8BEB-B80281DFECCC}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="sfx_player_absorb" ID="{0C669FB3-E220-4781-9106-6F198D30C7E2}" WorkUnitID="{AE23D2E4-07F7-42DB-8BEB-B80281DFECCC}"/>
+							<Position X="1" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="sfx_price_special" ID="{4A54C6D0-E646-4C70-8FAF-9D43ACA8F8CD}" WorkUnitID="{AE23D2E4-07F7-42DB-8BEB-B80281DFECCC}"/>
+							<Position X="1" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="vo_buff_HP" ID="{3694B89A-8DB8-4C9E-B7B7-91C7C1CC471E}" WorkUnitID="{A7E2709C-285B-4FAC-88F0-BA4EF5DAAEEB}"/>
+							<Position X="1" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Enemy_Died" ID="{616D6C0E-7A3F-47EB-999B-8D3B2E291BA3}" WorkUnitID="{AE23D2E4-07F7-42DB-8BEB-B80281DFECCC}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Player_Absorb" ID="{8653D58C-413F-4881-A2FE-DECE47E560ED}" WorkUnitID="{787FEDAF-CA14-4181-AC14-BA81DAADA642}"/>
+							<Position X="2" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="sfx_player_takedamage" ID="{9856D968-CC8B-4AE2-8C8D-4C9292220BEE}" WorkUnitID="{AE23D2E4-07F7-42DB-8BEB-B80281DFECCC}"/>
+							<Position X="2" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="vo_buff_special" ID="{A66AF693-A1D2-483B-A41F-7C574D00CB18}" WorkUnitID="{A7E2709C-285B-4FAC-88F0-BA4EF5DAAEEB}"/>
+							<Position X="2" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="sfx_enemy_takedamage" ID="{6282CF09-31B3-4BA2-BD19-B8C87A138550}" WorkUnitID="{AE23D2E4-07F7-42DB-8BEB-B80281DFECCC}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="sfx_player_died1" ID="{D05C4933-200A-43CA-BB9B-D242D52EA37A}" WorkUnitID="{AE23D2E4-07F7-42DB-8BEB-B80281DFECCC}"/>
+							<Position X="4" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="sfx_player_died2" ID="{51A1AB28-536A-40CE-930C-7BABC35401AD}" WorkUnitID="{AE23D2E4-07F7-42DB-8BEB-B80281DFECCC}"/>
+							<Position X="4" Y="3"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true"/>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="Combat" ID="{1D8ABB37-0890-4A01-A76B-D4DFB80E2D67}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundcasterSessions>
+</WwiseDocument>

@@ -1,0 +1,39 @@
+Event	ID	Name			Wwise Object Path	Notes
+	797248733	Boss_Dash			\SFX\Boss_Dash	
+	842135496	Enemy_TakeDamage			\SFX\Enemy_TakeDamage	
+	1002342001	Player_Win			\SFX\Player_Win	
+	1164803900	Switch_RestOver			\SFX\Switch_RestOver	
+	1515637321	Main_Button			\SFX\Main_Button	
+	2133521774	Player_Absorb			\SFX\Player_Absorb	
+	2179586256	Price_Special			\SFX\Price_Special	
+	2295196519	Player_Died			\SFX\Player_Died	
+	2883369105	Boss_Attack			\SFX\Boss_Attack	
+	2985974755	Boss_Start			\SFX\Boss_Start	
+	3688152761	Boss_Fight			\SFX\Boss_Fight	
+	3870290027	Player_TakeDamage			\SFX\Player_TakeDamage	
+	3874299596	Enemy_Died			\SFX\Enemy_Died	
+	4004702906	Player_Shoot			\SFX\Player_Shoot	
+	4257650534	Price_Normal			\SFX\Price_Normal	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	70568686	sfx_boss_attack	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_boss_attack_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\Boss\sfx_boss_attack		9453
+	93447752	sfx_enemy_takedamage	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_enemy_takedamage_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\Enemy\sfx_enemy_takedamage		6124
+	137354930	sfx_boss_dash	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_boss_dash_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\Boss\sfx_boss_dash		21307
+	220891435	sfx_player_shoot1	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_player_shoot1_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\Player\Player_Shoot\sfx_player_shoot1		4491
+	291910768	sfx_price_normal	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_price_normal_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\System\sfx_price_normal		17001
+	300171205	sfx_main_button	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_main_button_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\System\sfx_main_button		6757
+	337304185	sfx_boss_start	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_boss_start_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\Boss\sfx_boss_start		39337
+	375286350	sfx_boss_fight	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_boss_fight_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\Boss\sfx_boss_fight		71136
+	388342632	sfx_player_died2	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_player_died2_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\Player\Player_Died\sfx_player_died2		14688
+	414811608	sfx_enemy_died2	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_enemy_died2_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\Enemy\Enemy_Died\sfx_enemy_died2		6834
+	454733004	sfx_player_absorb_loop	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_player_absorb_loop_8B50E3E7.wem		\Actor-Mixer Hierarchy\SFX\Player\sfx_player_absorb_loop		86573
+	473031009	sfx_player_takedamage	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_player_takedamage_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\Player\sfx_player_takedamage		8059
+	521361034	sfx_player_shoot2	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_player_shoot2_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\Player\Player_Shoot\sfx_player_shoot2		7189
+	620917061	sfx_player_died1	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_player_died1_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\Player\Player_Died\sfx_player_died1		130724
+	663514043	sfx_enemy_died3	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_enemy_died3_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\Enemy\Enemy_Died\sfx_enemy_died3		7037
+	677192018	sfx_player_win	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_player_win_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\Player\sfx_player_win		40133
+	692216866	sfx_price_special	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_price_special_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\System\sfx_price_special		103520
+	910320486	sfx_enemy_died1	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_enemy_died1_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\Enemy\Enemy_Died\sfx_enemy_died1		6581
+	923210744	sfx_player_absorb_head	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_player_absorb_head_17AA10BB.wem		\Actor-Mixer Hierarchy\SFX\Player\sfx_player_absorb_head		98788
+	1018109902	sfx_switch_restover	D:\文件 工程 素材\020 unity项目路径\08 游创2\Mag2Me\Assets\Wwise\WwiseProject\.cache\Windows\SFX\sfx_switch_restover_8E324C96.wem		\Actor-Mixer Hierarchy\SFX\System\sfx_switch_restover		13837
+

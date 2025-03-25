@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f04d34e89580e4f8c59155d13da509, type: 3}
+  m_Name: 403B3EF0-F3D8-4DBF-A862-3450F11A53A1
+  m_EditorClassIdentifier: 
+  objectName: SFX
+  id: 393239870
+  guid: 403B3EF0-F3D8-4DBF-A862-3450F11A53A1

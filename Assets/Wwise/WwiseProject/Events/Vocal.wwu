@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{44A7FE09-3A22-4295-B2FE-6B784E6D98C9}" SchemaVersion="119">
+	<Events>
+		<WorkUnit Name="Vocal" ID="{44A7FE09-3A22-4295-B2FE-6B784E6D98C9}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Buff_EquippableLimit" ID="{2849EE61-8341-47C0-9031-6E4742DBB0E9}">
+					<ChildrenList>
+						<Action Name="" ID="{F45E6FBA-8820-483D-BB75-5342BB124D3C}" ShortID="187033360">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="vo_buff_equippablelimit" ID="{6E887040-6B93-4A3E-B95F-08DD9E12E633}" WorkUnitID="{A7E2709C-285B-4FAC-88F0-BA4EF5DAAEEB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Buff_HP" ID="{DE1DC22A-A7BF-4445-88B6-EED7D0A75FB2}">
+					<ChildrenList>
+						<Action Name="" ID="{43D18CAB-26E7-45F2-87BD-84C93B9046EC}" ShortID="293120222">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="vo_buff_HP" ID="{3694B89A-8DB8-4C9E-B7B7-91C7C1CC471E}" WorkUnitID="{A7E2709C-285B-4FAC-88F0-BA4EF5DAAEEB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Buff_Special" ID="{36AEBE71-CB6F-4E5C-8645-9926B0AC5359}">
+					<ChildrenList>
+						<Action Name="" ID="{94704FA4-56BD-4029-8534-CDC8F35FD728}" ShortID="929359574">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="vo_buff_special" ID="{A66AF693-A1D2-483B-A41F-7C574D00CB18}" WorkUnitID="{A7E2709C-285B-4FAC-88F0-BA4EF5DAAEEB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

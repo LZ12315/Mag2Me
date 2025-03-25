@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{A7E2709C-285B-4FAC-88F0-BA4EF5DAAEEB}" SchemaVersion="119">
+	<AudioObjects>
+		<WorkUnit Name="Vocal" ID="{A7E2709C-285B-4FAC-88F0-BA4EF5DAAEEB}" PersistMode="Standalone">
+			<ChildrenList>
+				<ActorMixer Name="Player" ID="{7E84821D-71FB-4D65-996B-E46468CA5E12}" ShortID="966040166">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="SFX" ID="{32DC39A2-EB76-40B3-A078-9F42EDEE5E6D}" WorkUnitID="{656CFA29-86B2-4BEE-B6AD-33BE9FBD0462}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{04C60DC7-931B-4D41-B339-27D4250EEBA0}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="vo_buff_equippablelimit" ID="{6E887040-6B93-4A3E-B95F-08DD9E12E633}" ShortID="541469277">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{656CFA29-86B2-4BEE-B6AD-33BE9FBD0462}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{04C60DC7-931B-4D41-B339-27D4250EEBA0}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="vo_buff_equippablelimit" ID="{C1E3373E-C765-4DDE-8E26-9D3B80DEEFA0}">
+									<Language>SFX</Language>
+									<AudioFile>vo_buff_equippablelimit.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="737358494"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="vo_buff_equippablelimit" ID="{C1E3373E-C765-4DDE-8E26-9D3B80DEEFA0}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="vo_buff_HP" ID="{3694B89A-8DB8-4C9E-B7B7-91C7C1CC471E}" ShortID="654197086">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{656CFA29-86B2-4BEE-B6AD-33BE9FBD0462}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{04C60DC7-931B-4D41-B339-27D4250EEBA0}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="vo_buff_HP" ID="{D850644F-3CC0-4948-BA66-737879A497E0}">
+									<Language>SFX</Language>
+									<AudioFile>vo_buff_HP.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="154188241"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="vo_buff_HP" ID="{D850644F-3CC0-4948-BA66-737879A497E0}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="vo_buff_special" ID="{A66AF693-A1D2-483B-A41F-7C574D00CB18}" ShortID="669032045">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{656CFA29-86B2-4BEE-B6AD-33BE9FBD0462}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{04C60DC7-931B-4D41-B339-27D4250EEBA0}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="vo_buff_special" ID="{5F3C19D4-24F4-4740-BCE9-67716E780A7E}">
+									<Language>SFX</Language>
+									<AudioFile>vo_buff_special.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="316745574"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="vo_buff_special" ID="{5F3C19D4-24F4-4740-BCE9-67716E780A7E}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

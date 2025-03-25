@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
+using static BuffManager;
 
 public class BuffManager : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class BuffManager : MonoBehaviour
     {
         [SerializeField] private int comboNum;
         [SerializeField] private BuffInfo buffInfo;
+        [SerializeField] public List<string> buffEvents = new List<string>();
         [SerializeField] private PlayableDirector director;
 
         public void ExecuteTimeline(BuffManager manager, UnityAction action)
@@ -73,29 +75,32 @@ public class BuffManager : MonoBehaviour
         action?.Invoke();
     }
 
-    void ExcuteBuff(BuffSetting buff)
+    void ExcuteBuff(BuffSetting buffSetting)
     {
-        switch(buff.BuffInfo.valueBuff)
+        foreach (var buffEvent in buffSetting.buffEvents)
+            EventCenter.Instance.EventTrigger(buffEvent);
+
+        switch(buffSetting.BuffInfo.valueBuff)
         {
             case ValueBuff.None:
                 break;
             case ValueBuff.HealthUp:
-                buff.ExecuteTimeline(this, () => HealthUp(buff.BuffInfo.buffValue));
+                buffSetting.ExecuteTimeline(this, () => HealthUp(buffSetting.BuffInfo.buffValue));
                 break;
             case ValueBuff.PowerUp:
-                buff.ExecuteTimeline(this, () => PowerUp(buff.BuffInfo.buffValue));
+                buffSetting.ExecuteTimeline(this, () => PowerUp(buffSetting.BuffInfo.buffValue));
                 break;
         }
 
-        switch (buff.BuffInfo.ultimateBuff)
+        switch (buffSetting.BuffInfo.ultimateBuff)
         {
             case UltimateBuff.None:
                 break;
             case UltimateBuff.ImediateDead:
-                buff.ExecuteTimeline(this, () => InvokeImediateDead(buff.BuffInfo.buffDuration));
+                buffSetting.ExecuteTimeline(this, () => InvokeImediateDead(buffSetting.BuffInfo.buffDuration));
                 break;
             case UltimateBuff.InfinityBullet:
-                buff.ExecuteTimeline(this, () => InvokeInfinityBullet(buff.BuffInfo.buffDuration));
+                buffSetting.ExecuteTimeline(this, () => InvokeInfinityBullet(buffSetting.BuffInfo.buffDuration));
                 break;
             case UltimateBuff.DividedBullet:
                 break;
@@ -127,6 +132,8 @@ public class BuffManager : MonoBehaviour
 
     IEnumerator ImediatelyDead(float duration)
     {
+        EventCenter.Instance.EventTrigger("特殊奖励开始");
+
         GameObject[] allObjects_Before = GameObject.FindObjectsOfType<GameObject>();
         foreach (GameObject obj in allObjects_Before)
         {
@@ -134,20 +141,12 @@ public class BuffManager : MonoBehaviour
 
             EnemyCharacter enemyCharacter = obj?.GetComponent<EnemyCharacter>();
             if (enemyCharacter != null)
-                enemyCharacter.SetimediateDead(this, true);
+                enemyCharacter.SetimediateDead(this);
         }
 
         yield return new WaitForSeconds(duration);
 
-        GameObject[] allObjects_After = GameObject.FindObjectsOfType<GameObject>();
-        foreach (GameObject obj in allObjects_After)
-        {
-            if (!obj.activeInHierarchy || !gameObject.activeSelf) continue;
-
-            EnemyCharacter enemyCharacter = obj?.GetComponent<EnemyCharacter>();
-            if (enemyCharacter != null)
-                enemyCharacter.SetimediateDead(this, false);
-        }
+        EventCenter.Instance.EventTrigger("特殊奖励结束");
     }
 
     void InvokeInfinityBullet(float Duration)
@@ -157,6 +156,8 @@ public class BuffManager : MonoBehaviour
 
     IEnumerator InfinityBullet(float duration)
     {
+        EventCenter.Instance.EventTrigger("特殊奖励开始");
+
         GameObject player = GameObject.FindWithTag("Player");
         if (player == null) yield break;
 
@@ -172,6 +173,7 @@ public class BuffManager : MonoBehaviour
 
         magSourceInfo.maxHoldNum = maxHoldNum;
         magSourceInfo.snapDistance = snapDistance;
+        EventCenter.Instance.EventTrigger("特殊奖励结束");
     }
 
 }
