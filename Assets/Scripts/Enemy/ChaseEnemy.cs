@@ -6,12 +6,13 @@ public class ChaseEnemy :EnemyController
 {
     List<PlayerCharacter> attackedObjects = new List<PlayerCharacter>();
 
-    private void Update()
+    protected override void Update()
     {
-        if (!canAct) return;
-
-        ChaseTarget();
+        base.Update();
         AttckDetect();
+
+        if (!canAct) return;
+        ChaseTarget();
     }
 
     void ChaseTarget()

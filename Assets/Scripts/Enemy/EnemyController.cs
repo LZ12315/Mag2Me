@@ -12,8 +12,8 @@ public class EnemyController : MonoBehaviour, IMagSourceControl
 
     [Header("µ–»À…Ë÷√")]
     [SerializeField] protected float moveSpeed = 1f;
-    [SerializeField] protected float snapDuration = 0.5f;
     [SerializeField] protected float instantiateWaitTime = 1.5f;
+    [SerializeField] protected float avoidRadius = 2f;
     [SerializeField] protected bool canAct;
 
     [Header("π•ª˜ Ù–‘")]
@@ -35,21 +35,36 @@ public class EnemyController : MonoBehaviour, IMagSourceControl
 
     protected virtual void Start()
     {
-        //StartCoroutine(ArmEquip());
         StartCoroutine(WaitToStart());
+    }
+
+    protected virtual void Update()
+    {
+        //if(canAct)
+        //    AvoidSameKind();
+    }
+
+    void AvoidSameKind()
+    {
+        Collider2D[] collisions = new Collider2D[20];
+
+        collisions = Physics2D.OverlapCircleAll(transform.position, avoidRadius);
+
+        foreach (var item in collisions)
+        {
+            EnemyCharacter enemyCharacter = item?.GetComponent<EnemyCharacter>();
+            if (enemyCharacter == null) continue;
+
+            Vector2 forceDir = (Vector2)(transform.position - enemyCharacter.transform.position);
+            if (physicalCharacter != null)
+                physicalCharacter.AddForceImpluse(forceDir, 0.1f);
+        }
     }
 
     IEnumerator WaitToStart()
     {
         yield return new WaitForSeconds(instantiateWaitTime);
         canAct = true;
-    }
-
-    IEnumerator ArmEquip()
-    {
-        magSource.ExcuteSnap(this);
-        yield return new WaitForSeconds(snapDuration);
-        magSource.SnapStop(this);
     }
 
     public void SnapObject(MagSource source)

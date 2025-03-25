@@ -73,7 +73,8 @@ public class Magnet : MonoBehaviour
         magnetParent = snapSource;
         isAttracted = false;
 
-        physicsCharacter.ToRoam();
+        if(physicsCharacter != null)
+            physicsCharacter.ToRoam();
     }
 
     public void MagnetRelease(Equip equip)

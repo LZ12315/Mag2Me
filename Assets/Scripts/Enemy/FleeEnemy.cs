@@ -7,9 +7,10 @@ public class FleeEnemy : EnemyController
 {
     [Header("æ‡¿Î…Ë÷√")]
     [SerializeField] private float startFleeDistance = 4f;
+    [SerializeField] private float stopFleeDistance = 6f;
     [SerializeField] private float fleeDistance = 1.5f;
-    [SerializeField] private float fleeDuration = 2f;
 
+    Vector2 moveDir;
     List<PlayerCharacter> attackedObjects = new List<PlayerCharacter>();
 
     protected override void Start()
@@ -18,42 +19,53 @@ public class FleeEnemy : EnemyController
         canAct = true;
     }
 
-    private void Update()
+    protected override void Update()
     {
-        TryFlee();
+        base.Update();
+        PlayerColliderDetect();
+        if (!canAct) return;
 
-        if (canAct)
-            ChaseTarget();
+        ChaseTarget();
+        TryFlee();
+        Move();
     }
 
     void TryFlee()
     {
-        if(player == null || !canAct) return;
+        if(player == null) return;
 
         float distance = Vector3.Distance(transform.position, player.position);
-        if (distance <= startFleeDistance)
-            StartCoroutine(Flee());
-    }
-
-    IEnumerator Flee()
-    {
-        Vector2 forceDir = (Vector2)(transform.position - player.transform.position).normalized;
-        if (physicalCharacter != null)
-        {
-            physicalCharacter.AddForce(forceDir, fleeDistance, fleeDuration);
-            canAct = false;
-        }
-
-        yield return new WaitForSeconds(fleeDuration);
-
-        canAct = true;
+        if (distance <= startFleeDistance || distance <= stopFleeDistance)
+            moveDir = (Vector2)(transform.position - player.position).normalized;
     }
 
     void ChaseTarget()
     {
         if (player == null) return;
-        Vector2 moveDir = (Vector2)(player.position - transform.position).normalized;
+        moveDir = (Vector2)(player.position - transform.position).normalized;
+    }
+
+    private void Move()
+    {
         physicalCharacter.SetVelocity(moveDir, moveSpeed);
+    }
+
+    void PlayerColliderDetect()
+    {
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        contactFilter.useTriggers = true;
+        Collider2D[] collisions = new Collider2D[20];
+        int overlapCount = enemyCollider.OverlapCollider(contactFilter, collisions);
+
+        for (int i = 0; i < overlapCount; i++)
+        {
+            PlayerCharacter playerCharacter = collisions[i]?.GetComponent<PlayerCharacter>();
+            if (playerCharacter == null || attackedObjects.Contains(playerCharacter)) continue;
+
+            Vector2 forceDir = (Vector2)(transform.position - playerCharacter.transform.position);
+            if (physicalCharacter != null)
+                physicalCharacter.AddForceImpluse(forceDir, 1.5f);
+        }
     }
 
 }

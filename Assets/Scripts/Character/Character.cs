@@ -21,18 +21,28 @@ public class Character : MonoBehaviour
         physicalCharacter = GetComponent<PhysicalCharacter>();
     }
 
+    protected virtual void HealthChange(int value)
+    {
+        currentHealth += value;
+        if(maxHealth < currentHealth)
+            maxHealth = currentHealth;
+
+        if (currentHealth <= 0)
+            Dead();
+    }
+
     public void GetDamage(Transform attackObject, int damage)
     {
-        int finalDamage = equipHolder.HolderDefence(damage);
-        currentHealth -= finalDamage;
-
         Vector2 forceDir = (Vector2)(transform.position - attackObject.position);
         if (physicalCharacter != null)
             physicalCharacter.AddForceImpluse(forceDir, 1f);
         magAnimation.HitVFX(this);
 
-        if (currentHealth <= 0 || imediateDeath)
+        if (imediateDeath)
             Dead();
+
+        int finalDamage = equipHolder.HolderDefence(damage);
+        HealthChange(-finalDamage);
     }
 
     protected virtual void Dead()
@@ -61,11 +71,9 @@ public class Character : MonoBehaviour
         imediateDeath = isTrue;
     }
 
-    public void HealthChange(BuffManager manager, int value)
+    public virtual void HealthChangeBuff(BuffManager manager, int value)
     {
-        currentHealth += value;
-        if(currentHealth > maxHealth)
-            maxHealth = currentHealth;
+        HealthChange(value);
     }
 
     #endregion

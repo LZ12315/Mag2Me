@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 8936969321172114500}
   - component: {fileID: 7675071088162794966}
   m_Layer: 6
-  m_Name: Magnet_1
+  m_Name: Magnet_Proto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,10 +310,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.5, y: 0.5}
-      - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5, y: 0.5}
+    - - {x: -0.7255949, y: 1.3006419}
+      - {x: -0.726845, y: -0.030135214}
+      - {x: 0.17810999, y: -1.0312957}
+      - {x: 0.7743015, y: -0.74111277}
+      - {x: 0.5374524, y: 0.5801933}
   m_UseDelaunayMesh: 0
 --- !u!114 &1654009537784807149
 MonoBehaviour:
@@ -328,9 +329,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magPower: 1
-  radius: 1
   minSpeed: 5
   speedClamp: 10
+  serviceable: 1
 --- !u!114 &8936969321172114500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,15 +344,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289dea003fb8c2141bf46aa6a1b0ae55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magnet: {fileID: 0}
-  equipHolder: {fileID: 0}
-  physicCharacter: {fileID: 0}
-  equipCollider: {fileID: 0}
-  trailRenderer: {fileID: 5053735442630792136}
-  maxEndurance: 3
-  currentEndurance: 3
-  defencePower: 1
-  serviceable: 0
+  maxEndurance: 1
+  currentEndurance: 1
   attackPower: 1
   attackNum: 1
   isBullet: 0
@@ -368,6 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastOrientation: {x: 0, y: 0}
-  moveType: 1
+  moveType: 3
   velocityCorrection: 0
   impluseForceTime: 0.4
+  canPhysicalMove: 0

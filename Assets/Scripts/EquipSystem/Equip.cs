@@ -5,11 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Equip: MonoBehaviour
 {
-    [SerializeField] protected Magnet magnet;
-    [SerializeField] protected EquipHolder equipHolder;
-    [SerializeField] protected PhysicalCharacter physicCharacter;
-    [SerializeField] protected Collider2D equipCollider;
-    [SerializeField] protected TrailRenderer trailRenderer;
+    protected Magnet magnet;
+    protected EquipHolder equipHolder;
+    protected PhysicalCharacter physicCharacter;
+    protected Collider2D equipCollider;
+    protected TrailRenderer trailRenderer;
 
     [Header("装备设置")]
     [SerializeField] protected int maxEndurance =  1;
@@ -54,7 +54,7 @@ public class Equip: MonoBehaviour
         if (magnet != null)
         {
             magnet.MagnetRelease(this);
-            StartCoroutine(magnet.MagnetBanned(this, 2f));
+            StartCoroutine(magnet.MagnetBanned(this, 1f));
         }
 
         equipHolder.ReleaseEquip(this);

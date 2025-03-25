@@ -27,6 +27,12 @@ public class BuffManager : MonoBehaviour
 
         public void ExecuteTimeline(BuffManager manager, UnityAction action)
         {
+            if(director == null)
+            {
+                action?.Invoke();
+                return;
+            }
+
             director.Play();
             manager.StartCoroutine(manager.WatchTimelineProgress(director, action));
         }
@@ -102,7 +108,7 @@ public class BuffManager : MonoBehaviour
         if (player == null) return;
 
         PlayerCharacter playerCharacter = player.GetComponent<PlayerCharacter>();
-        playerCharacter.HealthChange(this, value);
+        playerCharacter.HealthChangeBuff(this, value);
     }
 
     void PowerUp(int value)

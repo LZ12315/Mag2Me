@@ -24,16 +24,16 @@ public class Wave
     public List<GameObject> enemyAlive = new List<GameObject>();
 }
 
-public class WaveManager : MonoBehaviour
+public class EnemyWaveManager : MonoBehaviour
 {
-    [SerializeField] private float EnemySpawnInterval = 2;
+    [SerializeField] private float enemySpawnInterval = 2;
     [SerializeField] private float minSpawnRadius = 3f;
     [SerializeField] private float maxSpawnRadius = 6f;
 
-    [SerializeField] private int waveCount = 0;
     [SerializeField] private Wave currentWave;
     [SerializeField] private List<Wave> waves = new List<Wave>();
 
+    int waveCount = 0;
     Transform playerTrans;
 
     private void Start()
@@ -83,7 +83,7 @@ public class WaveManager : MonoBehaviour
 
                 currentWave.enemyAlive.Add(newEnemy);
                 currentWave.enemyNumSpawned++;
-                yield return EnemySpawnInterval;
+                yield return new WaitForSeconds(enemySpawnInterval);
             }
         }
     }
@@ -109,6 +109,14 @@ public class WaveManager : MonoBehaviour
         float y = spawnRadius * Mathf.Sin(radians);
 
         return (Vector2)playerTrans.position + new Vector2(x, y);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(Vector3.zero, minSpawnRadius);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(Vector3.zero, maxSpawnRadius);
     }
 
 }

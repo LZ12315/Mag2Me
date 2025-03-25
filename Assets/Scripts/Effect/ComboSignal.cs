@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,8 @@ public class ComboSignal : MonoBehaviour
 {
     [SerializeField] private RectTransform maskTrans;
     [SerializeField] private RectMask2D mask;
+    [SerializeField] private TextMeshProUGUI comboNumOutline;
+    [SerializeField] private TextMeshProUGUI comboNumFilter;
 
     [Header("Combo…Ë÷√")]
     [SerializeField] private bool combo = false;
@@ -17,12 +20,11 @@ public class ComboSignal : MonoBehaviour
     float comboCounter = 0;
     float comboPercent = 0;
     float maskOriginalWidth = 0;
+    int comboNum;
 
     private void Start()
     {
         EventCenter.Instance.AddEventListener(EventName.Combo.ToString(), RefreshCounter);
-        mask = GetComponentInChildren<RectMask2D>();
-        maskTrans = mask.GetComponent<RectTransform>();
 
         comboCounter = 0;
         comboPercent = 0;
@@ -56,12 +58,19 @@ public class ComboSignal : MonoBehaviour
         comboCounter = comboDuration;
         comboPercent = 1;
         SetMask(1);
+        SetComboNum(++comboNum);
     }
 
     void SetMask(float percent)
     {
         float width = percent * maskOriginalWidth;
         mask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,width);
+    }
+
+    void SetComboNum(int num)
+    {
+        comboNumFilter.text = num.ToString();
+        comboNumOutline.text = num.ToString();
     }
 
 }

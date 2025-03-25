@@ -129,6 +129,8 @@ public class MagSource : MonoBehaviour
 
     void DetectMagInPlace()
     {
+        if(MagnetInPlace.Count >= sourceInfo.maxHoldNum) return;
+
         ContactFilter2D contactFilter = new ContactFilter2D();
         contactFilter.useTriggers = true;
         Collider2D[] collisions = new Collider2D[20];
