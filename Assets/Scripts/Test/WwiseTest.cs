@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AK.Wwise;
-using static AkWwiseProjectData;
 using static MoreMountains.Feedbacks.MMMiniPoolableObject;
 using static MoreMountains.Tools.MMPoolableObject;
 
@@ -25,7 +24,21 @@ public class WwiseTest : MonoBehaviour
         EventCenter.Instance.AddEventListener("Combo", () => StartGame());
     }
 
-
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            TriggerEvent(SwitchToCombat);
+        }
+        if(Input.GetKeyDown(KeyCode.Y))
+        {
+            TriggerEvent(SwitchToBoss);
+        }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            TriggerEvent(SwitchToRest);
+        }
+    }
 
 
 
